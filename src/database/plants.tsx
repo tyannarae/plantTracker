@@ -1,3 +1,4 @@
+/*The below array of objects stores all information about each given plant shown on our application */
 export let Plants: {
   id: string;
   scientific_name: string;
