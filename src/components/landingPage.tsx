@@ -1,12 +1,12 @@
 import React from "react";
 import logo from "../landingPageImg.jpg";
+import "../styles/landingPage.scss";
 
 const LandingPage = () => {
   return (
-    <div>
-      <div>The Grass is Greener</div>
-      <img src={logo} className="App-logo" alt="logo" />
-      {/* <img src="../src/landingPageImg.jpg" alt="" /> */}
+    <div className="landingPageContainer">
+      <button className="CTA ">The Grass is Greener</button>
+      <img className="logo " src={logo} alt="logo" />
     </div>
   );
 };
