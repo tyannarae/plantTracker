@@ -6,7 +6,7 @@ const LandingPage = () => {
   return (
     <div className="landingPageContainer">
       <button className="CTA " onClick={() => alert("Let's get to planting!")}>
-        <p>Your Personal Green Thumb</p>
+        <p>Time to Get Planting</p>
       </button>
       <img className="logo " src={logo} alt="logo" />
     </div>

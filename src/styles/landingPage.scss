@@ -34,49 +34,93 @@
   }
 }
 
-@media screen and (min-width: 279px) and (max-width: 654px) {
+@media screen and (max-width: 325px) {
   .CTA {
-    width: 80%;
-    height: 5em;
+    width: 20em;
+    height: 6em;
+    top: 18em;
+    p {
+      font-size: 2em;
+    }
+  }
+}
+
+@media screen and (min-width: 326px) and (max-width: 365px) {
+  .CTA {
+    width: 20em;
+    height: 6em;
     top: 21em;
     p {
+      font-size: 2em;
+    }
+  }
+}
+@media screen and (max-width: 375px) and (min-width: 369px) {
+  .CTA {
+    width: 25em;
+    height: 7em;
+    top: 24em;
+    p {
+      font-size: 2.5em;
+    }
+  }
+}
+
+@media screen and (max-width: 409px) and (min-width: 376px) {
+  .CTA {
+    width: 20em;
+    height: 5em;
+    top: 22em;
+    p {
       font-size: 1.75em;
     }
   }
 }
-@media screen and (min-width: 410px) and (max-width: 824) {
+@media screen and (min-width: 410px) and (max-width: 654px) {
   .CTA {
-    top: 25em;
+    width: 25em;
+    top: 24em;
+    p {
+      font-size: 2.6em;
+    }
+  }
+}
+
+@media screen and (min-width: 655px) and (max-width: 720px) {
+  .CTA {
     p {
       font-size: 1.75em;
     }
   }
 }
 
-@media screen and (min-width: 539px) and (max-width: 720px) {
+@media screen and (min-width: 721px) and (max-width: 999px) {
   .CTA {
-    p {
-      font-size: 1.75em;
-    }
-  }
-}
-
-@media screen and (min-width: 677px) and (max-width: 1025px) {
-  .CTA {
-    width: 40em;
-    height: 10em;
-    p {
-      font-size: 3em;
-    }
-  }
-}
-@media screen and (min-width: 1023px) and (max-width: 1367px) {
-  .CTA {
-    width: 48em;
+    top: 35em;
+    width: 45em;
     height: 9em;
-    top: 30em;
     p {
-      font-size: 3em;
+      font-size: 3.5em;
+    }
+  }
+}
+@media screen and (min-width: 1000px) and (max-width: 1025px) {
+  .CTA {
+    width: 49em;
+    height: 12em;
+    top: 47em;
+    p {
+      font-size: 4.3em;
+    }
+  }
+}
+@media screen and (min-width: 1026px) {
+  .CTA {
+    width: 50em;
+    height: 10em;
+    top: 37em;
+    p {
+      font-size: 4em;
     }
   }
 }
