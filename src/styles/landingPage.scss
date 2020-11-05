@@ -1,7 +1,6 @@
 .logo {
   z-index: 1;
-  height: 110vmin;
-  border-radius: 15em;
+  height: 100vmax;
   pointer-events: none;
 }
 
@@ -9,20 +8,30 @@
   display: grid;
 }
 .CTA {
-  font-family: Ringside Regular A, Ringside Regular B, Rubik, Lato,
-    Lucida Grande, Lucida Sans Unicode, Tahoma, Sans-Serif;
-  color: white;
-  background-image: linear-gradient(
-    to right,
-    #fbfbfb,
-    #96af85,
-    #172e1e,
-    #282c34
-  );
-  border: none;
-  width: 22em;
-  height: 4em;
+  p {
+    font-size: 2.3em;
+    font-family: "Roboto Condensed", sans-serif;
+    color: white;
+    margin: 0;
+  }
+  border-top: none;
+  border-bottom: none;
+  background-image: linear-gradient(to right, #111113, #a7b993);
+  border-right: none;
+  border-left: none;
+  width: 40em;
+  height: 6em;
   position: absolute;
   z-index: 2;
-  top: 19em;
+  top: 26em;
+  opacity: 90.1%;
+  box-shadow: 51px 0px 75px 65px #1a2224;
+}
+
+.CTA:hover {
+  border-top: 3px solid #fff902;
+  border-bottom: 3px solid #fff902;
+  p {
+    color: #fff902;
+  }
 }
