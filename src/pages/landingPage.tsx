@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import backgroundImg from "../landingPageImg.jpg";
-import "../styles/landingPage.scss";
+import backgroundImg from "../media/pages/landingPageImg.jpg";
+import "../styles/pages/landingPage.scss";
 
 const LandingPage = () => {
   const history = useHistory();

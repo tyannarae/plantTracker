@@ -1,3 +1,5 @@
+@import "../global/colors.scss";
+
 .landingPageContainer {
   height: 100%;
   width: 100%;
@@ -15,12 +17,12 @@
   p {
     font-size: 2.3em;
     font-family: "Roboto Condensed", sans-serif;
-    color: white;
+    color: $white;
     margin: 0;
   }
   border-top: none;
   border-bottom: none;
-  background-image: linear-gradient(to right, #111113, #a7b993);
+  background-image: linear-gradient(to right, $black, $light_green);
   border-right: none;
   border-left: none;
   width: 40em;
@@ -29,15 +31,15 @@
   z-index: 2;
   top: 26em;
   opacity: 90.1%;
-  box-shadow: 51px 0px 75px 65px #1a2224;
+  box-shadow: 51px 0px 75px 65px $black;
 }
 
 .CTA:hover {
   text-decoration: none;
-  border-top: 3px solid #fff902;
-  border-bottom: 3px solid #fff902;
+  border-top: 3px $yellow;
+  border-bottom: 3px $yellow;
   p {
-    color: #fff902;
+    color: $yellow;
   }
 }
 
