@@ -1,4 +1,10 @@
-.logo {
+.landingPageContainer {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.backgroundImg {
   overflow: hidden;
   z-index: 1;
   height: 100vmax;

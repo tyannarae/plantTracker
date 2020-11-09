@@ -1,14 +1,21 @@
 import React from "react";
-import logo from "../landingPageImg.jpg";
+import { useHistory } from "react-router-dom";
+import backgroundImg from "../landingPageImg.jpg";
 import "../styles/landingPage.scss";
 
 const LandingPage = () => {
+  const history = useHistory();
+
+  function handleClick() {
+    history.push("/home");
+  }
+
   return (
     <div className="landingPageContainer">
-      <button className="CTA " onClick={() => alert("Let's get to planting!")}>
+      <button className="CTA " onClick={handleClick}>
         <p>Time to Get Planting</p>
       </button>
-      <img className="logo " src={logo} alt="logo" />
+      <img className="backgroundImg " src={backgroundImg} alt="backgroundImg" />
     </div>
   );
 };
