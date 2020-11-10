@@ -17,7 +17,7 @@ function App() {
         </header>
       </div>
       <Route path="/search" component={SearchPage}></Route>
-      <Route path="/home" component={LandingPage}></Route>
+      <Route exact path="/" component={LandingPage}></Route>
     </Router>
   );
 }
