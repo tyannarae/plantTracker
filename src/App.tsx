@@ -1,7 +1,8 @@
 import React from "react";
-import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./styles/global/app.scss";
 import LandingPage from "./pages/landingPage";
+import reportWebVitals from "./reportWebVitals";
 
 function App() {
   return (
@@ -13,12 +14,11 @@ function App() {
             rel="stylesheet"
           ></link>
         </header>
-        <Link to="/">Landing Page</Link>
-        <Link to="/nothing">nothing</Link>
       </div>
       <Route path="/" exact component={LandingPage}></Route>
     </Router>
   );
 }
 
+reportWebVitals();
 export default App;
