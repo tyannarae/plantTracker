@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./styles/global/app.scss";
 import LandingPage from "./pages/landingPage";
-import SearchPage from "./pages/searchPage";
 import reportWebVitals from "./reportWebVitals";
 
 function App() {
@@ -16,8 +15,7 @@ function App() {
           ></link>
         </header>
       </div>
-      <Route path="/search" component={SearchPage}></Route>
-      <Route path="/home" component={LandingPage}></Route>
+      <Route path="/" component={LandingPage}></Route>
     </Router>
   );
 }
