@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import "../styles/pages/searchPage.scss";
+import Logo from "../media/pages/logo.png";
 
 import "../styles/pages/landingPage.scss";
 
@@ -15,7 +16,11 @@ const SearchPage = () => {
   return (
     <div className="landingPageContainer">
       <div className="topNav">
-        <button> Logo</button>
+        <div className="logo">
+          {" "}
+          <img className="logoImg" alt="Logo" src={Logo} />
+        </div>
+
         <form className="searchForm">
           <input className="searchBar"></input>
           <button
@@ -24,7 +29,9 @@ const SearchPage = () => {
             onClick={handleClick}
           ></button>
         </form>
-        <button> Collections</button>
+        <div className="collectionsWrapper">
+          <button className="collectionsButton"> Collections</button>
+        </div>
       </div>
     </div>
   );

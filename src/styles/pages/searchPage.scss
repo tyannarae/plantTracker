@@ -1,7 +1,9 @@
 @import "../global/colors.scss";
 
 .topNav {
-  display: flex;
+  display: grid;
+  grid-template-columns: 600px auto 100px;
+  align-items: center;
 }
 
 .searchButton {
@@ -11,7 +13,7 @@
   border-bottom-right-radius: 27px;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
-  background-image: linear-gradient(90deg, #4caf50, #2dffbb);
+  background-image: linear-gradient(90deg, $lightGreen, $teal);
   padding: 0 22px 0 18px;
 }
 
@@ -29,7 +31,29 @@
   border-bottom-right-radius: 0;
 }
 .searchForm {
+  width: 25em;
+  text-align: center;
+  height: 3em;
   outline: 0;
   border-radius: 28px;
   display: flex;
+}
+
+.logo {
+  width: 4em;
+  margin: 1em;
+  display: grid;
+  background: linear-gradient(90deg, $lightGreen, $teal);
+  color: $white;
+  border-radius: 3em;
+}
+.logoImg {
+  height: 4em;
+}
+.collectionsButton {
+  outline: 0;
+  border: 0;
+  border-radius: 2em;
+  height: 3em;
+  background-image: linear-gradient(90deg, $lightGreen, $teal);
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import backgroundImg from "../media/pages/landingPageImg.jpg";
+import backgroundImg from "../media/pages/testimg2.jpeg";
 import "../styles/pages/landingPage.scss";
 
 const LandingPage = () => {
@@ -15,7 +15,7 @@ const LandingPage = () => {
       <button className="CTA " onClick={handleClick}>
         <p>Time to Get Planting</p>
       </button>
-      <img alt="timer" src={backgroundImg} />
+      <img alt="backgroundImg" src={backgroundImg} />
     </div>
   );
 };
