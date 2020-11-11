@@ -6,8 +6,10 @@ import { useHistory } from "react-router-dom";
 const NavBar = () => {
   const history = useHistory();
 
-  function handleSearchClick() {
+  function handleLogoClick() {
     history.push("/");
+  }
+  function handleSearchClick() {
     console.log("lets get some plants in here!");
   }
 
@@ -18,7 +20,12 @@ const NavBar = () => {
   return (
     <div className="topNav">
       <div className="logo">
-        <img className="logoImg" alt="Logo" src={Logo} />
+        <img
+          className="logoImg"
+          alt="Logo"
+          src={Logo}
+          onClick={handleLogoClick}
+        />
       </div>
 
       <form className="searchForm">
