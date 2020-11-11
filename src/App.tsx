@@ -4,6 +4,7 @@ import "./styles/global/app.scss";
 import LandingPage from "./pages/landingPage";
 import SearchPage from "./pages/searchPage";
 import reportWebVitals from "./reportWebVitals";
+import PlantResults from "./components/shared/plantResults";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       </div>
       <Route path="/search" component={SearchPage}></Route>
       <Route exact path="/" component={LandingPage}></Route>
+      <Route exact path="/collections" component={PlantResults}></Route>
     </Router>
   );
 }
