@@ -1,11 +1,10 @@
 @import "../global/colors.scss";
 .plantCardContainer {
-  grid-template-areas:
-    "plantCommonName plantCommonName plantCommonName"
-    "plantCardDetails plantCardDetails plantCardDetails"
-    "light difficultyLevel humidity";
-  display: grid;
-  width: fit-content;
+  padding: 1em;
+  width: 12.5em;
+}
+.containImgAndButton {
+  position: absolute;
 }
 .plantCardDetails {
   grid-area: plantCardDetails;
@@ -24,18 +23,31 @@
   height: 200px;
   object-fit: cover;
 }
+.tags {
+  flex-wrap: wrap;
+  display: flex;
+}
 .tag {
+  width: 5em;
+
+  background-color: #3dd988;
+  border-radius: 2em;
+  height: 1.5em;
   font-size: 0.7em;
   text-align: center;
 }
 .light {
-  grid-area: light;
+  margin-left: auto;
+  grid-area: tag;
 }
 .difficultyLevel {
-  grid-area: difficultyLevel;
+  margin-left: auto;
+  margin-right: auto;
+  grid-area: tag;
 }
 .humidity {
-  grid-area: humidity;
+  margin-right: auto;
+  grid-area: tag;
 }
 .expand {
   position: absolute;
