@@ -5,18 +5,16 @@ import "../../styles/components/plantResults.scss";
 // and when searching the plant database
 
 const PlantResults = () => {
-  //retrieves plants
+  //retrieves plants based on what prop is passed in
   function getPlants() {
-    for (let i = 0; i < 3; i++) {
-      return <PlantCard />;
-    }
+    return <PlantCard />;
   }
   //if True this will render the users collection
   if (window.location.href === "http://localhost:3000/collections") {
     return (
       <div>
-        {" "}
-        <button>we are under plant your plant collection!</button>
+        <div className="featuredPlantsHeader">Plant Collection</div>
+        <div className="results">{getPlants()}</div>
       </div>
     );
   }

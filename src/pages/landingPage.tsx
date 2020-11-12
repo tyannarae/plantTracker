@@ -17,7 +17,11 @@ const LandingPage = () => {
         <button className="CTA " onClick={handleClick}>
           <p>Time to Get Planting</p>
         </button>
-        <img alt="backgroundImg" src={backgroundImg} />
+        <img
+          className="backgroundImg"
+          alt="backgroundImg"
+          src={backgroundImg}
+        />
       </div>
     </div>
   );

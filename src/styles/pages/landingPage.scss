@@ -7,10 +7,11 @@
 }
 
 .backgroundImg {
+  display: block;
+  height: 100vh;
+  object-fit: cover;
   overflow: hidden;
   z-index: 1;
-  height: 100vmax;
-  pointer-events: none;
 }
 
 .CTA {
@@ -118,12 +119,6 @@
   }
 }
 @media screen and (min-width: 1000px) and (max-width: 1028px) {
-  .backgroundImg {
-    display: block;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-  }
   .CTA {
     width: 49em;
     height: 12em;
