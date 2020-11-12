@@ -1,5 +1,7 @@
 @import "../global/colors.scss";
 .plantCardContainer {
+  border: 2px solid #312d3c;
+  border-radius: 1em;
   padding: 1em;
   width: 12.5em;
 }
@@ -10,12 +12,25 @@
   grid-area: plantCardDetails;
   display: inline-block;
   position: relative;
+  .expand {
+    background-color: #3ae2949e;
+    outline: 0;
+    width: 1.5em;
+    height: 1.5em;
+    font-size: 1.5em;
+    border: 2px solid #46c26a;
+    border-bottom-left-radius: 0.5em;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .expand:hover {
+    background-color: $lightYellow;
+    border: $lightYellow;
+  }
 }
 .plantCommonName {
-  width: 50%;
-  margin-right: auto;
-  margin-left: auto;
-  grid-area: plantCommonName;
+  text-align: center;
 }
 
 .plantImage {
@@ -24,17 +39,21 @@
   object-fit: cover;
 }
 .tags {
+  padding-top: 0.5em;
   flex-wrap: wrap;
   display: flex;
 }
 .tag {
+  color: $black;
   width: 5em;
-
-  background-color: #3dd988;
+  background-image: linear-gradient(90deg, $lightGreen, $teal);
   border-radius: 2em;
   height: 1.5em;
   font-size: 0.7em;
   text-align: center;
+}
+.tag:hover {
+  background-image: linear-gradient(90deg, $teal, $lightGreen);
 }
 .light {
   margin-left: auto;
@@ -48,9 +67,4 @@
 .humidity {
   margin-right: auto;
   grid-area: tag;
-}
-.expand {
-  position: absolute;
-  top: 0;
-  right: 0;
 }
