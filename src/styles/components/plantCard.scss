@@ -1,0 +1,44 @@
+@import "../global/colors.scss";
+.plantCardContainer {
+  grid-template-areas:
+    "plantCommonName plantCommonName plantCommonName"
+    "plantCardDetails plantCardDetails plantCardDetails"
+    "light difficultyLevel humidity";
+  display: grid;
+  width: fit-content;
+}
+.plantCardDetails {
+  grid-area: plantCardDetails;
+  display: inline-block;
+  position: relative;
+}
+.plantCommonName {
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+  grid-area: plantCommonName;
+}
+
+.plantImage {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+.tag {
+  font-size: 0.7em;
+  text-align: center;
+}
+.light {
+  grid-area: light;
+}
+.difficultyLevel {
+  grid-area: difficultyLevel;
+}
+.humidity {
+  grid-area: humidity;
+}
+.expand {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

@@ -31,11 +31,13 @@
   border-bottom-right-radius: 0;
 }
 .searchForm {
+  border-radius: 4em;
+  display: flex;
+  border: 2px solid #312d3c;
   width: 25em;
   text-align: center;
   height: 3em;
   outline: 0;
-  border-radius: 28px;
   display: flex;
 }
 
@@ -111,7 +113,7 @@
   }
 }
 
-@media screen and (min-width: 1024px) and (max-width: 1500px) {
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
   .topNav {
     grid-template-columns: 29em auto 6em;
   }

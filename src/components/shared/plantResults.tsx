@@ -1,9 +1,16 @@
 import React from "react";
 import PlantCard from "./plantCard";
+import "../../styles/components/plantResults.scss";
 // this component will work for both the users personal collection of plants
 // and when searching the plant database
 
 const PlantResults = () => {
+  //retrieves plants
+  function getPlants() {
+    for (let i = 0; i < 3; i++) {
+      return <PlantCard />;
+    }
+  }
   //if True this will render the users collection
   if (window.location.href === "http://localhost:3000/collections") {
     return (
@@ -18,7 +25,7 @@ const PlantResults = () => {
     return (
       <div className="resultsContainer">
         <div className="featuredPlantsHeader">Featured Plants</div>
-        <PlantCard />
+        {getPlants()}
       </div>
     );
   }
