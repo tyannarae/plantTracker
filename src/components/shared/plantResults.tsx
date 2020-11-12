@@ -25,7 +25,7 @@ const PlantResults = () => {
     return (
       <div className="resultsContainer">
         <div className="featuredPlantsHeader">Featured Plants</div>
-        {getPlants()}
+        <div className="results">{getPlants()}</div>
       </div>
     );
   }

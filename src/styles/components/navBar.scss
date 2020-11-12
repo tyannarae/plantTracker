@@ -53,6 +53,11 @@
   color: $white;
   border-radius: 3em;
 }
+.logo:hover {
+  background: $yellow;
+  border-radius: 50px;
+  box-shadow: 0 0 27px #ffeb3b, inset 0 0 8px #ffeb3b;
+}
 .logoImg {
   height: 4em;
 }
@@ -86,11 +91,6 @@
       .logoImg {
         height: 3em;
       }
-    }
-    .logo:hover {
-      background: $yellow;
-      border-radius: 50px;
-      box-shadow: 0 0 27px #ffeb3b, inset 0 0 8px #ffeb3b;
     }
 
     .searchForm {

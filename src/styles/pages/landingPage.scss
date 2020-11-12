@@ -18,12 +18,12 @@
   p {
     font-size: 2.3em;
     font-family: "Roboto Condensed", sans-serif;
-    color: $white;
+    color: $black;
     margin: 0;
   }
   border-top: none;
   border-bottom: none;
-  background-image: linear-gradient(to right, $black, $teal);
+  background-image: linear-gradient(to right, $lightGreen, $teal);
   border-right: none;
   border-left: none;
   width: 40em;
@@ -45,6 +45,9 @@
 }
 
 @media screen and (max-width: 325px) {
+  .backgroundImg {
+    height: 40em;
+  }
   .CTA {
     width: 20em;
     height: 6em;
@@ -116,7 +119,10 @@
 }
 @media screen and (min-width: 1000px) and (max-width: 1028px) {
   .backgroundImg {
-    height: 100vmax;
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
   }
   .CTA {
     width: 49em;
