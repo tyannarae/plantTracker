@@ -1,12 +1,24 @@
 import React from "react";
-import "./App.css";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import "./styles/global/app.scss";
+import LandingPage from "./pages/landingPage";
+import reportWebVitals from "./reportWebVitals";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header"></header>
-    </div>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <link
+            href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap"
+            rel="stylesheet"
+          ></link>
+        </header>
+      </div>
+      <Route path="/" component={LandingPage}></Route>
+    </Router>
   );
 }
 
+reportWebVitals();
 export default App;
