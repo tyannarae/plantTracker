@@ -2,7 +2,7 @@
 
 .plantCardContainer {
   background-color: $offBlack;
-  border: 2px solid $grey;
+  border: 0.2em solid $grey;
   border-radius: 1em;
   padding: 1em;
   margin: 1em;
@@ -21,7 +21,7 @@
     width: 1.5em;
     height: 1.5em;
     font-size: 1.5em;
-    border: 2px solid #46c26a;
+    border: 0.2em solid #46c26a;
     border-bottom-left-radius: 0.5em;
     position: absolute;
     top: 0;
@@ -37,8 +37,8 @@
 }
 
 .plantImage {
-  width: 200px;
-  height: 200px;
+  width: 12.5em;
+  height: 12.5em;
   object-fit: cover;
 }
 .tags {

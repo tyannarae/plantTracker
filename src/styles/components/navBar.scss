@@ -2,19 +2,19 @@
 
 .topNav {
   display: grid;
-  grid-template-columns: 600px auto 100px;
+  grid-template-columns: 43em auto 6em;
   align-items: center;
 }
 
 .searchButton {
   outline: 0;
   border: 0;
-  border-top-right-radius: 27px;
-  border-bottom-right-radius: 27px;
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
+  border-top-right-radius: 2em;
+  border-bottom-right-radius: 2em;
+  border-top-left-radius: 0.5em;
+  border-bottom-left-radius: 0.5em;
   background-image: linear-gradient(90deg, $lightGreen, $teal);
-  padding: 0 22px 0 18px;
+  padding: 0 2.2em 0 2.2em;
 }
 .searchButton:hover {
   background-image: linear-gradient(90deg, $teal, $lightGreen);
@@ -28,15 +28,15 @@
   flex: 1;
   color: $brightWhite;
   padding: 0.5rem 1rem;
-  border-top-left-radius: 27px;
-  border-bottom-left-radius: 27px;
+  border-top-left-radius: 2em;
+  border-bottom-left-radius: 2em;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 .searchForm {
   border-radius: 4em;
   display: flex;
-  border: 2px solid #312d3c;
+  border: 0.2em solid #312d3c;
   width: 25em;
   text-align: center;
   height: 3em;
@@ -55,8 +55,8 @@
 }
 .logo:hover {
   background: $yellow;
-  border-radius: 50px;
-  box-shadow: 0 0 27px #ffeb3b, inset 0 0 8px #ffeb3b;
+  border-radius: 3em;
+  box-shadow: 0 0 1em #ffeb3b, inset 0 0 1em #ffeb3b;
 }
 .logoImg {
   height: 4em;
@@ -108,7 +108,7 @@
     margin-right: 0;
   }
   .collectionsButton {
-    border-radius: 0px;
+    border-radius: 0em;
     border-bottom-left-radius: 2em;
     height: 5em;
     grid-area: collection;
@@ -125,9 +125,6 @@
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1366px) {
-  .topNav {
-    grid-template-columns: 29em auto 6em;
-  }
   .collectionsButton {
     height: 4em;
   }

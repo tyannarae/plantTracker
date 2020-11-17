@@ -33,15 +33,13 @@
   z-index: 2;
   top: 26em;
   opacity: 90.1%;
-  box-shadow: 51px 0px 75px 65px $black;
+  box-shadow: 0.5em 0em 3.5em 0.5em $black;
 }
 
 .CTA:hover {
-  text-decoration: none;
-  border-top: 3px $yellow;
-  border-bottom: 3px $yellow;
+  background-image: linear-gradient(to right, $teal, $lightGreen);
   p {
-    color: $lightGreen;
+    color: $black;
   }
 }
 

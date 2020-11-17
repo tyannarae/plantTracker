@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./styles/global/app.scss";
-import LandingPage from "./pages/landingPage";
-import SearchPage from "./pages/searchPage";
+import LandingPage from "./components/pages/landingPage";
+import SearchPage from "./components/pages/searchPage";
 import reportWebVitals from "./reportWebVitals";
-import PlantResults from "./components/plantResults";
+import UserCollections from "./components/pages/userCollection";
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
       </div>
       <Route path="/search" component={SearchPage}></Route>
       <Route exact path="/" component={LandingPage}></Route>
-      <Route exact path="/collections" component={PlantResults}></Route>
+      <Route exact path="/collections" component={UserCollections}></Route>
     </Router>
   );
 }
