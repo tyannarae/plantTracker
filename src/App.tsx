@@ -4,7 +4,7 @@ import "./styles/global/app.scss";
 import LandingPage from "./pages/landingPage";
 import SearchPage from "./pages/searchPage";
 import reportWebVitals from "./reportWebVitals";
-import PlantResults from "./components/shared/plantResults";
+import PlantResults from "./components/plantResults";
 
 function App() {
   return (

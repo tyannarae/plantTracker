@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/components/plantCard.scss";
+import "../styles/components/plantCard.scss";
 
 const PlantCard = () => {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
-import NavBar from "../components/shared/navBar";
-import PlantResults from "../components/shared/plantResults";
+import NavBar from "../components/navBar";
+import PlantResults from "../components/plantResults";
 import "../styles/pages/searchPage.scss";
 import "../styles/pages/landingPage.scss";
 

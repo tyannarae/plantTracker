@@ -1,16 +1,14 @@
 import React from "react";
-import Logo from "../../media/pages/logo.png";
-import SearchIcon from "../../media/pages/searchBarIcon.png";
+import Logo from "../media/pages/logo.png";
+
 import { useHistory } from "react-router-dom";
+import { Search } from "./search";
 
 const NavBar = () => {
   const history = useHistory();
 
   function handleLogoClick() {
     history.push("/");
-  }
-  function handleSearchClick() {
-    console.log("lets get some plants in here!");
   }
 
   function handleCollectionsClick() {
@@ -27,22 +25,8 @@ const NavBar = () => {
           onClick={handleLogoClick}
         />
       </div>
+      <Search />
 
-      <form className="searchForm">
-        <input
-          className="searchBar"
-          type="text"
-          name="search"
-          placeholder="Search.."
-        ></input>
-        <button
-          className="searchButton"
-          type="submit"
-          onClick={handleSearchClick}
-        >
-          <img className="searchIcon" alt="searchIcon" src={SearchIcon} />
-        </button>
-      </form>
       <div className="collectionsWrapper">
         <button className="collectionsButton" onClick={handleCollectionsClick}>
           {" "}

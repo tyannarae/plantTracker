@@ -1,7 +1,7 @@
-import { HumidityLevel } from "../components/shared/plantData/humidityLevel";
-import { LightRequirements } from "../components/shared/plantData/lightRequirements";
-import { Misting } from "../components/shared/plantData/misting";
-import { DifficultyLevel } from "../components/shared/plantData/difficultyLevel";
+import { HumidityLevel } from "../components/plantData/humidityLevel";
+import { LightRequirements } from "../components/plantData/lightRequirements";
+import { Misting } from "../components/plantData/misting";
+import { DifficultyLevel } from "../components/plantData/difficultyLevel";
 
 //this interface defines each plant in our plants array below
 export interface Plant {
