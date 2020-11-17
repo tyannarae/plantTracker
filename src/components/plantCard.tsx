@@ -8,13 +8,7 @@ const PlantCard = () => {
     <div className="plantCardContainer">
       <div className="plantCardDetails">
         <button className="expand">+</button>
-        <img
-          src={
-            "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg"
-          }
-          className="plantImage"
-          alt="plant"
-        />
+        <img src={""} className="plantImage" alt="plant" />
       </div>
       <div className="plantCommonName"></div>
       <div className="tags">
