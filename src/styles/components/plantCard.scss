@@ -16,12 +16,14 @@
   display: inline-block;
   position: relative;
   .expand {
-    background-color: $lightGreen;
+    text-align: center;
+    background-color: $lightYellow;
+    border: $lightYellow;
     outline: 0;
     width: 1.5em;
     height: 1.5em;
     font-size: 1.5em;
-    border: 0.2em solid #46c26a;
+
     border-bottom-left-radius: 0.5em;
     position: absolute;
     top: 0;
@@ -29,7 +31,7 @@
   }
   .expand:hover {
     background-color: $lightYellow;
-    border: $lightYellow;
+    border: 0.2em solid $lightYellow;
   }
 }
 .plantCommonName {

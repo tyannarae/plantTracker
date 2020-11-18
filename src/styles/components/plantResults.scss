@@ -1,5 +1,12 @@
 @import "../global/colors.scss";
 
+.cardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 5em;
+  margin-right: 5em;
+}
+
 .resultsContainer {
   color: $white;
 }
