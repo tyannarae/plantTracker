@@ -23,14 +23,15 @@ const PlantCard: FunctionComponent<Plant> = ({
   waterSchedule = 0,
 }) => {
   return (
-    <div className="plantCardContainer">
+    <div className="plantCardContainer" key={id}>
       <div className="plantCardDetails">
         <div className="expand">+</div>
         <img src={img} className="plantImage" alt="plant" />
       </div>
-      <div className="plantCommonName">{commonName}</div>
+      <div className="plantCommonName">{commonName[0]}</div>
       <div className="tags">
-        <div className="light tag">{lightRequirements}</div>
+        <div className="light tag">{lightRequirements[0]}</div>
+
         <div className="difficultyLevel tag">{difficultyLevel}</div>
         <div className="humidity tag">{humidityLevel}</div>
       </div>

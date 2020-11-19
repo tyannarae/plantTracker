@@ -35,6 +35,7 @@
   }
 }
 .plantCommonName {
+  color: $white;
   text-align: center;
 }
 
@@ -49,8 +50,11 @@
   display: flex;
 }
 .tag {
+  min-width: 4em;
   color: $black;
-  width: 5em;
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+  margin: 0.2em;
   background-image: linear-gradient(90deg, $lightGreen, $teal);
   border-radius: 2em;
   height: 1.5em;
@@ -59,17 +63,4 @@
 }
 .tag:hover {
   background-image: linear-gradient(90deg, $teal, $lightGreen);
-}
-.light {
-  margin-left: auto;
-  grid-area: tag;
-}
-.difficultyLevel {
-  margin-left: auto;
-  margin-right: auto;
-  grid-area: tag;
-}
-.humidity {
-  margin-right: auto;
-  grid-area: tag;
 }

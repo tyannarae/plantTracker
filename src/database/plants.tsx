@@ -250,7 +250,7 @@ export const Plants: Array<object> = [
     scientificName: "parodia magnifica",
     commonName: ["ball cactus"],
     humidityLevel: HumidityLevel.low,
-    lightRequirements: LightRequirements.fullSun,
+    lightRequirements: [LightRequirements.fullSun],
     minTemp: 40,
     maxTemp: 85,
     misting: Misting.never,
