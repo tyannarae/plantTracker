@@ -2,6 +2,7 @@ import { HumidityLevel } from "../components/plantData/humidityLevel";
 import { LightRequirements } from "../components/plantData/lightRequirements";
 import { Misting } from "../components/plantData/misting";
 import { DifficultyLevel } from "../components/plantData/difficultyLevel";
+import { DirectionFacing } from "../components/plantData/directionFacing";
 
 //this interface defines each plant in our plants array below
 export interface Plant {
@@ -18,8 +19,35 @@ export interface Plant {
   waterSchedule?: number; //days between waterings
 }
 
-// an array of all the plants avaiable for the user to interact with
-export const Plants: Array<object> = [
+//this interface defines each of the users plants
+export interface UserPlant {
+  id?: number;
+  directionFacing: DirectionFacing;
+  inWindowSeal: boolean;
+  growLight: boolean;
+  lastWaterDate: Date;
+}
+
+//object containing data regarding the users plant collection
+export const UsersCollection: Array<any> = [
+  {
+    id: 2,
+    directionFacing: DirectionFacing,
+    inWindowSeal: true,
+    growLight: true,
+    lastWaterDate: new Date(),
+  },
+  {
+    id: 3,
+    directionFacing: DirectionFacing,
+    inWindowSeal: false,
+    growLight: true,
+    lastWaterDate: new Date(),
+  },
+];
+
+//object containing of all the plants avaiable for the user to interact with
+export const Plants: Array<any> = [
   {
     id: 0,
     scientificName: "strelitzia reginae",

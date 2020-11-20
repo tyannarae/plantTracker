@@ -8,7 +8,7 @@ export interface SearchPageProps {
   plant?: Plant[];
 }
 
-const SearchPage: FunctionComponent<SearchPageProps> = ({ plant = [] }) => {
+const SearchPage: FunctionComponent<SearchPageProps> = () => {
   return (
     <div className="landingPageContainer">
       <NavBar />
@@ -16,7 +16,6 @@ const SearchPage: FunctionComponent<SearchPageProps> = ({ plant = [] }) => {
         <div className="featuredPlantsHeader">Featured Plants</div>
       </div>
       <div className="cardsContainer">
-        {" "}
         {Plants.map((plant) => (
           <PlantCard {...plant} />
         ))}

@@ -1,15 +1,20 @@
 import React, { FunctionComponent } from "react";
 import NavBar from "../navBar";
 import PlantCard from "../plantCard";
-import { Plants, Plant } from "../../database/plants";
+import {
+  UsersCollection,
+  UserPlant,
+  Plant,
+  Plants,
+} from "../../database/plants";
 import "../../styles/pages/userCollection.scss";
 
 export interface userCollectionsProps {
-  plant?: Plant[]; //this will eventually be an object of the users chosen plants
+  usersPlant?: UserPlant[]; //the users chosen plants interface
+  plant?: Plant[]; // global plant interface
 }
-const UserCollections: FunctionComponent<userCollectionsProps> = ({
-  plant = [],
-}) => {
+
+const UserCollections: FunctionComponent<userCollectionsProps> = () => {
   return (
     <div>
       <NavBar />
@@ -17,10 +22,11 @@ const UserCollections: FunctionComponent<userCollectionsProps> = ({
         <div className="featuredPlantsHeader">Your Collection</div>
       </div>
       <div className="cardsContainer">
-        {" "}
-        {Plants.map((plant) => (
-          <PlantCard {...plant} />
-        ))}
+        {Plants.map((plant) =>
+          UsersCollection.map((userPlant) =>
+            plant.id === userPlant.id ? <PlantCard {...plant} /> : null
+          )
+        )}
       </div>
     </div>
   );

@@ -1,9 +1,7 @@
 import React from "react";
 import SearchIcon from "../media/pages/searchBarIcon.png";
 
-function handleSearchClick() {
-  console.log("lets get some plants in here!");
-}
+function handleSearchClick() {}
 export const Search = () => {
   return (
     <form className="searchForm">
