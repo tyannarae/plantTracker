@@ -8,7 +8,7 @@ const NavBar = () => {
   const history = useHistory();
 
   function handleLogoClick() {
-    history.push("/");
+    history.push("/search");
   }
 
   function handleCollectionsClick() {
