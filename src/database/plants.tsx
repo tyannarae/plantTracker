@@ -1,25 +1,53 @@
-import { HumidityLevel } from "../components/shared/humidityLevel";
-import { LightRequirements } from "../components/shared/lightRequirements";
-import { Misting } from "../components/shared/misting";
-import { DifficultyLevel } from "../components/shared/difficultyLevel";
+import { HumidityLevel } from "../components/plantData/humidityLevel";
+import { LightRequirements } from "../components/plantData/lightRequirements";
+import { Misting } from "../components/plantData/misting";
+import { DifficultyLevel } from "../components/plantData/difficultyLevel";
+import { DirectionFacing } from "../components/plantData/directionFacing";
 
 //this interface defines each plant in our plants array below
 export interface Plant {
-  id: number;
-  scientificName: string; // the scientific name for this plant
-  commonName: Array<string>; // all the common names for this plant
-  humidityLevel: HumidityLevel; //how much humidity this plant will require
-  lightRequirements: LightRequirements; //light that this plant requires
+  id?: number;
+  scientificName?: string; // the scientific name for this plant
+  commonName?: Array<string>; // all the common names for this plant
+  humidityLevel?: HumidityLevel; //how much humidity this plant will require
+  lightRequirements?: LightRequirements; //light that this plant requires
   minTemp?: number;
   maxTemp?: number;
-  misting: Misting; //if misting the plant is required, if so how often
-  beginnerLevel: DifficultyLevel; // how hard this plant is to keep alive
-  img: string; //an image of this plant
-  waterSchedule: number; //days between waterings
+  misting?: Misting; //if misting the plant is required, if so how often
+  difficultyLevel?: DifficultyLevel; // how hard this plant is to keep alive
+  img?: string; //an image of this plant
+  waterSchedule?: number; //days between waterings
 }
 
-// an array of all the plants avaiable for the user to interact with
-export const Plants: object = [
+//this interface defines each of the users plants
+export interface UserPlant {
+  id?: number;
+  directionFacing: DirectionFacing;
+  inWindowSeal: boolean;
+  growLight: boolean;
+  lastWaterDate: Date;
+}
+
+//object containing data regarding the users plant collection
+export const UsersCollection: Array<any> = [
+  {
+    id: 2,
+    directionFacing: DirectionFacing,
+    inWindowSeal: true,
+    growLight: true,
+    lastWaterDate: new Date(),
+  },
+  {
+    id: 3,
+    directionFacing: DirectionFacing,
+    inWindowSeal: false,
+    growLight: true,
+    lastWaterDate: new Date(),
+  },
+];
+
+//object containing of all the plants avaiable for the user to interact with
+export const Plants: Array<any> = [
   {
     id: 0,
     scientificName: "strelitzia reginae",
@@ -30,7 +58,7 @@ export const Plants: object = [
     misting: Misting.oncePerWeek,
     beginnerLevel: DifficultyLevel.meduim,
     img:
-      "https://cdn.shopify.com/s/files/1/0013/3529/6118/products/Wythe-30-2970.030-WH_Bird-of-Paradise-.jpg?v=1590533419",
+      "https://cdn.shopify.com/s/files/1/0013/3529/6118/products/Wythe-40-2970.040-WH_Bird-of-Paradise-14.jpg?v=1604354745",
     waterSchedule: 4,
     lightRequirements: [
       LightRequirements.fullSun,
@@ -180,7 +208,7 @@ export const Plants: object = [
     misting: Misting.oncePerWeek,
     beginnerLevel: DifficultyLevel.easy,
     img:
-      "https://cdn.shopify.com/s/files/1/0670/6853/products/IMG_6205_24x24.jpg?v=1589839772",
+      "https://cdn.shopify.com/s/files/1/0260/3037/4957/products/medium-plant-ficus-white-pot_720x@2x.jpg?v=1596316900",
     waterSchedule: 21,
   },
   {
@@ -250,7 +278,7 @@ export const Plants: object = [
     scientificName: "parodia magnifica",
     commonName: ["ball cactus"],
     humidityLevel: HumidityLevel.low,
-    lightRequirements: LightRequirements.fullSun,
+    lightRequirements: [LightRequirements.fullSun],
     minTemp: 40,
     maxTemp: 85,
     misting: Misting.never,

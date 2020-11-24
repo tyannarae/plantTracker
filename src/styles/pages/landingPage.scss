@@ -7,22 +7,24 @@
 }
 
 .backgroundImg {
+  display: block;
+  height: 100vh;
+  object-fit: cover;
   overflow: hidden;
   z-index: 1;
-  height: 100vmax;
-  pointer-events: none;
 }
 
 .CTA {
+  outline: 0;
   p {
     font-size: 2.3em;
     font-family: "Roboto Condensed", sans-serif;
-    color: $white;
+    color: $black;
     margin: 0;
   }
   border-top: none;
   border-bottom: none;
-  background-image: linear-gradient(to right, $black, $light_green);
+  background-image: linear-gradient(to right, $lightGreen, $teal);
   border-right: none;
   border-left: none;
   width: 40em;
@@ -31,19 +33,20 @@
   z-index: 2;
   top: 26em;
   opacity: 90.1%;
-  box-shadow: 51px 0px 75px 65px $black;
+  box-shadow: 0.5em 0em 3.5em 0.5em $black;
 }
 
 .CTA:hover {
-  text-decoration: none;
-  border-top: 3px $yellow;
-  border-bottom: 3px $yellow;
+  background-image: linear-gradient(to right, $teal, $lightGreen);
   p {
-    color: $yellow;
+    color: $black;
   }
 }
 
 @media screen and (max-width: 325px) {
+  .backgroundImg {
+    height: 40em;
+  }
   .CTA {
     width: 20em;
     height: 6em;
@@ -113,7 +116,7 @@
     }
   }
 }
-@media screen and (min-width: 1000px) and (max-width: 1025px) {
+@media screen and (min-width: 1000px) and (max-width: 1028px) {
   .CTA {
     width: 49em;
     height: 12em;
@@ -123,11 +126,14 @@
     }
   }
 }
-@media screen and (min-width: 1026px) {
+@media screen and (min-width: 1030px) {
+  .backgroundImg {
+    height: 57vmax;
+  }
   .CTA {
     width: 50em;
     height: 10em;
-    top: 37em;
+    top: 25em;
     p {
       font-size: 4em;
     }

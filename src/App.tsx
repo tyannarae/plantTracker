@@ -1,8 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import "./styles/global/app.scss";
-import LandingPage from "./pages/landingPage";
+import LandingPage from "./components/pages/landingPage";
+import SearchPage from "./components/pages/searchPage";
 import reportWebVitals from "./reportWebVitals";
+import UserCollections from "./components/pages/userCollection";
+import "./styles/global/app.scss";
 
 function App() {
   return (
@@ -15,7 +17,9 @@ function App() {
           ></link>
         </header>
       </div>
-      <Route path="/" component={LandingPage}></Route>
+      <Route path="/search" component={SearchPage}></Route>
+      <Route exact path="/" component={LandingPage}></Route>
+      <Route exact path="/collections" component={UserCollections}></Route>
     </Router>
   );
 }
