@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import "./styles/global/app.scss";
 import LandingPage from "./components/pages/landingPage";
 import SearchPage from "./components/pages/searchPage";
 import reportWebVitals from "./reportWebVitals";
 import UserCollections from "./components/pages/userCollection";
+import "./styles/global/app.scss";
 
 function App() {
   return (

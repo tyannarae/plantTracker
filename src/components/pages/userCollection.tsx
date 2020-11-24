@@ -14,6 +14,11 @@ export interface userCollectionsProps {
   plant?: Plant[]; // global plant interface
 }
 
+function noPlants() {
+  return (
+    <div>no plants!</div>
+  )
+}
 const UserCollections: FunctionComponent<userCollectionsProps> = () => {
   return (
     <div>
@@ -22,11 +27,17 @@ const UserCollections: FunctionComponent<userCollectionsProps> = () => {
         <div className="featuredPlantsHeader">Your Collection</div>
       </div>
       <div className="cardsContainer">
-        {Plants.map((plant) =>
+        { UsersCollection.length > 0 ?
+               Plants.map((plant) =>
           UsersCollection.map((userPlant) =>
             plant.id === userPlant.id ? <PlantCard {...plant} /> : null
-          )
-        )}
+          ) 
+        ):
+        <div className="noCollectionAvaiable">
+          Looks like you have not added any plants to your collection yet.
+          </div>
+        }
+
       </div>
     </div>
   );
