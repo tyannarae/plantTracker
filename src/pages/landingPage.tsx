@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import backgroundImg from "../media/landingPageImgs/landingPageImg.jpeg";
+import backgroundImg from "../media/landingPage/landingPageImg.jpeg";
 import "../styles/pages/landingPage.scss";
 
 const LandingPage = () => {

@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from "react";
 import "../styles/components/plantCard.scss";
-import { LightRequirements } from "../modules/lightRequirements";
-import { HumidityLevel } from "../modules/humidityLevel";
-import { Misting } from "../modules/misting";
-import { DifficultyLevel } from "../modules/difficultyLevel";
+import { LightRequirements } from "../models/lightRequirements";
+import { HumidityLevel } from "../models/humidityLevel";
+import { Misting } from "../models/misting";
+import { DifficultyLevel } from "../models/difficultyLevel";
 import { Plant } from "../database/plants";
 /**
  * This component will take in a single plant object and display it's results to the user.
