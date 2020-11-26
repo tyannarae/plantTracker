@@ -1,5 +1,5 @@
 import React from "react";
-import SearchIcon from "../media/navBarImgs/searchBarIcon.png";
+import SearchIcon from "../media/navBar/searchBarIcon.png";
 
 function handleSearchClick() {
   console.log("clicked");
