@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import LandingPage from "./components/pages/landingPage";
-import SearchPage from "./components/pages/searchPage";
+import LandingPage from "./pages/landingPage";
+import SearchPage from "./pages/searchPage";
 import reportWebVitals from "./reportWebVitals";
-import UserCollections from "./components/pages/userCollection";
+import UserCollections from "./pages/userCollection";
 import "./styles/global/app.scss";
 
 function App() {

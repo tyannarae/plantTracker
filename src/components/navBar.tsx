@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../media/pages/logo.png";
+import Logo from "../media/navBarImgs/logo.png";
 
 import { useHistory } from "react-router-dom";
 import { Search } from "./search";

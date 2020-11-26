@@ -1,24 +1,20 @@
 import React, { FunctionComponent } from "react";
-import NavBar from "../navBar";
-import PlantCard from "../plantCard";
+import NavBar from "../components/navBar";
+import PlantCard from "../components/plantCard";
 import {
   UsersCollection,
   UserPlant,
   Plant,
   Plants,
-} from "../../database/plants";
-import "../../styles/pages/userCollection.scss";
+} from "../database/plants";
+import "../";
 
 export interface userCollectionsProps {
   usersPlant?: UserPlant[]; //the users chosen plants interface
   plant?: Plant[]; // global plant interface
 }
 
-function noPlants() {
-  return (
-    <div>no plants!</div>
-  )
-}
+
 const UserCollections: FunctionComponent<userCollectionsProps> = () => {
   return (
     <div>
