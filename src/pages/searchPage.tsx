@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from "react";
-import NavBar from "../navBar";
-import PlantCard from "../plantCard";
-import "../../styles/pages/searchPage.scss";
-import { Plants, Plant } from "../../database/plants";
+import NavBar from "../components/navBar";
+import PlantCard from "../components/plantCard";
+import "../styles/pages/searchPage.scss";
+import { Plants, Plant } from "../database/plants";
 
 export interface SearchPageProps {
   plant?: Plant[];

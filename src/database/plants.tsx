@@ -1,8 +1,8 @@
-import { HumidityLevel } from "../components/plantData/humidityLevel";
-import { LightRequirements } from "../components/plantData/lightRequirements";
-import { Misting } from "../components/plantData/misting";
-import { DifficultyLevel } from "../components/plantData/difficultyLevel";
-import { DirectionFacing } from "../components/plantData/directionFacing";
+import { HumidityLevel } from "../modules/humidityLevel";
+import { LightRequirements } from "../modules/lightRequirements";
+import { Misting } from "../modules/misting";
+import { DifficultyLevel } from "../modules/difficultyLevel";
+import { DirectionFacing } from "../modules/directionFacing";
 
 //this interface defines each plant in our plants array below
 export interface Plant {
