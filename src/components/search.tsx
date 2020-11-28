@@ -12,7 +12,6 @@ import { DifficultyLevel } from "../models/difficultyLevel";
 export const Search = () => {
   const {setSearchResults} = useSearchContext();
 
-
   const handleSearchClick = () => {
     const results = [{
       id: 4,
@@ -33,6 +32,10 @@ export const Search = () => {
     }];
     setSearchResults(results);
   }
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // e.target.value
+    console.log(e.target.value)
+  }
 
   return (
     <span className="searchForm">
@@ -41,6 +44,7 @@ export const Search = () => {
         type="text"
         name="search"
         placeholder="Search.."
+        onChange={handleSearch}
       ></input>
       <button
         className="searchButton"
