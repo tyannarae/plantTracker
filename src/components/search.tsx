@@ -8,9 +8,7 @@ import { Plants } from '../database/plants'
 
 
 export const Search = () => {
-  
   const {setSearchResults} = useSearchContext();
-
   const handleSearch = _.debounce((e: React.ChangeEvent<HTMLInputElement>) => {
 
     if(!e.target.value){
