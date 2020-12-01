@@ -24,7 +24,9 @@ const SearchPage: FunctionComponent = () => {
         </Modal>
       <NavBar />
       <div className="resultsContainer">
-        <div className="featuredPlantsHeader">Featured Plants</div>
+        <div className="featuredPlantsHeader">
+          Featured Plants
+        </div>
       </div>
       <div className="cardsContainer">
         {searchResults.map((plant) => (
