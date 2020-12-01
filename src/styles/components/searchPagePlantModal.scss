@@ -3,14 +3,18 @@
 .searchPageModalContainer {
   overflow: hidden;
   display: grid;
-  // .itemNameAndImgContainer{
-
-  // }
+  .itemNameAndImgContainer {
+    width: fit-content;
+  }
   // .itemPlantDetailsContainer {
 
   // }
   .itemAddToCollectionContainer {
     grid-column: 2 / span 1;
+    display: inline-grid;
+    width: 17em;
+    align-items: center;
+    justify-content: center;
   }
 }
 .exitButton {
@@ -24,4 +28,16 @@
 .searchPageModalImg {
   object-fit: cover;
   width: 28em;
+  height: 27em;
+}
+.dropdownContainer {
+  display: flex;
+  .dropdownText {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.dateAndDropdownContainer {
+  display: flex;
 }
