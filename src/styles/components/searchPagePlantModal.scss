@@ -41,3 +41,10 @@
 .dateAndDropdownContainer {
   display: flex;
 }
+
+.addButton {
+  border: 0.2em solid$black;
+  border-radius: 2em;
+  height: 3em;
+  background: $brightWhite;
+}

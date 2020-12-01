@@ -76,7 +76,10 @@ const SearchPagePlantModal: FunctionComponent = () => {
             ></Dropdown>
           </div>
         </div>
-        <button onClick={addToCollection}> Add</button>
+        <button className="addButton" onClick={addToCollection}>
+          {" "}
+          Add
+        </button>
       </div>
       <div className="itemPlantDetailsContainer">
         <div> Scientific Name: {selectedPlant?.scientificName}</div>
