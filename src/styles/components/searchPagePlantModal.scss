@@ -2,6 +2,16 @@
 
 .searchPageModalContainer {
   overflow: hidden;
+  display: grid;
+  // .itemNameAndImgContainer{
+
+  // }
+  // .itemPlantDetailsContainer {
+
+  // }
+  .itemAddToCollectionContainer {
+    grid-column: 2 / span 1;
+  }
 }
 .exitButton {
   position: absolute;
