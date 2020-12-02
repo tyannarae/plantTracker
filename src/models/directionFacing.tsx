@@ -1,9 +1,9 @@
 export enum DirectionFacing {
   north = "north",
-  northEast = "northEast",
-  northWest = "northWest",
+  northEast = "north east",
+  northWest = "north west",
   west = "west",
   east = "east",
   south = "south",
-  southEast = "southEast",
+  southEast = "south east",
 }
