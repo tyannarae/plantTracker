@@ -32,18 +32,25 @@ const PlantCard: FunctionComponent<Plant> = (plant) => {
 		setSelectedPlant(plant);
 	};
 	return (
-		<div className="plantCardContainer" key={id} onClick={handlePlantCardClick}>
+		<div
+			className="plantCardContainer box "
+			key={id}
+			onClick={handlePlantCardClick}
+		>
 			<div className="plantCardDetails">
-				<a href="test" className="button">
-					Button
-				</a>
-				<img src={img} className="plantImage" alt="plant" />
+				<img src={img} className="plantImage media-content" alt="plant" />
 			</div>
 			<div className="plantCommonName">{commonName[0]}</div>
-			<div className="tags">
-				<div className="light tag">{lightRequirements[0]}</div>
-				<div className="difficultyLevel tag">{difficultyLevel}</div>
-				<div className="humidity tag">{humidityLevel}</div>
+			<div className="tags ">
+				<div className="light tag is-primary is-success is-rounded">
+					{lightRequirements[0]}
+				</div>
+				<div className="difficultyLevel tag is-primary is-success is-rounded">
+					{difficultyLevel}
+				</div>
+				<div className="humidity tag is-primary is-success is-rounded">
+					{humidityLevel}
+				</div>
 			</div>
 		</div>
 	);

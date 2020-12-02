@@ -10,13 +10,20 @@ const PlantInspector: FunctionComponent = () => {
 		setModalOpen(false);
 	};
 	return (
-		<div className={"plantInspectorContainer"}>
-			<button className={"exitButton"} onClick={onClickClose}>
-				X
-			</button>
-			<div>{selectedPlant?.commonName[0]}</div>
-			<img className="plantInspectorImg" src={selectedPlant?.img} alt=""></img>
-			<div>{selectedPlant?.id}</div>
+		<div>
+			<button
+				className={"delete exitButton is-large"}
+				onClick={onClickClose}
+			></button>
+			<div className={"plantInspectorContainer"}>
+				<div>{selectedPlant?.commonName[0]}</div>
+				<img
+					className="plantInspectorImg"
+					src={selectedPlant?.img}
+					alt=""
+				></img>
+				<div>{selectedPlant?.id}</div>
+			</div>
 		</div>
 	);
 };

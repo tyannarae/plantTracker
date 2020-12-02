@@ -4,35 +4,46 @@ import { useHistory } from "react-router-dom";
 import { Search } from "./search";
 
 const NavBar = () => {
-  const history = useHistory();
+	const history = useHistory();
 
-  function handleLogoClick() {
-    history.push("/search");
-  }
+	function handleLogoClick() {
+		history.push("/search");
+	}
 
-  function handleCollectionsClick() {
-    history.push("/collections");
-    alert("checkout your plants!");
-  }
-  return (
-    <div className="topNav">
-      <div className="logo">
-        <img
-          className="logoImg"
-          alt="Logo"
-          src={Logo}
-          onClick={handleLogoClick}
-        />
-      </div>
-      <Search />
+	function handleCollectionsClick() {
+		history.push("/collections");
+		alert("checkout your plants!");
+	}
+	return (
+		<div className="navbar">
+			{/* <div className="navbar-brand">
+			
+			</div> */}
+			<div className="navbar-brand">
+				<a className="navbar-item" href="logoimg">
+					<img
+						className="logoImg"
+						alt="Logo"
+						src={Logo}
+						onClick={handleLogoClick}
+					/>
+				</a>
+			</div>
 
-      <div className="collectionsWrapper">
-        <button className="collectionsButton" onClick={handleCollectionsClick}>
-          {" "}
-          Collections
-        </button>
-      </div>
-    </div>
-  );
+			<div className="navbar-end">
+				<Search />
+				<div className="navbar-item">
+					<div className="buttons">
+						<button
+							className="button is-primary"
+							onClick={handleCollectionsClick}
+						>
+							<strong>Collections</strong>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 };
 export default NavBar;

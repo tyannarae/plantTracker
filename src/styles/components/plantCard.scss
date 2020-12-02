@@ -1,8 +1,9 @@
 @import "../global/colors.scss";
 
 .plantCardContainer {
-	background-color: $offBlack;
-	border: 0.2em solid $grey;
+	cursor: zoom-in;
+	// background-color: $offBlack;
+	// border: 0.2em solid $grey;
 	border-radius: 1em;
 	padding: 1em;
 	margin: 1em;
@@ -15,17 +16,13 @@
 	grid-area: plantCardDetails;
 	display: inline-block;
 	position: relative;
-	.expand {
+	.fa-heart {
 		text-align: center;
-		background-color: $lightYellow;
 		outline: 0;
-		width: 1.5em;
-		height: 1.5em;
-		font-size: 1.5em;
-		border-bottom-left-radius: 0.5em;
 		position: absolute;
 		top: 0;
 		right: 0;
+		margin: 0.2em;
 	}
 	.expand:hover {
 		color: $lightGreen;
@@ -41,24 +38,4 @@
 	width: 12.5em;
 	height: 12.5em;
 	object-fit: cover;
-}
-.tags {
-	padding-top: 0.5em;
-	flex-wrap: wrap;
-	display: flex;
-}
-.tag {
-	min-width: 4em;
-	color: $black;
-	padding-right: 0.5em;
-	padding-left: 0.5em;
-	margin: 0.2em;
-	background-image: linear-gradient(90deg, $lightGreen, $teal);
-	border-radius: 2em;
-	height: 1.5em;
-	font-size: 0.7em;
-	text-align: center;
-}
-.tag:hover {
-	background-image: linear-gradient(90deg, $teal, $lightGreen);
 }
