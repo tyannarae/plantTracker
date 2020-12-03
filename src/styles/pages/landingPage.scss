@@ -14,3 +14,19 @@
 .CTA {
 	z-index: 2;
 }
+
+@media screen and (min-width: 280px) and (max-width: 653px) {
+	.backgroundImg {
+		background-size: cover;
+		position: relative;
+		height: 115vh;
+	}
+	.CTA {
+		position: absolute;
+	}
+}
+@media screen and (min-width: 1278px) {
+	.backgroundImg {
+		width: 100vw;
+	}
+}

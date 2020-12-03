@@ -1,28 +1,27 @@
 @import "../global/colors.scss";
 
 .cardsContainer {
-  justify-content: center;
-  display: flex;
-  flex-wrap: wrap;
+	justify-content: center;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .resultsContainer {
-  color: $white;
+	color: $white;
 }
 .featuredPlantsHeader {
-  margin-bottom: 2em;
-  padding-bottom: 2em;
-  border-bottom: 0.2em solid;
-  border-image-source: linear-gradient(to right, #4caf50, #2dffbb);
-  border-image-slice: 1;
-  padding-top: 5em;
-  text-align: center;
+	margin-bottom: 2em;
+	padding-bottom: 2em;
+	border-bottom: 0.2em solid $lightGreen;
+	border-image-slice: 1;
+	padding-top: 5em;
+	text-align: center;
 }
 .results {
-  flex-wrap: wrap;
-  display: flex;
+	flex-wrap: wrap;
+	display: flex;
 }
 
 .noCollectionAvaiable {
-  color: $white;
+	color: $white;
 }

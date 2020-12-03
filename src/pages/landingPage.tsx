@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import backgroundImg from "../media/landingPage/landingPageImg.jpeg";
+import backgroundImg from "../media/landingPage/landingPage.jpg";
 import "../styles/pages/landingPage.scss";
 
 const LandingPage = () => {
@@ -15,7 +15,7 @@ const LandingPage = () => {
 			{" "}
 			<div className="landingPageContainer">
 				<button
-					className="CTA button is-large is-success"
+					className="CTA button is-large is-primary is-outlined"
 					onClick={handleClick}
 				>
 					<p>Time to Get Planting</p>
