@@ -25,7 +25,7 @@ const SearchPage: FunctionComponent = () => {
 				setSelectedPlant,
 			}}
 		>
-			<div className="landingPageContainer">
+			<div className="">
 				<Modal isOpen={isModalOpen} contentLabel="Search Page Plant Modal">
 					<PlantInspector />
 				</Modal>

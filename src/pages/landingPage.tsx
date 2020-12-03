@@ -4,27 +4,31 @@ import backgroundImg from "../media/landingPage/landingPageImg.jpeg";
 import "../styles/pages/landingPage.scss";
 
 const LandingPage = () => {
-  const history = useHistory();
+	const history = useHistory();
 
-  function handleClick() {
-    history.push("/search");
-  }
+	function handleClick() {
+		history.push("/search");
+	}
 
-  return (
-    <div>
-      {" "}
-      <div className="landingPageContainer">
-        <button className="CTA " onClick={handleClick}>
-          <p>Time to Get Planting</p>
-        </button>
-        <img
-          className="backgroundImg"
-          alt="backgroundImg"
-          src={backgroundImg}
-        />
-      </div>
-    </div>
-  );
+	return (
+		<div>
+			{" "}
+			<div className="landingPageContainer">
+				<button
+					className="CTA button is-large is-success"
+					onClick={handleClick}
+				>
+					<p>Time to Get Planting</p>
+				</button>
+
+				<img
+					className="backgroundImg"
+					alt="backgroundImg"
+					src={backgroundImg}
+				/>
+			</div>
+		</div>
+	);
 };
 
 export default LandingPage;
