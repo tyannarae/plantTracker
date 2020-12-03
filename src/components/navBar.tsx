@@ -6,44 +6,43 @@ import { Search } from "./search";
 const NavBar = () => {
 	const history = useHistory();
 
-	function handleLogoClick() {
-		history.push("/search");
-	}
-
 	function handleCollectionsClick() {
 		history.push("/collections");
-		alert("checkout your plants!");
+	}
+	function handleSignOutClick() {
+		history.push("/");
 	}
 	return (
-		<div className="navbar">
-			{/* <div className="navbar-brand">
-			
-			</div> */}
+		<nav className="navbar">
 			<div className="navbar-brand">
-				<a className="navbar-item" href="logoimg">
-					<img
-						className="logoImg"
-						alt="Logo"
-						src={Logo}
-						onClick={handleLogoClick}
-					/>
+				<a className="navbar-item" href="/search">
+					<img className="logoImg" alt="Logo" src={Logo} />
 				</a>
 			</div>
-
-			<div className="navbar-end">
-				<Search />
-				<div className="navbar-item">
-					<div className="buttons">
-						<button
-							className="button is-primary"
-							onClick={handleCollectionsClick}
-						>
-							<strong>Collections</strong>
-						</button>
+			<div className="navbar-menu">
+				<div className="navbar-end">
+					<Search />
+					<div className="">
+						<div className="buttons">
+							<a
+								href="/collections"
+								className=" navbar-item button is-primary"
+								onClick={handleCollectionsClick}
+							>
+								<strong>Collections</strong>
+							</a>
+							<a
+								href="/"
+								className="navbar-item button is-primary"
+								onClick={handleSignOutClick}
+							>
+								<strong>Sign Out</strong>
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</nav>
 	);
 };
 export default NavBar;
