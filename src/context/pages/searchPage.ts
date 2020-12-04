@@ -2,6 +2,8 @@ import { createContext, useContext } from 'react'
 import {Plant, Plants} from '../../database/plants'
 
 export type SearchPageContextType = {
+    isLoading: boolean,
+    setLoading: (loading: boolean) => void,
     selectedPlant?: Plant,
     setSelectedPlant: (chosenPlant: Plant) => void,
     isModalOpen: boolean,
@@ -11,6 +13,8 @@ export type SearchPageContextType = {
 }
 
 export const SearchPageContext = createContext<SearchPageContextType>({
+    isLoading: true,
+    setLoading: loading => console.warn('set loading state'),
     selectedPlant: undefined,
     setSelectedPlant: chosenPlant => console.warn('no setSelectedPlant context provider'),
     isModalOpen: false,

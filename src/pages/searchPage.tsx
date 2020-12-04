@@ -8,6 +8,7 @@ import { Plants, Plant } from "../database/plants";
 import "../styles/pages/searchPage.scss";
 
 const SearchPage: FunctionComponent = () => {
+	const [isLoading, setLoading] = useState(true);
 	const [isModalOpen, setModalOpen] = useState(false);
 	const [searchResults, setSearchResults] = useState<Array<Plant>>(Plants);
 	const [selectedPlant, setSelectedPlant] = useState<Plant | undefined>(
@@ -17,9 +18,15 @@ const SearchPage: FunctionComponent = () => {
 		overlay: { zIndex: 1000 },
 	};
 
+	window.onload = () => {
+		setLoading(!isLoading);
+	};
+
 	return (
 		<SearchPageContext.Provider
 			value={{
+				isLoading,
+				setLoading,
 				searchResults,
 				setSearchResults,
 				isModalOpen,
@@ -28,24 +35,28 @@ const SearchPage: FunctionComponent = () => {
 				setSelectedPlant,
 			}}
 		>
-			<div className="">
-				<Modal
-					style={customStyles}
-					isOpen={isModalOpen}
-					contentLabel="Search Page Plant Modal"
-				>
-					<PlantInspector />
-				</Modal>
-				<NavBar />
-				<div className="resultsContainer">
-					<div className="featuredPlantsHeader">Featured Plants</div>
+			{isLoading === true ? (
+				<div>is loading</div>
+			) : (
+				<div className="">
+					<Modal
+						style={customStyles}
+						isOpen={isModalOpen}
+						contentLabel="Search Page Plant Modal"
+					>
+						<PlantInspector />
+					</Modal>
+					<NavBar />
+					<div className="resultsContainer">
+						<div className="featuredPlantsHeader">Featured Plants</div>
+					</div>
+					<div className="cardsContainer">
+						{searchResults.map((plant) => (
+							<PlantCard key={plant.id} {...plant} />
+						))}
+					</div>
 				</div>
-				<div className="cardsContainer">
-					{searchResults.map((plant) => (
-						<PlantCard key={plant.id} {...plant} />
-					))}
-				</div>
-			</div>
+			)}
 		</SearchPageContext.Provider>
 	);
 };
