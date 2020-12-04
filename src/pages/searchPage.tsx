@@ -13,6 +13,9 @@ const SearchPage: FunctionComponent = () => {
 	const [selectedPlant, setSelectedPlant] = useState<Plant | undefined>(
 		undefined
 	);
+	const customStyles = {
+		overlay: { zIndex: 1000 },
+	};
 
 	return (
 		<SearchPageContext.Provider
@@ -25,8 +28,12 @@ const SearchPage: FunctionComponent = () => {
 				setSelectedPlant,
 			}}
 		>
-			<div className="landingPageContainer">
-				<Modal isOpen={isModalOpen} contentLabel="Search Page Plant Modal">
+			<div className="">
+				<Modal
+					style={customStyles}
+					isOpen={isModalOpen}
+					contentLabel="Search Page Plant Modal"
+				>
 					<PlantInspector />
 				</Modal>
 				<NavBar />

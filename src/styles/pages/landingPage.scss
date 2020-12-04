@@ -1,141 +1,32 @@
-@import "../global/colors.scss";
-
 .landingPageContainer {
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .backgroundImg {
-  display: block;
-  height: 100vh;
-  object-fit: cover;
-  overflow: hidden;
-  z-index: 1;
+	z-index: 1;
+	position: absolute;
+	object-fit: cover;
+	height: 100vh;
 }
-
 .CTA {
-  outline: 0;
-  p {
-    font-size: 2.3em;
-    font-family: "Roboto Condensed", sans-serif;
-    color: $black;
-    margin: 0;
-  }
-  border-top: none;
-  border-bottom: none;
-  background-image: linear-gradient(to right, $lightGreen, $teal);
-  border-right: none;
-  border-left: none;
-  width: 40em;
-  height: 6em;
-  position: absolute;
-  z-index: 2;
-  top: 26em;
-  opacity: 90.1%;
-  box-shadow: 0.5em 0em 3.5em 0.5em $black;
+	z-index: 2;
 }
 
-.CTA:hover {
-  background-image: linear-gradient(to right, $teal, $lightGreen);
-  p {
-    color: $black;
-  }
+@media screen and (min-width: 280px) and (max-width: 653px) {
+	.backgroundImg {
+		background-size: cover;
+		position: relative;
+		height: 115vh;
+	}
+	.CTA {
+		position: absolute;
+	}
 }
-
-@media screen and (max-width: 325px) {
-  .backgroundImg {
-    height: 40em;
-  }
-  .CTA {
-    width: 20em;
-    height: 6em;
-    top: 18em;
-    p {
-      font-size: 2em;
-    }
-  }
-}
-
-@media screen and (min-width: 326px) and (max-width: 365px) {
-  .CTA {
-    width: 20em;
-    height: 6em;
-    top: 21em;
-    p {
-      font-size: 2em;
-    }
-  }
-}
-@media screen and (max-width: 375px) and (min-width: 369px) {
-  .CTA {
-    width: 25em;
-    height: 7em;
-    top: 24em;
-    p {
-      font-size: 2.5em;
-    }
-  }
-}
-
-@media screen and (max-width: 409px) and (min-width: 376px) {
-  .CTA {
-    width: 20em;
-    height: 5em;
-    top: 22em;
-    p {
-      font-size: 1.75em;
-    }
-  }
-}
-@media screen and (min-width: 410px) and (max-width: 654px) {
-  .CTA {
-    width: 25em;
-    top: 24em;
-    p {
-      font-size: 2.6em;
-    }
-  }
-}
-
-@media screen and (min-width: 655px) and (max-width: 720px) {
-  .CTA {
-    p {
-      font-size: 1.75em;
-    }
-  }
-}
-
-@media screen and (min-width: 721px) and (max-width: 999px) {
-  .CTA {
-    top: 35em;
-    width: 45em;
-    height: 9em;
-    p {
-      font-size: 3.5em;
-    }
-  }
-}
-@media screen and (min-width: 1000px) and (max-width: 1028px) {
-  .CTA {
-    width: 49em;
-    height: 12em;
-    top: 47em;
-    p {
-      font-size: 4.3em;
-    }
-  }
-}
-@media screen and (min-width: 1030px) {
-  .backgroundImg {
-    height: 57vmax;
-  }
-  .CTA {
-    width: 50em;
-    height: 10em;
-    top: 25em;
-    p {
-      font-size: 4em;
-    }
-  }
+@media screen and (min-width: 1278px) {
+	.backgroundImg {
+		width: 100vw;
+	}
 }

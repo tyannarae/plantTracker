@@ -4,35 +4,71 @@ import { useHistory } from "react-router-dom";
 import { Search } from "./search";
 
 const NavBar = () => {
-  const history = useHistory();
+	const history = useHistory();
 
-  function handleLogoClick() {
-    history.push("/search");
-  }
+	function handleCollectionsClick() {
+		history.push("/collections");
+	}
+	function handleSignOutClick() {
+		history.push("/");
+	}
 
-  function handleCollectionsClick() {
-    history.push("/collections");
-    alert("checkout your plants!");
-  }
-  return (
-    <div className="topNav">
-      <div className="logo">
-        <img
-          className="logoImg"
-          alt="Logo"
-          src={Logo}
-          onClick={handleLogoClick}
-        />
-      </div>
-      <Search />
+	function displayDropdownMenu() {
+		console.log("clicked shit");
+	}
 
-      <div className="collectionsWrapper">
-        <button className="collectionsButton" onClick={handleCollectionsClick}>
-          {" "}
-          Collections
-        </button>
-      </div>
-    </div>
-  );
+	return (
+		<nav className="navbar">
+			<div className="navbar-brand">
+				<a className="navbar-item" href="/search">
+					<img className="logoImg" alt="Logo" src={Logo} />
+				</a>
+				<div
+					role="button"
+					className="navbar-burger burger"
+					aria-label="menu"
+					aria-expanded="false"
+					data-target="navbarBasicExample"
+					onClick={displayDropdownMenu}
+				>
+					<span aria-hidden="true"></span>
+					<span aria-hidden="true"></span>
+					<span aria-hidden="true"></span>
+
+					{/* <div className="navbar-dropdown">
+						<a href="/" className="navbar-item">
+							test
+						</a>
+						<a href="/" className="navbar-item">
+							test
+						</a>
+					</div> */}
+				</div>
+			</div>
+			<div className="navbar-menu">
+				<div className="navbar-end">
+					<Search />
+					<div className="">
+						<div className="buttons">
+							<a
+								href="/collections"
+								className=" navbar-item button is-primary"
+								onClick={handleCollectionsClick}
+							>
+								<strong>Collections</strong>
+							</a>
+							<a
+								href="/"
+								className="navbar-item button is-primary"
+								onClick={handleSignOutClick}
+							>
+								<strong>Sign Out</strong>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+	);
 };
 export default NavBar;
