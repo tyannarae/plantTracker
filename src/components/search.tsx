@@ -1,6 +1,5 @@
 import React from "react";
 import _ from "lodash";
-import SearchIcon from "../media/navBar/searchBarIcon.png";
 import { useSearchContext } from "../context/pages/searchPage";
 import { Plants } from "../database/plants";
 
