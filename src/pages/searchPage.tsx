@@ -26,6 +26,14 @@ const SearchPage: FunctionComponent = () => {
 				setModalOpen,
 				selectedPlant,
 				setSelectedPlant,
+				// dateWateredLast,
+				// setWaterDate,
+				// underGrowLight,
+				// setGrowLight,
+				// directionFacing,
+				// setDirectionFacing,
+				// isInWindow,
+				// setInWindow,
 			}}
 		>
 			<div className="">

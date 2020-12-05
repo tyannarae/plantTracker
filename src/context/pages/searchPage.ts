@@ -1,6 +1,7 @@
 import { createContext, useContext } from 'react'
 import {Plant, Plants} from '../../database/plants'
 
+
 export type SearchPageContextType = {
     selectedPlant?: Plant,
     setSelectedPlant: (chosenPlant: Plant) => void,
