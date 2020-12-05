@@ -1,21 +1,23 @@
 import React, { FunctionComponent } from "react";
 import Dropdown from "react-dropdown";
 import DatePicker from "react-datepicker";
-import "react-dropdown/style.css";
 import { useSearchContext } from "../context/pages/searchPage";
 import { DirectionFacing } from "../models/directionFacing";
-import "../styles/components/searchPagePlantModal.scss";
 import "react-datepicker/dist/react-datepicker.css";
+import "react-dropdown/style.css";
+import "../styles/components/searchPagePlantModal.scss";
 
 const SearchPagePlantModal: FunctionComponent = () => {
   const { selectedPlant } = useSearchContext();
   const { isModalOpen, setModalOpen } = useSearchContext();
-
   const closeModal = () => {
     setModalOpen(!isModalOpen);
   };
-
-  const options: Array<string> = [];
+  const directionOptions: Array<string> = [];
+  Object.keys(DirectionFacing).map((direction) =>
+    directionOptions.push(direction)
+  );
+  const plantName = selectedPlant?.commonName[0];
 
   const getLightRequirements = () => {
     if (selectedPlant?.lightRequirements === undefined) {
@@ -32,8 +34,6 @@ const SearchPagePlantModal: FunctionComponent = () => {
     }
   };
 
-  Object.keys(DirectionFacing).map((direction) => options.push(direction));
-
   const addToCollection = () => {
     console.log("");
   };
@@ -49,10 +49,10 @@ const SearchPagePlantModal: FunctionComponent = () => {
           src={selectedPlant?.img}
           alt=""
         ></img>
-        <div>{selectedPlant?.commonName[0]}</div>
+        <div>{plantName}</div>
       </div>
       <div className="itemAddToCollectionContainer">
-        Add {selectedPlant?.commonName[0]} to your collection:
+        Add {plantName} to your collection:
         <div>
           <input type="checkbox" />
           Located in a Window Seal?
@@ -71,7 +71,7 @@ const SearchPagePlantModal: FunctionComponent = () => {
           <div className="dropdownContainer">
             <Dropdown
               className="directionFacingDropdown"
-              options={options}
+              options={directionOptions}
               placeholder="Pick Direction"
             ></Dropdown>
           </div>
