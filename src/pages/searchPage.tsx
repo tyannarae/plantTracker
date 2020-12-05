@@ -36,7 +36,9 @@ const SearchPage: FunctionComponent = () => {
 			}}
 		>
 			{isLoading === true ? (
-				<div>is loading</div>
+				<div className="loader-wrapper">
+					<div className="loader is-loading">loading...</div>
+				</div>
 			) : (
 				<div className="">
 					<Modal
