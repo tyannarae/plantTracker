@@ -3,9 +3,11 @@ import Dropdown from "react-dropdown";
 import DatePicker from "react-datepicker";
 import { useSearchContext } from "../context/pages/searchPage";
 import { DirectionFacing } from "../models/directionFacing";
+import { UserPlant, Plant, collectionName } from "../database/plants";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-dropdown/style.css";
 import "../styles/components/plantInspector.scss";
+import { Direction } from "readline";
 
 const PlantInspector: FunctionComponent = () => {
 	const [underGrowLight, setGrowLight] = useState<boolean>(false);
@@ -42,7 +44,21 @@ const PlantInspector: FunctionComponent = () => {
 	};
 
 	const addToCollection = () => {
-		console.log("");
+		const currentPlant = selectedPlant as Plant;
+		const newPlant: UserPlant = {
+			id: currentPlant.id,
+			directionFacing: directionFacing as DirectionFacing,
+			inWindowSeal: isInWindow,
+			growLight: underGrowLight,
+			lastWaterDate: dateWateredLast,
+		};
+		const dbString = window.sessionStorage.getItem(collectionName);
+		let db = [];
+		if (dbString !== null) {
+			db = JSON.parse(dbString);
+		}
+		db.push(newPlant);
+		window.sessionStorage.setItem(collectionName, JSON.stringify(db));
 	};
 
 	console.log("My state:", {
