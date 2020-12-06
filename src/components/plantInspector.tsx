@@ -13,7 +13,7 @@ const PlantInspector: FunctionComponent = () => {
 	const [directionFacing, setDirectionFacing] = useState<string | undefined>(
 		undefined
 	);
-	const [dateWateredLast, setWaterDate] = useState<Date | null>(new Date());
+	const [dateWateredLast, setWaterDate] = useState<Date>(new Date());
 	const { selectedPlant } = useSearchContext();
 	const { isModalOpen, setModalOpen } = useSearchContext();
 	const closeModal = () => {
@@ -45,6 +45,13 @@ const PlantInspector: FunctionComponent = () => {
 		console.log("");
 	};
 
+	console.log("My state:", {
+		underGrowLight,
+		isInWindow,
+		directionFacing,
+		dateWateredLast,
+	});
+
 	return (
 		<div className={"searchPageModalContainer"}>
 			<button className={"exitButton"} onClick={closeModal}>
@@ -61,11 +68,21 @@ const PlantInspector: FunctionComponent = () => {
 			<div className="itemAddToCollectionContainer">
 				Add {plantName} to your collection:
 				<div>
-					<input type="checkbox" />
+					<input
+						type="checkbox"
+						onChange={() => {
+							setInWindow(!isInWindow);
+						}}
+					/>
 					Located in a Window Seal?
 				</div>
 				<div>
-					<input type="checkbox" onClick={setGrowLight} />
+					<input
+						type="checkbox"
+						onChange={() => {
+							setGrowLight(!underGrowLight);
+						}}
+					/>
 					Located under a Grow Light?
 				</div>
 				<div className="dateAndDropdownContainer">
@@ -73,11 +90,14 @@ const PlantInspector: FunctionComponent = () => {
 						<DatePicker
 							placeholderText={"Date Last Watered"}
 							selected={dateWateredLast}
-							onChange={(date) => setWaterDate(date)}
+							onChange={(date) => setWaterDate(date as Date)}
 						></DatePicker>
 					</div>
 					<div className="dropdownContainer">
 						<Dropdown
+							onChange={(e) => {
+								setDirectionFacing(e.value);
+							}}
 							className="directionFacingDropdown"
 							options={directionOptions}
 							placeholder="Pick Direction"
