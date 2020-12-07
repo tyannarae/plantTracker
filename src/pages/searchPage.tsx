@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import PlantInspector from "../components/plantInspector";
 import NavBar from "../components/navBar";
 import PlantCard from "../components/plantCard";
+import { Loading } from "../components/loading";
 import { SearchPageContext } from "../context/pages/searchPage";
 import { Plants, Plant } from "../database/plants";
 import "../styles/pages/searchPage.scss";
@@ -25,8 +26,6 @@ const SearchPage: FunctionComponent = () => {
 	return (
 		<SearchPageContext.Provider
 			value={{
-				isLoading,
-				setLoading,
 				searchResults,
 				setSearchResults,
 				isModalOpen,
@@ -36,9 +35,7 @@ const SearchPage: FunctionComponent = () => {
 			}}
 		>
 			{isLoading === true ? (
-				<div className="loader-wrapper">
-					<div className="loader is-loading">loading...</div>
-				</div>
+				<Loading></Loading>
 			) : (
 				<div className="">
 					<Modal
