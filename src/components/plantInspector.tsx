@@ -7,7 +7,6 @@ import { UserPlant, Plant, collectionName } from "../database/plants";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-dropdown/style.css";
 import "../styles/components/plantInspector.scss";
-import { Direction } from "readline";
 
 const PlantInspector: FunctionComponent = () => {
 	const [underGrowLight, setGrowLight] = useState<boolean>(false);
@@ -60,13 +59,6 @@ const PlantInspector: FunctionComponent = () => {
 		db.push(newPlant);
 		window.sessionStorage.setItem(collectionName, JSON.stringify(db));
 	};
-
-	console.log("My state:", {
-		underGrowLight,
-		isInWindow,
-		directionFacing,
-		dateWateredLast,
-	});
 
 	return (
 		<div className={"searchPageModalContainer"}>
