@@ -38,27 +38,23 @@ const NavBar = () => {
 					<span></span>
 					<span></span>
 				</div>
-				{/* 
-					<div id="nav-menu" className="nav-right nav-menu">
-						<a href="/search" className="nav-item">
-							Home
-						</a>
-						<a className="nav-item" href="/collections">
-							Collections
-						</a>
-						<a className="nav-item" href="/">
-							Sign Out
-						</a>
-					</div> */}
-
-				{/* <div className="navbar-dropdown">
-						<a href="/" className="navbar-item">
-							test
-						</a>
-						<a href="/" className="navbar-item">
-							test
-						</a>
-					</div> */}
+				<div
+					className={classNames(
+						"navbar-menu",
+						`${isActive ? "is-active" : ""}`
+					)}
+					id="navMenu"
+				>
+					<a href="/search" className="nav-item">
+						Home
+					</a>
+					<a className="nav-item" href="/collections">
+						Collections
+					</a>
+					<a className="nav-item" href="/">
+						Sign Out
+					</a>
+				</div>
 			</div>
 			<div className="navbar-menu">
 				<div className="navbar-end">
