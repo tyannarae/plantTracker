@@ -3,11 +3,14 @@ import { useSearchContext } from "../context/pages/searchPage";
 import Dropdown from "react-dropdown";
 import DatePicker from "react-datepicker";
 import { DirectionFacing } from "../models/directionFacing";
+import "react-datepicker/dist/react-datepicker.css";
+import "react-dropdown/style.css";
 import "../styles/components/plantInspector.scss";
 
 const PlantInspector: FunctionComponent = () => {
 	const { selectedPlant } = useSearchContext();
 	const { setModalOpen } = useSearchContext();
+
 	const directionOptions: Array<string> = [];
 	Object.keys(DirectionFacing).map((direction) =>
 		directionOptions.push(direction)
