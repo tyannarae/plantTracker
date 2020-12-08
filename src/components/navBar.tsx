@@ -34,26 +34,30 @@ const NavBar = () => {
 					)}
 					onClick={toggleIsActive}
 				>
-					<span></span>
-					<span></span>
-					<span></span>
-				</div>
-				<div
-					className={classNames(
-						"navbar-menu",
-						`${isActive ? "is-active" : ""}`
-					)}
-					id="navMenu"
-				>
-					<a href="/search" className="nav-item">
-						Home
-					</a>
-					<a className="nav-item" href="/collections">
-						Collections
-					</a>
-					<a className="nav-item" href="/">
-						Sign Out
-					</a>
+					<div className="navbar-end">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+					<div
+						className={classNames(
+							"navbar-menu",
+							"has-dropdown",
+							`${isActive ? "is-active" : ""}`
+						)}
+					>
+						<div className="navbar-dropdown">
+							<a href="/search" className="navbar-item">
+								Home
+							</a>
+							<a className="navbar-item" href="/collections">
+								Collections
+							</a>
+							<a className="navbar-item" href="/">
+								Sign Out
+							</a>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div className="navbar-menu">
