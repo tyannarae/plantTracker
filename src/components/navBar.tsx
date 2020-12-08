@@ -27,23 +27,22 @@ const NavBar = () => {
 				</a>
 
 				<div
-					id="nav-toggle"
 					className={classNames(
 						"navbar-burger",
 						`${isActive ? "is-active" : ""}`
 					)}
 					onClick={toggleIsActive}
 				>
-					<div className="navbar-end">
+					<div className="">
 						<span></span>
 						<span></span>
 						<span></span>
 					</div>
 					<div
 						className={classNames(
+							`${isActive ? "is-active" : ""}`,
 							"navbar-menu",
-							"has-dropdown",
-							`${isActive ? "is-active" : ""}`
+							"has-dropdown"
 						)}
 					>
 						<div className="navbar-dropdown">
