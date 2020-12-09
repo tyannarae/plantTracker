@@ -33,9 +33,11 @@ const PlantInspector: FunctionComponent = () => {
 		} else {
 			return (
 				<div className="tags">
-					Light Requirements:
+					<strong> Light Requirements:{"   "}</strong>
 					{selectedPlant?.lightRequirements.map((lightReq) => (
-						<div className="tag is-primary ">{lightReq}</div>
+						<div className="tag is-success is-small is-rounded ">
+							{lightReq}
+						</div>
 					))}
 				</div>
 			);
@@ -61,18 +63,18 @@ const PlantInspector: FunctionComponent = () => {
 	};
 
 	return (
-		<div className="modal is-active">
-			<div className="modal-background"></div>
+		<div className="modal is-active ">
+			<div className="modal-background" onClick={closeModal}></div>
 			<div className="modal-card">
-				<header className="modal-card-head">
-					<p className="modal-card-title">{plantName}</p>
-					<button
-						className="delete"
-						aria-label="close"
-						onClick={closeModal}
-					></button>
-				</header>
 				<section className="modal-card-body">
+					<header className="modal-card-head">
+						<p className="modal-card-title">{plantName}</p>
+						<button
+							className="delete"
+							aria-label="close"
+							onClick={closeModal}
+						></button>
+					</header>
 					<div className="tile is-ancestor">
 						<div className="tile is-parent">
 							<img className="plantImg" src={selectedPlant?.img} alt=""></img>
@@ -80,37 +82,28 @@ const PlantInspector: FunctionComponent = () => {
 						<div className="tile is-vertical is-8">
 							<div className="tile">
 								<div className="tile is-parent ">
-									<article className="tile is-child notification is-primary is-light">
-										<div> Add {plantName} to your collection:</div>
-										<div>
-											<input
-												type="checkbox"
-												onChange={() => {
-													setInWindow(!isInWindow);
-												}}
-											/>
-											Located in a Window Seal?
+									<article className="tile is-child ">
+										<div className="tile">
+											<div className=" tile is-parent">
+												<strong className="tile content">
+													{" "}
+													Add {plantName} to your collection
+												</strong>
+											</div>
 										</div>
-										<div>
-											<input
-												type="checkbox"
-												onChange={() => {
-													setGrowLight(!underGrowLight);
-												}}
-											/>
-											Located under a Grow Light?
-										</div>
-										<div className="dateAndDropdownContainer">
-											<div>
+										<div className="tile ">
+											<div className="tile is-parent is-vertical">
+												<div className="tile">Last watered on:</div>
 												<DatePicker
-													className={"input is-primary"}
+													className={"input is-success"}
 													placeholderText={"Date Last Watered"}
 													selected={dateWateredLast}
 													onChange={(date) => setWaterDate(date as Date)}
 												></DatePicker>
 											</div>
 
-											<div className=" dropdownContainer">
+											<div className="tile is-parent is-vertical dropdownContainer">
+												<div className="tile">Direction:</div>
 												<Dropdown
 													onChange={(e) => {
 														setDirectionFacing(e.value);
@@ -121,10 +114,36 @@ const PlantInspector: FunctionComponent = () => {
 												></Dropdown>
 											</div>
 										</div>
-										<button className="button " onClick={addToCollection}>
-											{" "}
-											Add
-										</button>
+										<div className="tile is-parent is-vertical">
+											<label className="tile is-child checkbox">
+												<input
+													type="checkbox"
+													onChange={() => {
+														setInWindow(!isInWindow);
+													}}
+												/>
+												{"   "}Located in a window seal?
+											</label>
+											<label className="tile is-child checkbox">
+												<input
+													type="checkbox"
+													onChange={() => {
+														setGrowLight(!underGrowLight);
+													}}
+												/>
+												{"   "}Located under a grow light?
+											</label>
+										</div>
+
+										<div className="tile is-parent">
+											<button
+												className="tile is-child button is-primary"
+												onClick={addToCollection}
+											>
+												{" "}
+												Add
+											</button>
+										</div>
 									</article>
 								</div>
 							</div>
@@ -133,25 +152,32 @@ const PlantInspector: FunctionComponent = () => {
 					<div className="tile is-ancestor">
 						<div className="tile is-parent">
 							<article className="tile is-child ">
-								<div> Scientific Name: {selectedPlant?.scientificName}</div>
-								<div>
-									Ideal Temperature Range: {selectedPlant?.minTemp} -{" "}
-									{selectedPlant?.maxTemp}
-								</div>
-
-								<div>Misting Requirement: {selectedPlant?.misting}</div>
 								<div>
 									{" "}
-									Difficulty:
-									<div className="tag is-primary">
+									<strong>Scientific Name:{"  "} </strong>{" "}
+									{selectedPlant?.scientificName}
+								</div>
+								<div>
+									<strong>Ideal Temperature Range: {"  "}</strong>{" "}
+									{selectedPlant?.minTemp} - {selectedPlant?.maxTemp}
+								</div>
+
+								<div>
+									<strong>Misting Requirement: {"  "}</strong>{" "}
+									{selectedPlant?.misting}
+								</div>
+								<div>
+									{" "}
+									<strong>Difficulty: {"  "}</strong>
+									<div className="tag is-success is-small is-rounded">
 										{" "}
 										{selectedPlant?.difficultyLevel}
 									</div>
 								</div>
 								<div>
 									{" "}
-									Humidity Level:{" "}
-									<div className="tag is-primary">
+									<strong>Humidity Level:{"  "}</strong>
+									<div className="tag is-success is-small is-rounded">
 										{selectedPlant?.humidityLevel}
 									</div>
 								</div>
