@@ -1,14 +1,16 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent, useState, useEffect } from "react";
 import Dropdown from "react-dropdown";
 import DatePicker from "react-datepicker";
 import { useSearchContext } from "../context/pages/searchPage";
 import { DirectionFacing } from "../models/directionFacing";
 import { UserPlant, Plant, collectionName } from "../database/plants";
+import { PlantAddedToast } from "../components/plantAddedToast";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-dropdown/style.css";
 import "../styles/components/plantInspector.scss";
 
 const PlantInspector: FunctionComponent = () => {
+	const [plantToast, setPlantToastOn] = useState(false);
 	const [underGrowLight, setGrowLight] = useState<boolean>(false);
 	const [isInWindow, setInWindow] = useState<boolean>(false);
 	const [directionFacing, setDirectionFacing] = useState<string | undefined>(
@@ -43,6 +45,17 @@ const PlantInspector: FunctionComponent = () => {
 			);
 		}
 	};
+	const closeToast = () => {
+		const timer = setTimeout(() => {
+			setPlantToastOn(!plantToast);
+		}, 3000);
+		return () => clearTimeout(timer);
+	};
+
+	const openToast = () => {
+		closeToast();
+		return <PlantAddedToast />;
+	};
 
 	const addToCollection = () => {
 		const currentPlant = selectedPlant as Plant;
@@ -60,6 +73,7 @@ const PlantInspector: FunctionComponent = () => {
 		}
 		db.push(newPlant);
 		window.sessionStorage.setItem(collectionName, JSON.stringify(db));
+		setPlantToastOn(!plantToast);
 	};
 
 	return (
@@ -70,11 +84,12 @@ const PlantInspector: FunctionComponent = () => {
 					<header className="modal-card-head">
 						<p className="modal-card-title">{plantName}</p>
 						<button
-							className="delete"
+							className="delete is-large"
 							aria-label="close"
 							onClick={closeModal}
 						></button>
 					</header>
+					{plantToast ? openToast() : undefined}
 					<div className="tile is-ancestor">
 						<div className="tile is-parent">
 							<img className="plantImg" src={selectedPlant?.img} alt=""></img>
