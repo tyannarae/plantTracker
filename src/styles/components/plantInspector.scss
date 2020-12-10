@@ -8,8 +8,25 @@
 	position: absolute;
 	right: 19px;
 }
-.plantInspectorImg {
+
+.Dropdown-control {
+	width: 12em;
+}
+
+.notification {
+	position: inherit;
+}
+
+.plantImg {
 	object-fit: cover;
-	height: 27em;
-	width: 28em;
+}
+
+.modal-card-body {
+	border-radius: 1em;
+}
+
+.modal-card-head {
+	background-color: transparent;
+}
+.addToHeader {
 }

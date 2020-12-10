@@ -12,7 +12,6 @@ const LandingPage = () => {
 
 	return (
 		<div>
-			{" "}
 			<div className="landingPageContainer">
 				<button
 					className="CTA button is-large is-primary is-outlined"
