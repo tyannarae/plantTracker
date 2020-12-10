@@ -18,7 +18,7 @@ const UserCollections: FunctionComponent<userCollectionsProps> = () => {
 	};
 
 	if (isLoading) {
-		return <Loading></Loading>;
+		return <Loading />;
 	} else {
 		return (
 			<div>

@@ -13,11 +13,11 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-radius: 6px;
+	border-radius: 0.2em;
 
 	.loader {
-		height: 80px;
-		width: 80px;
+		height: 10em;
+		width: 10em;
 	}
 	&.is-active {
 		opacity: 1;
