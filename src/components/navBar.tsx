@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+import classNames from "classnames";
 import Logo from "../media/navBar/logo.png";
 import { useHistory } from "react-router-dom";
 import { Search } from "./search";
-import classNames from "classnames";
 
 const NavBar = () => {
 	const [isActive, setActive] = useState(false);

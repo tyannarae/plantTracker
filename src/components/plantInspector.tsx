@@ -33,7 +33,7 @@ const PlantInspector: FunctionComponent = () => {
 		} else {
 			return (
 				<div className="tags">
-					<strong> Light Requirements:{"   "}</strong>
+					<strong> Light Requirements:</strong>
 					{selectedPlant?.lightRequirements.map((lightReq) => (
 						<div className="tag is-success is-small is-rounded ">
 							{lightReq}
@@ -86,7 +86,6 @@ const PlantInspector: FunctionComponent = () => {
 										<div className="tile">
 											<div className=" tile is-parent">
 												<strong className="tile content">
-													{" "}
 													Add {plantName} to your collection
 												</strong>
 											</div>
@@ -122,7 +121,7 @@ const PlantInspector: FunctionComponent = () => {
 														setInWindow(!isInWindow);
 													}}
 												/>
-												{"   "}Located in a window seal?
+												Located in a window seal?
 											</label>
 											<label className="tile is-child checkbox">
 												<input
@@ -131,7 +130,7 @@ const PlantInspector: FunctionComponent = () => {
 														setGrowLight(!underGrowLight);
 													}}
 												/>
-												{"   "}Located under a grow light?
+												Located under a grow light?
 											</label>
 										</div>
 
@@ -140,7 +139,6 @@ const PlantInspector: FunctionComponent = () => {
 												className="tile is-child button is-primary"
 												onClick={addToCollection}
 											>
-												{" "}
 												Add
 											</button>
 										</div>
@@ -153,30 +151,26 @@ const PlantInspector: FunctionComponent = () => {
 						<div className="tile is-parent">
 							<article className="tile is-child ">
 								<div>
-									{" "}
-									<strong>Scientific Name:{"  "} </strong>{" "}
+									<strong>Scientific Name: </strong>
 									{selectedPlant?.scientificName}
 								</div>
 								<div>
-									<strong>Ideal Temperature Range: {"  "}</strong>{" "}
+									<strong>Ideal Temperature Range: </strong>
 									{selectedPlant?.minTemp} - {selectedPlant?.maxTemp}
 								</div>
 
 								<div>
-									<strong>Misting Requirement: {"  "}</strong>{" "}
+									<strong>Misting Requirement: </strong>
 									{selectedPlant?.misting}
 								</div>
 								<div>
-									{" "}
-									<strong>Difficulty: {"  "}</strong>
+									<strong>Difficulty: </strong>
 									<div className="tag is-success is-small is-rounded">
-										{" "}
 										{selectedPlant?.difficultyLevel}
 									</div>
 								</div>
 								<div>
-									{" "}
-									<strong>Humidity Level:{"  "}</strong>
+									<strong>Humidity Level:</strong>
 									<div className="tag is-success is-small is-rounded">
 										{selectedPlant?.humidityLevel}
 									</div>
