@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useState } from "react";
 import PlantInspector from "../components/plantInspector";
 import NavBar from "../components/navBar";
+import NoPlantsAvailable from "../components/noPlantsAvailable";
 import PlantCard from "../components/plantCard";
 import { Loading } from "../components/loading";
 import { SearchPageContext } from "../context/pages/searchPage";
@@ -40,9 +41,13 @@ const SearchPage: FunctionComponent = () => {
 						<div className="featuredPlantsHeader">Featured Plants</div>
 					</div>
 					<div className="cardsContainer">
-						{searchResults.map((plant) => (
-							<PlantCard key={plant.id} {...plant} />
-						))}
+						{searchResults.length === 0 ? (
+							<NoPlantsAvailable />
+						) : (
+							searchResults.map((plant) => (
+								<PlantCard key={plant.id} {...plant} />
+							))
+						)}
 					</div>
 				</div>
 			)}
