@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useState } from "react";
-import Modal from "react-modal";
 import PlantInspector from "../components/plantInspector";
 import NavBar from "../components/navBar";
 import PlantCard from "../components/plantCard";
@@ -15,10 +14,6 @@ const SearchPage: FunctionComponent = () => {
 	const [selectedPlant, setSelectedPlant] = useState<Plant | undefined>(
 		undefined
 	);
-	const customStyles = {
-		overlay: { zIndex: 1000 },
-	};
-
 	window.onload = () => {
 		setLoading(!isLoading);
 	};
@@ -34,17 +29,12 @@ const SearchPage: FunctionComponent = () => {
 				setSelectedPlant,
 			}}
 		>
-			{isLoading === true ? (
-				<Loading></Loading>
+			{isLoading ? (
+				<Loading />
 			) : (
 				<div className="">
-					<Modal
-						style={customStyles}
-						isOpen={isModalOpen}
-						contentLabel="Search Page Plant Modal"
-					>
-						<PlantInspector />
-					</Modal>
+					{isModalOpen ? <PlantInspector /> : undefined}
+
 					<NavBar />
 					<div className="resultsContainer">
 						<div className="featuredPlantsHeader">Featured Plants</div>
