@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker";
 import { useSearchContext } from "../context/pages/searchPage";
 import { DirectionFacing } from "../models/directionFacing";
 import { UserPlant, Plant, collectionName } from "../database/plants";
+import { capitalizeFirstLetter } from "../utils/shared/punctuation";
 import { PlantAddedToast } from "../components/plantAddedToast";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-dropdown/style.css";
@@ -74,12 +75,6 @@ const PlantInspector: FunctionComponent = () => {
 		db.push(newPlant);
 		window.sessionStorage.setItem(collectionName, JSON.stringify(db));
 		setPlantToastOn(!plantToast);
-	};
-
-	const capitalizeFirstLetter = (string: string | undefined) => {
-		if (string !== undefined) {
-			return string.charAt(0).toUpperCase() + string.slice(1);
-		}
 	};
 
 	return (
@@ -173,7 +168,7 @@ const PlantInspector: FunctionComponent = () => {
 							<article className="tile is-child ">
 								<div>
 									<strong>Scientific Name: </strong>
-									{selectedPlant?.scientificName}
+									{capitalizeFirstLetter(selectedPlant?.scientificName)}
 								</div>
 								<div>
 									<strong>Ideal Temperature Range: </strong>

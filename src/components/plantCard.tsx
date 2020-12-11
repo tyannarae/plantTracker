@@ -5,6 +5,7 @@ import { HumidityLevel } from "../models/humidityLevel";
 import { Misting } from "../models/misting";
 import { DifficultyLevel } from "../models/difficultyLevel";
 import { Plant } from "../database/plants";
+import { capitalizeFirstLetter } from "../utils/shared/punctuation";
 import "../styles/components/plantCard.scss";
 /**
  * This component will take in a single plant object and display it's results to the user.
@@ -40,7 +41,9 @@ const PlantCard: FunctionComponent<Plant> = (plant) => {
 			<div className="plantCardDetails">
 				<img src={img} className="plantImage media-content" alt="plant" />
 			</div>
-			<div className="plantCommonName">{commonName[0]}</div>
+			<div className="plantCommonName">
+				{capitalizeFirstLetter(commonName[0])}
+			</div>
 			<div className="tags ">
 				<div className="light tag is-primary is-success is-rounded">
 					{lightRequirements[0]}
