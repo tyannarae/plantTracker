@@ -76,18 +76,24 @@ const PlantInspector: FunctionComponent = () => {
 		setPlantToastOn(!plantToast);
 	};
 
+	const capitalizeFirstLetter = (string: string | undefined) => {
+		if (string !== undefined) {
+			return string.charAt(0).toUpperCase() + string.slice(1);
+		}
+	};
+
 	return (
 		<div className="modal is-active ">
 			<div className="modal-background" onClick={closeModal}></div>
 			<div className="modal-card">
 				<section className="modal-card-body">
+					<button
+						className="delete is-large"
+						aria-label="close"
+						onClick={closeModal}
+					></button>
 					<header className="modal-card-head">
-						<p className="modal-card-title">{plantName}</p>
-						<button
-							className="delete is-large"
-							aria-label="close"
-							onClick={closeModal}
-						></button>
+						<strong>{capitalizeFirstLetter(plantName)}</strong>
 					</header>
 					{plantToast ? openToast() : undefined}
 					<div className="tile is-ancestor">
