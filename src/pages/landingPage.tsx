@@ -1,5 +1,4 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 import backgroundImg from "../media/landingPage/landingPage.jpg";
 import "../styles/pages/landingPage.scss";
 
