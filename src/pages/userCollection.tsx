@@ -2,7 +2,8 @@ import React, { FunctionComponent, useState } from "react";
 import NavBar from "../components/navBar";
 import PlantCard from "../components/plantCard";
 import { Loading } from "../components/loading";
-import { UsersCollection, UserPlant, Plant, Plants } from "../database/plants";
+import CollectionInspector from "../components/collectionInspector";
+import { UserPlant, Plant, Plants } from "../database/plants";
 import "../";
 
 export interface userCollectionsProps {
@@ -12,7 +13,8 @@ export interface userCollectionsProps {
 
 const UserCollections: FunctionComponent<userCollectionsProps> = () => {
 	const [isLoading, setLoading] = useState(true);
-
+	const [isModalOpen] = useState(false);
+	const UserCollection = JSON.parse(sessionStorage.collection);
 	window.onload = () => {
 		setLoading(!isLoading);
 	};
@@ -22,15 +24,16 @@ const UserCollections: FunctionComponent<userCollectionsProps> = () => {
 	} else {
 		return (
 			<div>
+				{isModalOpen ? <CollectionInspector /> : undefined}
 				<NavBar />
 				<div className="resultsContainer">
 					<div className="featuredPlantsHeader">Your Collection</div>
 				</div>
 				<div className="cardsContainer">
-					{UsersCollection.length > 0 ? (
+					{UserCollection.length > 0 ? (
 						Plants.map((plant) =>
-							UsersCollection.map((userPlant) =>
-								plant.id === userPlant.id ? <PlantCard {...plant} /> : null
+							UserCollection.map((userPlant: any) =>
+								plant.id === userPlant["id"] ? <PlantCard {...plant} /> : null
 							)
 						)
 					) : (

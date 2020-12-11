@@ -59,6 +59,7 @@ const PlantInspector: FunctionComponent = () => {
 			db = JSON.parse(dbString);
 		}
 		db.push(newPlant);
+
 		window.sessionStorage.setItem(collectionName, JSON.stringify(db));
 	};
 
