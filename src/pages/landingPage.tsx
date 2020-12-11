@@ -4,21 +4,15 @@ import backgroundImg from "../media/landingPage/landingPage.jpg";
 import "../styles/pages/landingPage.scss";
 
 const LandingPage = () => {
-	const history = useHistory();
-
-	function handleClick() {
-		history.push("/search");
-	}
-
 	return (
 		<div>
 			<div className="landingPageContainer">
-				<button
+				<a
+					href="/search"
 					className="CTA button is-large is-primary is-outlined"
-					onClick={handleClick}
 				>
 					<p>Time to Get Planting</p>
-				</button>
+				</a>
 
 				<img
 					className="backgroundImg"
