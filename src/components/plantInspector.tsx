@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState, useEffect } from "react";
+import React, { FunctionComponent, useState } from "react";
 import Dropdown from "react-dropdown";
 import DatePicker from "react-datepicker";
 import { useSearchContext } from "../context/pages/searchPage";
