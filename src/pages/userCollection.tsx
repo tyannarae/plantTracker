@@ -1,10 +1,9 @@
 import React, { FunctionComponent, useState } from "react";
 import NavBar from "../components/navBar";
-import PlantCard from "../components/plantCard";
 import { Loading } from "../components/loading";
 import CollectionInspector from "../components/collectionInspector";
-import { UserPlant, Plant, Plants } from "../database/plants";
-import "../";
+import { CollectionBox } from "../components/collectionBox";
+import { UserPlant, Plant } from "../database/plants";
 
 export interface userCollectionsProps {
 	usersPlant?: UserPlant[]; //the users chosen plants interface
@@ -31,9 +30,7 @@ const UserCollections: FunctionComponent<userCollectionsProps> = () => {
 				</div>
 				<div className="cardsContainer">
 					{UserCollection.length > 0 ? (
-						UserCollection.map((userPlant: UserPlant) => (
-							<PlantCard {...Plants[userPlant.id]} />
-						))
+						UserCollection.map((userPlant: UserPlant) => <CollectionBox />)
 					) : (
 						<div className="noCollectionAvaiable">
 							Looks like you have not added any plants to your collection yet.
