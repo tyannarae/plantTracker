@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useState } from "react";
 import Dropdown from "react-dropdown";
 import DatePicker from "react-datepicker";
+import _ from "lodash";
 import { useSearchContext } from "../context/pages/searchPage";
 import { DirectionFacing } from "../models/directionFacing";
 import { UserPlant, Plant, collectionName } from "../database/plants";
@@ -9,6 +10,9 @@ import "react-dropdown/style.css";
 import "../styles/components/plantInspector.scss";
 
 const PlantInspector: FunctionComponent = () => {
+	const [userDeclaredPlantName, setUserDeclaredPlantName] = useState<string>(
+		"no name provided"
+	);
 	const [underGrowLight, setGrowLight] = useState<boolean>(false);
 	const [isInWindow, setInWindow] = useState<boolean>(false);
 	const [directionFacing, setDirectionFacing] = useState<string | undefined>(
@@ -47,6 +51,7 @@ const PlantInspector: FunctionComponent = () => {
 	const addToCollection = () => {
 		const currentPlant = selectedPlant as Plant;
 		const newPlant: UserPlant = {
+			name: userDeclaredPlantName,
 			id: currentPlant.id,
 			directionFacing: directionFacing as DirectionFacing,
 			inWindowSeal: isInWindow,
@@ -61,6 +66,15 @@ const PlantInspector: FunctionComponent = () => {
 		db.push(newPlant);
 
 		window.sessionStorage.setItem(collectionName, JSON.stringify(db));
+	};
+
+	const setPlantName = (e: React.ChangeEvent<HTMLInputElement>) => {
+		if (!e.target.value) {
+			setUserDeclaredPlantName("no name provided");
+		} else {
+			const value = e.target.value.toLowerCase();
+			setUserDeclaredPlantName(value);
+		}
 	};
 
 	return (
@@ -115,6 +129,16 @@ const PlantInspector: FunctionComponent = () => {
 											</div>
 										</div>
 										<div className="tile is-parent is-vertical">
+											<div className="field">
+												<div className="control">
+													<input
+														onChange={(e) => setPlantName(e)}
+														className="input is-success"
+														type="text"
+														placeholder="Name this plant"
+													/>
+												</div>
+											</div>
 											<label className="tile is-child checkbox">
 												<input
 													type="checkbox"

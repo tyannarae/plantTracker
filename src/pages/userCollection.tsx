@@ -31,11 +31,9 @@ const UserCollections: FunctionComponent<userCollectionsProps> = () => {
 				</div>
 				<div className="cardsContainer">
 					{UserCollection.length > 0 ? (
-						Plants.map((plant) =>
-							UserCollection.map((userPlant: any) =>
-								plant.id === userPlant["id"] ? <PlantCard {...plant} /> : null
-							)
-						)
+						UserCollection.map((userPlant: UserPlant) => (
+							<PlantCard {...Plants[userPlant.id]} />
+						))
 					) : (
 						<div className="noCollectionAvaiable">
 							Looks like you have not added any plants to your collection yet.
