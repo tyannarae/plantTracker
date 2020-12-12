@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useState } from "react";
 import Dropdown from "react-dropdown";
 import DatePicker from "react-datepicker";
-import _ from "lodash";
 import { useSearchContext } from "../context/pages/searchPage";
 import { DirectionFacing } from "../models/directionFacing";
 import { UserPlant, Plant, collectionName } from "../database/plants";
@@ -69,10 +68,11 @@ const PlantInspector: FunctionComponent = () => {
 	};
 
 	const setPlantName = (e: React.ChangeEvent<HTMLInputElement>) => {
-		if (!e.target.value) {
+		const nameValue = e.target.value;
+		if (!nameValue) {
 			setUserDeclaredPlantName("no name provided");
 		} else {
-			const value = e.target.value.toLowerCase();
+			const value = nameValue.toLowerCase();
 			setUserDeclaredPlantName(value);
 		}
 	};

@@ -1,17 +1,11 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { useState } from "react";
 import NavBar from "../components/navBar";
 import PlantCard from "../components/plantCard";
 import { Loading } from "../components/loading";
-import CollectionInspector from "../components/collectionInspector";
-import { UserPlant, Plant, Plants } from "../database/plants";
-import "../";
+import PlantInspector from "../components/plantInspector";
+import { UserPlant, Plants } from "../database/plants";
 
-export interface userCollectionsProps {
-	usersPlant?: UserPlant[]; //the users chosen plants interface
-	plant?: Plant[]; // global plant interface
-}
-
-const UserCollections: FunctionComponent<userCollectionsProps> = () => {
+const UserCollections = () => {
 	const [isLoading, setLoading] = useState(true);
 	const [isModalOpen] = useState(false);
 	const UserCollection = JSON.parse(sessionStorage.collection);
@@ -24,7 +18,7 @@ const UserCollections: FunctionComponent<userCollectionsProps> = () => {
 	} else {
 		return (
 			<div>
-				{isModalOpen ? <CollectionInspector /> : undefined}
+				{isModalOpen ? <PlantInspector /> : undefined}
 				<NavBar />
 				<div className="resultsContainer">
 					<div className="featuredPlantsHeader">Your Collection</div>
