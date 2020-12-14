@@ -31,7 +31,7 @@ const UserCollections: FunctionComponent<userCollectionsProps> = () => {
 				<div className="resultsContainer">
 					<div className="featuredPlantsHeader">Your Collection</div>
 				</div>
-				<div className="cardsContainer">
+				<div className="">
 					{UserCollection.length > 0 ? (
 						UserCollection.map((userPlant: UserPlant) => (
 							<CollectionBox onClick={() => edit()} userPlant={userPlant} />
