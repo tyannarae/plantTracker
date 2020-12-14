@@ -1,4 +1,5 @@
 @import "bulma/css/bulma.css";
+@import "bulma/sass/utilities/initial-variables";
 @import "../global/colors.scss";
 
 .plantInspectorContainer {
@@ -23,4 +24,7 @@
 
 .modal-card-head {
 	background-color: transparent;
+}
+.Toastify__toast--success {
+	background-color: $green;
 }
