@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useState } from "react";
 import Dropdown from "react-dropdown";
 import DatePicker from "react-datepicker";
-import _ from "lodash";
 import { useSearchContext } from "../context/pages/searchPage";
 import { DirectionFacing } from "../models/directionFacing";
 import { UserPlant, Plant, collectionName } from "../database/plants";
