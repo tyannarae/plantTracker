@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from "react";
 import { UserPlant, Plants } from "../database/plants";
 import "../styles/components/collectionsBox.scss";
+import { CollectionInspector } from "./collectionInspector";
 
 export interface props {
 	userPlant: UserPlant;
@@ -47,6 +48,7 @@ export const CollectionBox: FunctionComponent<props> = (props) => {
 					</div>
 				</div>
 			</div>
+			<CollectionInspector />
 		</div>
 	);
 };
