@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import { UserPlant } from "../database/plants";
 
 export interface props {
-	usersPlant: UserPlant[];
+	userPlant: UserPlant;
 	onClick: (e: React.MouseEvent) => void;
 }
 

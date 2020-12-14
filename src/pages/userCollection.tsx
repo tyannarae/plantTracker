@@ -17,6 +17,9 @@ const UserCollections: FunctionComponent<userCollectionsProps> = () => {
 	window.onload = () => {
 		setLoading(!isLoading);
 	};
+	const edit = () => {
+		console.log("lets edit");
+	};
 
 	if (isLoading) {
 		return <Loading />;
@@ -30,7 +33,9 @@ const UserCollections: FunctionComponent<userCollectionsProps> = () => {
 				</div>
 				<div className="cardsContainer">
 					{UserCollection.length > 0 ? (
-						UserCollection.map((userPlant: UserPlant) => <CollectionBox />)
+						UserCollection.map((userPlant: UserPlant) => (
+							<CollectionBox onClick={() => edit()} userPlant={userPlant} />
+						))
 					) : (
 						<div className="noCollectionAvaiable">
 							Looks like you have not added any plants to your collection yet.

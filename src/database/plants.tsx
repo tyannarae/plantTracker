@@ -23,12 +23,12 @@ export interface Plant {
 
 //this interface defines each of the users plants
 export interface UserPlant {
-	name: string;
+	name?: string;
 	id: number;
-	directionFacing: DirectionFacing;
-	inWindowSeal: boolean;
-	growLight: boolean;
-	lastWaterDate: Date;
+	directionFacing?: DirectionFacing;
+	inWindowSeal?: boolean;
+	growLight?: boolean;
+	lastWaterDate?: Date;
 }
 
 //object containing data regarding the users plant collection
