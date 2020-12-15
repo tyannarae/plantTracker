@@ -8,6 +8,7 @@ export type CollectionPageContextType = {
     setModalOpen: (isOpen: boolean) => void,
 }
 
+
 export const CollectionPageContext = createContext<CollectionPageContextType>({
     selectedPlant: undefined,
     setSelectedPlant: chosenPlant => console.warn('no setSelectedPlant context provider'),

@@ -1,9 +1,12 @@
 import React, { FunctionComponent, useState } from "react";
 import Dropdown from "react-dropdown";
 import DatePicker from "react-datepicker";
+import { ToastContainer, toast } from "react-toastify";
+import { useCollectionContext } from "../context/pages/userCollections";
 import { useSearchContext } from "../context/pages/searchPage";
 import { DirectionFacing } from "../models/directionFacing";
-import { UserPlant, Plant, collectionName } from "../database/plants";
+import { UserPlant, Plant, collectionName, Plants } from "../database/plants";
+import "react-toastify/dist/ReactToastify.css";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-dropdown/style.css";
 
@@ -17,14 +20,17 @@ export const CollectionInspector: FunctionComponent = () => {
 		undefined
 	);
 	const [dateWateredLast, setWaterDate] = useState<Date>(new Date());
-	const { selectedPlant } = useSearchContext();
-	const { isModalOpen, setModalOpen } = useSearchContext();
+	const { selectedPlant } = useCollectionContext();
+	const { isModalOpen, setModalOpen } = useCollectionContext();
 	const closeModal = () => {
 		setModalOpen(!isModalOpen);
 	};
 
 	const updateCollection = () => {
 		console.log("lets update this plant");
+		toast.success("Plant has been updated!", {
+			position: "top-center",
+		});
 	};
 	const updatePlantName = (e: React.ChangeEvent<HTMLInputElement>) => {
 		console.log("time to update the plant name");
@@ -33,15 +39,16 @@ export const CollectionInspector: FunctionComponent = () => {
 	Object.keys(DirectionFacing).map((direction) =>
 		directionOptions.push(direction)
 	);
-	const plantName = selectedPlant?.commonName[0];
+	// const plantName = Plants[selectedPlant].commonName[0];
 
 	return (
 		<div className="modal is-active ">
+			<ToastContainer />
 			<div className="modal-background" onClick={closeModal}></div>
 			<div className="modal-card">
 				<section className="modal-card-body">
 					<header className="modal-card-head">
-						<p className="modal-card-title">{plantName}</p>
+						{/* <p className="modal-card-title">{plantName}</p> */}
 						<button
 							className="delete"
 							aria-label="close"
@@ -50,7 +57,7 @@ export const CollectionInspector: FunctionComponent = () => {
 					</header>
 					<div className="tile is-ancestor">
 						<div className="tile is-parent">
-							<img className="plantImg" src={selectedPlant?.img} alt=""></img>
+							{/* <img className="plantImg" src={selectedPlant?.img} alt=""></img> */}
 						</div>
 						<div className="tile is-vertical is-8">
 							<div className="tile">
@@ -64,7 +71,7 @@ export const CollectionInspector: FunctionComponent = () => {
 					</div>
 					<div className="tile is-ancestor">
 						<div className="tile is-parent">
-							<img className="plantImg" src={selectedPlant?.img} alt=""></img>
+							{/* <img className="plantImg" src={selectedPlant?.img} alt=""></img> */}
 						</div>
 						<div className="tile is-vertical is-8">
 							<div className="tile">
@@ -73,7 +80,7 @@ export const CollectionInspector: FunctionComponent = () => {
 										<div className="tile">
 											<div className=" tile is-parent">
 												<strong className="tile content">
-													Add {plantName} to your collection
+													{/* Add {plantName} to your collection */}
 												</strong>
 											</div>
 										</div>
