@@ -1,5 +1,7 @@
 @import "bulma/css/bulma.css";
+@import "bulma/sass/utilities/initial-variables";
 @import "../global/colors.scss";
+@import "./toast.scss";
 
 .plantInspectorContainer {
 	overflow: hidden;

@@ -1,12 +1,14 @@
 import React, { FunctionComponent, useState } from "react";
 import Dropdown from "react-dropdown";
 import DatePicker from "react-datepicker";
+import { ToastContainer, toast } from "react-toastify";
 import { useSearchContext } from "../context/pages/searchPage";
 import { DirectionFacing } from "../models/directionFacing";
 import { UserPlant, Plant, collectionName } from "../database/plants";
 import { capitalizeFirstLetter } from "../utils/upperCaseFirstLetter";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-dropdown/style.css";
+import "react-toastify/dist/ReactToastify.css";
 import "../styles/components/plantInspector.scss";
 
 const PlantInspector: FunctionComponent = () => {
@@ -66,6 +68,9 @@ const PlantInspector: FunctionComponent = () => {
 		db.push(newPlant);
 
 		window.sessionStorage.setItem(collectionName, JSON.stringify(db));
+		toast.success("Plant has been added!", {
+			position: "top-center",
+		});
 	};
 
 	const setPlantName = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -92,7 +97,9 @@ const PlantInspector: FunctionComponent = () => {
 							onClick={closeModal}
 						></button>
 					</header>
+
 					<div className="tile is-ancestor">
+						<ToastContainer />
 						<div className="tile is-parent">
 							<img className="plantImg" src={selectedPlant?.img} alt=""></img>
 						</div>
