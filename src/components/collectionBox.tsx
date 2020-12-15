@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from "react";
 import { UserPlant, Plants } from "../database/plants";
+import { capitalizeFirstLetter } from "../utils/upperCaseFirstLetter";
 import "../styles/components/collectionsBox.scss";
 
 export interface props {
@@ -32,7 +33,9 @@ export const CollectionBox: FunctionComponent<props> = (props) => {
 					<div className=" tile is-vertical level-left">
 						<div className=" tile level-item firstTile">
 							<div className="tile content ">
-								<strong>{Plants[id].commonName[0]}</strong>
+								<strong>
+									{capitalizeFirstLetter(Plants[id].commonName[0])}
+								</strong>
 							</div>
 							<img
 								className="tile image "

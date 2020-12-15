@@ -4,6 +4,7 @@ import { LightRequirements } from "../models/lightRequirements";
 import { HumidityLevel } from "../models/humidityLevel";
 import { Misting } from "../models/misting";
 import { DifficultyLevel } from "../models/difficultyLevel";
+import { capitalizeFirstLetter } from "../utils/upperCaseFirstLetter";
 import { Plant } from "../database/plants";
 import "../styles/components/plantCard.scss";
 /**
@@ -40,7 +41,9 @@ const PlantCard: FunctionComponent<Plant> = (plant) => {
 			<div className="plantCardDetails">
 				<img src={img} className="plantImage media-content" alt="plant" />
 			</div>
-			<div className="plantCommonName">{commonName[0]}</div>
+			<div className="plantCommonName">
+				{capitalizeFirstLetter(commonName[0])}
+			</div>
 			<div className="tags ">
 				<div className="light tag is-primary is-success is-rounded">
 					{lightRequirements[0]}

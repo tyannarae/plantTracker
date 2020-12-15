@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker";
 import { useSearchContext } from "../context/pages/searchPage";
 import { DirectionFacing } from "../models/directionFacing";
 import { UserPlant, Plant, collectionName } from "../database/plants";
+import { capitalizeFirstLetter } from "../utils/upperCaseFirstLetter";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-dropdown/style.css";
 import "../styles/components/plantInspector.scss";
@@ -82,7 +83,9 @@ const PlantInspector: FunctionComponent = () => {
 			<div className="modal-card">
 				<section className="modal-card-body">
 					<header className="modal-card-head">
-						<p className="modal-card-title">{plantName}</p>
+						<p className="modal-card-title">
+							{capitalizeFirstLetter(plantName)}
+						</p>
 						<button
 							className="delete"
 							aria-label="close"
@@ -100,7 +103,8 @@ const PlantInspector: FunctionComponent = () => {
 										<div className="tile">
 											<div className=" tile is-parent">
 												<strong className="tile content">
-													Add {plantName} to your collection
+													Add {capitalizeFirstLetter(plantName)} to your
+													collection
 												</strong>
 											</div>
 										</div>
