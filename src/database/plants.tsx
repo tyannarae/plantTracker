@@ -12,7 +12,7 @@ export interface Plant {
 	scientificName: string; // the scientific name for this plant
 	commonName: Array<string>; // all the common names for this plant
 	humidityLevel?: HumidityLevel; //how much humidity this plant will require
-	lightRequirements?: Array<LightRequirements>; //light that this plant requires
+	lightRequirements: Array<LightRequirements>; //light that this plant requires
 	minTemp?: number;
 	maxTemp?: number;
 	misting?: Misting; //if misting the plant is required, if so how often

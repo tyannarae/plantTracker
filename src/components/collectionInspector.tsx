@@ -35,23 +35,6 @@ export const CollectionInspector: FunctionComponent = () => {
 	);
 	const plantName = selectedPlant?.commonName[0];
 
-	const getLightRequirements = () => {
-		if (selectedPlant?.lightRequirements === undefined) {
-			return undefined;
-		} else {
-			return (
-				<div className="tags">
-					<strong> Light Requirements:</strong>
-					{selectedPlant?.lightRequirements.map((lightReq) => (
-						<div className="tag is-success is-small is-rounded ">
-							{lightReq}
-						</div>
-					))}
-				</div>
-			);
-		}
-	};
-
 	return (
 		<div className="modal is-active ">
 			<div className="modal-background" onClick={closeModal}></div>
