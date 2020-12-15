@@ -11,7 +11,7 @@ export interface props {
 export const CollectionBox: FunctionComponent<props> = (props) => {
 	const plant = props.userPlant;
 	const id = plant.id;
-
+	const selectedPlant = Plants[id];
 	const edit = () => {
 		console.log("");
 	};
@@ -45,6 +45,19 @@ export const CollectionBox: FunctionComponent<props> = (props) => {
 						</div>
 					</div>
 					<div className="tile is-veritcal tags">
+						<div>
+							<strong>Scientific Name: </strong>
+							{selectedPlant.scientificName}
+						</div>
+						<div>
+							<strong>Ideal Temperature Range: </strong>
+							{selectedPlant.minTemp} - {selectedPlant.maxTemp}
+						</div>
+
+						<div>
+							<strong>Misting Requirement: </strong>
+							{selectedPlant.misting}
+						</div>
 						<div className="">
 							Light Requirements
 							{getLightRequirments()}
@@ -52,13 +65,13 @@ export const CollectionBox: FunctionComponent<props> = (props) => {
 						<div className="">
 							Difficult to Grow:
 							<div className="tag is-success is-small is-rounded ">
-								{Plants[id].difficultyLevel}
+								{selectedPlant.difficultyLevel}
 							</div>
 						</div>
 						<div className="">
 							Humidity:
 							<div className="tag is-success is-small is-rounded ">
-								{Plants[id].humidityLevel}
+								{selectedPlant.humidityLevel}
 							</div>
 						</div>
 					</div>
