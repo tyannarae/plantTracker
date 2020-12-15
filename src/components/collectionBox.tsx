@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from "react";
+import { useCollectionContext } from "../context/pages/userCollections";
 import { UserPlant, Plants } from "../database/plants";
 import { capitalizeFirstLetter } from "../utils/upperCaseFirstLetter";
 import "../styles/components/collectionsBox.scss";
-import { DirectionFacing } from "../models/directionFacing";
 
 export interface props {
 	userPlant: UserPlant;
@@ -10,11 +10,13 @@ export interface props {
 }
 
 export const CollectionBox: FunctionComponent<props> = (props) => {
+	const { setModalOpen, setSelectedPlant } = useCollectionContext();
 	const plant = props.userPlant;
 	const id = plant.id;
 	const selectedPlant = Plants[id];
 	const edit = () => {
-		console.log("");
+		setModalOpen(true);
+		setSelectedPlant(plant);
 	};
 
 	const getLightRequirments = () => {
