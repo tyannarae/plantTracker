@@ -15,8 +15,8 @@ export const CollectionBox: FunctionComponent<props> = (props) => {
 	const id = plant.id;
 	const selectedPlant = Plants[id];
 	const edit = () => {
-		setModalOpen(true);
 		setSelectedPlant(plant);
+		setModalOpen(true);
 	};
 
 	const getLightRequirments = () => {

@@ -23,7 +23,7 @@ export interface Plant {
 
 //this interface defines each of the users plants
 export interface UserPlant {
-	name?: string;
+	name: string;
 	id: number;
 	directionFacing?: DirectionFacing;
 	inWindowSeal?: boolean;
