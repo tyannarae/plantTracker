@@ -2,6 +2,8 @@ import { createContext, useContext } from 'react'
 import {UserPlant} from '../../database/plants'
 
 export type CollectionPageContextType = {
+    deletedPlant?: UserPlant,
+    setDeletedPlant: (plantDeleted: UserPlant) => void,
     selectedPlant?: UserPlant,
     setSelectedPlant: (chosenPlant: UserPlant) => void,
     isModalOpen: boolean,
@@ -10,6 +12,8 @@ export type CollectionPageContextType = {
 
 
 export const CollectionPageContext = createContext<CollectionPageContextType>({
+    deletedPlant: undefined,
+    setDeletedPlant: plantDeleted => console.warn('no setDeletedPlant context provider'),
     selectedPlant: undefined,
     setSelectedPlant: chosenPlant => console.warn('no setSelectedPlant context provider'),
     isModalOpen: false,

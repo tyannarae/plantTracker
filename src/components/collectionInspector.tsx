@@ -27,14 +27,11 @@ export const CollectionInspector: FunctionComponent = () => {
 	};
 
 	const updateCollection = () => {
-		console.log("lets update this plant");
 		toast.success("Plant has been updated!", {
 			position: "top-center",
 		});
 	};
-	const updatePlantName = (e: React.ChangeEvent<HTMLInputElement>) => {
-		console.log("time to update the plant name");
-	};
+	const updatePlantName = (e: React.ChangeEvent<HTMLInputElement>) => {};
 	const directionOptions: Array<string> = [];
 	Object.keys(DirectionFacing).map((direction) =>
 		directionOptions.push(direction)

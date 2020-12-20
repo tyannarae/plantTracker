@@ -1,22 +1,45 @@
 import React, { FunctionComponent } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import { useCollectionContext } from "../context/pages/userCollections";
-import { UserPlant, Plants } from "../database/plants";
+import { UserPlant, Plants, collectionName } from "../database/plants";
 import { capitalizeFirstLetter } from "../utils/upperCaseFirstLetter";
 import "../styles/components/collectionsBox.scss";
 
 export interface props {
 	userPlant: UserPlant;
-	onClick: (e: React.MouseEvent) => void;
+	index: number;
 }
 
 export const CollectionBox: FunctionComponent<props> = (props) => {
-	const { setModalOpen, setSelectedPlant } = useCollectionContext();
+	const {
+		setModalOpen,
+		setSelectedPlant,
+		setDeletedPlant,
+	} = useCollectionContext();
 	const plant = props.userPlant;
 	const id = plant.id;
 	const selectedPlant = Plants[id];
 	const edit = () => {
 		setSelectedPlant(plant);
 		setModalOpen(true);
+	};
+
+	const deletePlant = () => {
+		//access session storage
+		const dbString = window.sessionStorage.getItem(collectionName);
+		let db = [];
+		if (dbString !== null) {
+			db = JSON.parse(dbString);
+		}
+		//delete the item
+		db.splice(props.index, 1);
+		//save session storage again
+		window.sessionStorage.setItem(collectionName, JSON.stringify(db));
+		//set the deleted plant to cause a rerender of application
+		setDeletedPlant(props.userPlant);
+		toast.success("Plant has been deleted!", {
+			position: "top-center",
+		});
 	};
 
 	const getLightRequirments = () => {
@@ -174,7 +197,7 @@ export const CollectionBox: FunctionComponent<props> = (props) => {
 							</div>
 							<div
 								className="button level-item  is-danger is-small"
-								onClick={edit}
+								onClick={deletePlant}
 							>
 								delete
 							</div>

@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useState } from "react";
+import { ToastContainer } from "react-toastify";
 import NavBar from "../components/navBar";
 import { Loading } from "../components/loading";
 import CollectionInspector from "../components/collectionInspector";
@@ -17,13 +18,13 @@ const UserCollections: FunctionComponent<userCollectionsProps> = () => {
 	const [selectedPlant, setSelectedPlant] = useState<UserPlant | undefined>(
 		undefined
 	);
+	const [deletedPlant, setDeletedPlant] = useState<UserPlant | undefined>(
+		undefined
+	);
 	const UserCollection = JSON.parse(sessionStorage.collection);
 
 	window.onload = () => {
 		setLoading(!isLoading);
-	};
-	const edit = () => {
-		console.log("lets edit");
 	};
 
 	if (isLoading) {
@@ -32,6 +33,8 @@ const UserCollections: FunctionComponent<userCollectionsProps> = () => {
 		return (
 			<CollectionPageContext.Provider
 				value={{
+					deletedPlant,
+					setDeletedPlant,
 					isModalOpen,
 					setModalOpen,
 					selectedPlant,
@@ -39,6 +42,7 @@ const UserCollections: FunctionComponent<userCollectionsProps> = () => {
 				}}
 			>
 				<div>
+					<ToastContainer />
 					{isModalOpen ? <CollectionInspector /> : undefined}
 					<NavBar />
 					<div className="resultsContainer">
@@ -46,8 +50,8 @@ const UserCollections: FunctionComponent<userCollectionsProps> = () => {
 					</div>
 					<div className="">
 						{UserCollection.length > 0 ? (
-							UserCollection.map((userPlant: UserPlant) => (
-								<CollectionBox onClick={() => edit()} userPlant={userPlant} />
+							UserCollection.map((userPlant: UserPlant, index: number) => (
+								<CollectionBox userPlant={userPlant} index={index} />
 							))
 						) : (
 							<div className="noCollectionAvaiable">
