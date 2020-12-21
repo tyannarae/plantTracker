@@ -185,7 +185,9 @@ export const CollectionBox: FunctionComponent<props> = (props) => {
 						<div className="tile is-child">
 							<strong>Last watered on: </strong>
 
-							{plant.lastWaterDate}
+							{new Date(
+								plant.lastWaterDate?.valueOf() as number
+							).toLocaleString()}
 						</div>
 						<div className="tile is-child"></div>
 					</div>

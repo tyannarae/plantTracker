@@ -4,7 +4,7 @@ import DatePicker from "react-datepicker";
 import { ToastContainer, toast } from "react-toastify";
 import { useCollectionContext } from "../context/pages/userCollections";
 import { DirectionFacing } from "../models/directionFacing";
-import { collectionName, Plants, Plant, UserPlant } from "../database/plants";
+import { collectionName, Plants, UserPlant } from "../database/plants";
 import "react-toastify/dist/ReactToastify.css";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-dropdown/style.css";
