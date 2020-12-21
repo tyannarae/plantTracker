@@ -3,9 +3,8 @@ import Dropdown from "react-dropdown";
 import DatePicker from "react-datepicker";
 import { ToastContainer, toast } from "react-toastify";
 import { useCollectionContext } from "../context/pages/userCollections";
-import { useSearchContext } from "../context/pages/searchPage";
 import { DirectionFacing } from "../models/directionFacing";
-import { UserPlant, Plant, collectionName, Plants } from "../database/plants";
+import { collectionName, Plants } from "../database/plants";
 import "react-toastify/dist/ReactToastify.css";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-dropdown/style.css";
@@ -20,13 +19,29 @@ export const CollectionInspector: FunctionComponent = () => {
 		undefined
 	);
 	const [dateWateredLast, setWaterDate] = useState<Date>(new Date());
-	const { selectedPlant } = useCollectionContext();
-	const { isModalOpen, setModalOpen } = useCollectionContext();
+
+	const {
+		setIndex,
+		index,
+		isModalOpen,
+		setModalOpen,
+		selectedPlant,
+		setSelectedPlant,
+	} = useCollectionContext();
 	const closeModal = () => {
 		setModalOpen(!isModalOpen);
 	};
 
 	const updateCollection = () => {
+		//access session storage
+		const dbString = window.sessionStorage.getItem(collectionName);
+		let db = [];
+		if (dbString !== null) {
+			db = JSON.parse(dbString);
+		}
+		if (index !== undefined) {
+			console.log(db[index]);
+		}
 		toast.success("Plant has been updated!", {
 			position: "top-center",
 		});
@@ -91,7 +106,7 @@ export const CollectionInspector: FunctionComponent = () => {
 														}}
 														className="directionFacingDropdown"
 														options={directionOptions}
-														placeholder="Direction Facing"
+														placeholder={selectedPlant.directionFacing}
 													></Dropdown>
 												</div>
 											</div>
@@ -111,21 +126,41 @@ export const CollectionInspector: FunctionComponent = () => {
 													</div>
 												</div>
 												<label className="tile is-child checkbox">
-													<input
-														type="checkbox"
-														onChange={() => {
-															setInWindow(!isInWindow);
-														}}
-													/>
+													{selectedPlant.inWindowSeal === true ? (
+														<input
+															checked
+															type="checkbox"
+															onChange={() => {
+																setInWindow(!isInWindow);
+															}}
+														/>
+													) : (
+														<input
+															type="checkbox"
+															onChange={() => {
+																setInWindow(!isInWindow);
+															}}
+														/>
+													)}
 													Located in a window seal?
 												</label>
 												<label className="tile is-child checkbox">
-													<input
-														type="checkbox"
-														onChange={() => {
-															setGrowLight(!underGrowLight);
-														}}
-													/>
+													{selectedPlant.growLight === true ? (
+														<input
+															checked
+															type="checkbox"
+															onChange={() => {
+																setGrowLight(!underGrowLight);
+															}}
+														/>
+													) : (
+														<input
+															type="checkbox"
+															onChange={() => {
+																setGrowLight(!underGrowLight);
+															}}
+														/>
+													)}
 													Located under a grow light?
 												</label>
 											</div>

@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useCollectionContext } from "../context/pages/userCollections";
 import { UserPlant, Plants, collectionName } from "../database/plants";
 import { capitalizeFirstLetter } from "../utils/upperCaseFirstLetter";
@@ -15,11 +15,14 @@ export const CollectionBox: FunctionComponent<props> = (props) => {
 		setModalOpen,
 		setSelectedPlant,
 		setDeletedPlant,
+		setIndex,
 	} = useCollectionContext();
 	const plant = props.userPlant;
 	const id = plant.id;
 	const selectedPlant = Plants[id];
-	const edit = () => {
+
+	const openEditModal = () => {
+		setIndex(props.index);
 		setSelectedPlant(plant);
 		setModalOpen(true);
 	};
@@ -191,7 +194,7 @@ export const CollectionBox: FunctionComponent<props> = (props) => {
 						<div className=" tile level-right">
 							<div
 								className="button level-item  is-success is-outlined is-small "
-								onClick={edit}
+								onClick={openEditModal}
 							>
 								edit
 							</div>

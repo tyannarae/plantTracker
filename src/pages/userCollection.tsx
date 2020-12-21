@@ -13,6 +13,7 @@ export interface userCollectionsProps {
 }
 
 const UserCollections: FunctionComponent<userCollectionsProps> = () => {
+	const [index, setIndex] = useState<number | undefined>(undefined);
 	const [isLoading, setLoading] = useState(true);
 	const [isModalOpen, setModalOpen] = useState(false);
 	const [selectedPlant, setSelectedPlant] = useState<UserPlant | undefined>(
@@ -33,6 +34,8 @@ const UserCollections: FunctionComponent<userCollectionsProps> = () => {
 		return (
 			<CollectionPageContext.Provider
 				value={{
+					index,
+					setIndex,
 					deletedPlant,
 					setDeletedPlant,
 					isModalOpen,

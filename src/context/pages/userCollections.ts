@@ -2,6 +2,8 @@ import { createContext, useContext } from 'react'
 import {UserPlant} from '../../database/plants'
 
 export type CollectionPageContextType = {
+    index?: number | undefined,
+    setIndex: (plantIndex: number | undefined) => void,
     deletedPlant?: UserPlant,
     setDeletedPlant: (plantDeleted: UserPlant) => void,
     selectedPlant?: UserPlant,
@@ -12,6 +14,8 @@ export type CollectionPageContextType = {
 
 
 export const CollectionPageContext = createContext<CollectionPageContextType>({
+    index: undefined,
+    setIndex: plantIndex => console.warn('no setIndex context provider'),
     deletedPlant: undefined,
     setDeletedPlant: plantDeleted => console.warn('no setDeletedPlant context provider'),
     selectedPlant: undefined,
