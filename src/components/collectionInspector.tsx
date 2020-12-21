@@ -4,12 +4,21 @@ import DatePicker from "react-datepicker";
 import { ToastContainer, toast } from "react-toastify";
 import { useCollectionContext } from "../context/pages/userCollections";
 import { DirectionFacing } from "../models/directionFacing";
-import { collectionName, Plants } from "../database/plants";
+import { collectionName, Plants, Plant, UserPlant } from "../database/plants";
 import "react-toastify/dist/ReactToastify.css";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-dropdown/style.css";
 
 export const CollectionInspector: FunctionComponent = () => {
+	const {
+		index,
+		setIndex,
+		isModalOpen,
+		setModalOpen,
+		selectedPlant,
+		setSelectedPlant,
+	} = useCollectionContext();
+
 	const [userDeclaredPlantName, setUserDeclaredPlantName] = useState<string>(
 		"no name provided"
 	);
@@ -18,30 +27,30 @@ export const CollectionInspector: FunctionComponent = () => {
 	const [directionFacing, setDirectionFacing] = useState<string | undefined>(
 		undefined
 	);
-	const [dateWateredLast, setWaterDate] = useState<Date>(new Date());
 
-	const {
-		setIndex,
-		index,
-		isModalOpen,
-		setModalOpen,
-		selectedPlant,
-		setSelectedPlant,
-	} = useCollectionContext();
+	const [dateWateredLast, setWaterDate] = useState<Date>(
+		new Date(selectedPlant?.lastWaterDate?.valueOf() as number)
+	);
+
 	const closeModal = () => {
+		setIndex(undefined);
 		setModalOpen(!isModalOpen);
 	};
 
-	const updateCollection = () => {
+	const updatePlant = () => {
+		const updatedPlant = Object.assign({}, selectedPlant);
+
 		//access session storage
 		const dbString = window.sessionStorage.getItem(collectionName);
 		let db = [];
 		if (dbString !== null) {
 			db = JSON.parse(dbString);
 		}
-		if (index !== undefined) {
-			console.log(db[index]);
-		}
+		// get details from each input
+
+		db[index] = updatedPlant;
+
+		//display toast that plant has been updated
 		toast.success("Plant has been updated!", {
 			position: "top-center",
 		});
@@ -168,7 +177,7 @@ export const CollectionInspector: FunctionComponent = () => {
 											<div className="tile level is-parent">
 												<button
 													className="content is-child button  is-primary "
-													onClick={updateCollection}
+													onClick={updatePlant}
 												>
 													Update
 												</button>
