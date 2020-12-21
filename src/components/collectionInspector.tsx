@@ -20,12 +20,16 @@ export const CollectionInspector: FunctionComponent = () => {
 	} = useCollectionContext();
 
 	const [userDeclaredPlantName, setUserDeclaredPlantName] = useState<string>(
-		"no name provided"
+		selectedPlant?.name as string
 	);
-	const [underGrowLight, setGrowLight] = useState<boolean>(false);
-	const [isInWindow, setInWindow] = useState<boolean>(false);
+	const [underGrowLight, setGrowLight] = useState<boolean>(
+		selectedPlant?.growLight as boolean
+	);
+	const [isInWindow, setInWindow] = useState<boolean>(
+		selectedPlant?.inWindowSeal as boolean
+	);
 	const [directionFacing, setDirectionFacing] = useState<string | undefined>(
-		undefined
+		selectedPlant?.directionFacing
 	);
 
 	const [dateWateredLast, setWaterDate] = useState<Date>(
@@ -39,6 +43,14 @@ export const CollectionInspector: FunctionComponent = () => {
 
 	const updatePlant = () => {
 		const updatedPlant = Object.assign({}, selectedPlant);
+		const newPlant: UserPlant = {
+			name: userDeclaredPlantName,
+			id: selectedPlant?.id as number,
+			directionFacing: directionFacing as DirectionFacing,
+			inWindowSeal: isInWindow,
+			growLight: underGrowLight,
+			lastWaterDate: dateWateredLast,
+		};
 
 		//access session storage
 		const dbString = window.sessionStorage.getItem(collectionName);
@@ -46,16 +58,20 @@ export const CollectionInspector: FunctionComponent = () => {
 		if (dbString !== null) {
 			db = JSON.parse(dbString);
 		}
-		// get details from each input
 
-		db[index] = updatedPlant;
+		db[index as number] = newPlant;
+		console.log(newPlant);
+		window.sessionStorage.setItem(collectionName, JSON.stringify(db));
 
 		//display toast that plant has been updated
 		toast.success("Plant has been updated!", {
 			position: "top-center",
 		});
 	};
-	const updatePlantName = (e: React.ChangeEvent<HTMLInputElement>) => {};
+	const updatePlantName = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const value = e.target.value.toLowerCase();
+		setUserDeclaredPlantName(value);
+	};
 	const directionOptions: Array<string> = [];
 	Object.keys(DirectionFacing).map((direction) =>
 		directionOptions.push(direction)
@@ -115,7 +131,7 @@ export const CollectionInspector: FunctionComponent = () => {
 														}}
 														className="directionFacingDropdown"
 														options={directionOptions}
-														placeholder={selectedPlant.directionFacing}
+														placeholder={directionFacing}
 													></Dropdown>
 												</div>
 											</div>
@@ -180,9 +196,6 @@ export const CollectionInspector: FunctionComponent = () => {
 													onClick={updatePlant}
 												>
 													Update
-												</button>
-												<button className="content is-child button is-danger ">
-													Delete
 												</button>
 											</div>
 										</article>
