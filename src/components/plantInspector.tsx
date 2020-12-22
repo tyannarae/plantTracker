@@ -4,13 +4,22 @@ import DatePicker from "react-datepicker";
 import { ToastContainer, toast } from "react-toastify";
 import { useSearchContext } from "../context/pages/searchPage";
 import { DirectionFacing } from "../models/directionFacing";
-import { UserPlant, Plant, collectionName } from "../database/plants";
+import {
+	UserPlant,
+	Plant,
+	collectionName,
+	noNameProvided,
+} from "../database/plants";
+import { capitalizeFirstLetter } from "../utils/upperCaseFirstLetter";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-dropdown/style.css";
 import "react-toastify/dist/ReactToastify.css";
 import "../styles/components/plantInspector.scss";
 
 const PlantInspector: FunctionComponent = () => {
+	const [userDeclaredPlantName, setUserDeclaredPlantName] = useState<string>(
+		noNameProvided
+	);
 	const [underGrowLight, setGrowLight] = useState<boolean>(false);
 	const [isInWindow, setInWindow] = useState<boolean>(false);
 	const [directionFacing, setDirectionFacing] = useState<string | undefined>(
@@ -49,6 +58,7 @@ const PlantInspector: FunctionComponent = () => {
 	const addToCollection = () => {
 		const currentPlant = selectedPlant as Plant;
 		const newPlant: UserPlant = {
+			name: userDeclaredPlantName,
 			id: currentPlant.id,
 			directionFacing: directionFacing as DirectionFacing,
 			inWindowSeal: isInWindow,
@@ -61,10 +71,20 @@ const PlantInspector: FunctionComponent = () => {
 			db = JSON.parse(dbString);
 		}
 		db.push(newPlant);
+
 		window.sessionStorage.setItem(collectionName, JSON.stringify(db));
 		toast.success("Plant has been added!", {
 			position: "top-center",
 		});
+	};
+
+	const setPlantName = (e: React.ChangeEvent<HTMLInputElement>) => {
+		if (!e.target.value) {
+			setUserDeclaredPlantName("no name provided");
+		} else {
+			const value = e.target.value.toLowerCase();
+			setUserDeclaredPlantName(value);
+		}
 	};
 
 	return (
@@ -73,7 +93,9 @@ const PlantInspector: FunctionComponent = () => {
 			<div className="modal-card">
 				<section className="modal-card-body">
 					<header className="modal-card-head">
-						<p className="modal-card-title">{plantName}</p>
+						<p className="modal-card-title">
+							{capitalizeFirstLetter(plantName)}
+						</p>
 						<button
 							className="delete"
 							aria-label="close"
@@ -93,7 +115,8 @@ const PlantInspector: FunctionComponent = () => {
 										<div className="tile">
 											<div className=" tile is-parent">
 												<strong className="tile content">
-													Add {plantName} to your collection
+													Add {capitalizeFirstLetter(plantName)} to your
+													collection
 												</strong>
 											</div>
 										</div>
@@ -121,6 +144,16 @@ const PlantInspector: FunctionComponent = () => {
 											</div>
 										</div>
 										<div className="tile is-parent is-vertical">
+											<div className="field">
+												<div className="control">
+													<input
+														onChange={(e) => setPlantName(e)}
+														className="input is-success"
+														type="text"
+														placeholder="Name this plant"
+													/>
+												</div>
+											</div>
 											<label className="tile is-child checkbox">
 												<input
 													type="checkbox"

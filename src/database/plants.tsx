@@ -4,15 +4,17 @@ import { Misting } from "../models/misting";
 import { DifficultyLevel } from "../models/difficultyLevel";
 import { DirectionFacing } from "../models/directionFacing";
 
+//this is for our session storage
 export const collectionName = "collection";
-
+//this const is for anytime a UserPlant is not given a name by the user
+export const noNameProvided = "no name provided";
 //this interface defines each plant in our plants array below
 export interface Plant {
 	id: number;
 	scientificName: string; // the scientific name for this plant
 	commonName: Array<string>; // all the common names for this plant
 	humidityLevel?: HumidityLevel; //how much humidity this plant will require
-	lightRequirements?: Array<LightRequirements>; //light that this plant requires
+	lightRequirements: Array<LightRequirements>; //light that this plant requires
 	minTemp?: number;
 	maxTemp?: number;
 	misting?: Misting; //if misting the plant is required, if so how often
@@ -23,11 +25,12 @@ export interface Plant {
 
 //this interface defines each of the users plants
 export interface UserPlant {
-	id?: number;
-	directionFacing: DirectionFacing;
-	inWindowSeal: boolean;
-	growLight: boolean;
-	lastWaterDate: Date;
+	name: string;
+	id: number;
+	directionFacing?: DirectionFacing;
+	inWindowSeal?: boolean;
+	growLight?: boolean;
+	lastWaterDate?: Date;
 }
 
 //object containing data regarding the users plant collection
