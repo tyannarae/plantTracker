@@ -3,16 +3,15 @@ import Dropdown from "react-dropdown";
 import DatePicker from "react-datepicker";
 import { ToastContainer, toast } from "react-toastify";
 import { useCollectionContext } from "../context/pages/userCollections";
-import { useSearchContext } from "../context/pages/searchPage";
 import { DirectionFacing } from "../models/directionFacing";
-import { UserPlant, Plant, collectionName, Plants } from "../database/plants";
+import { Plants, noNameProvided } from "../database/plants";
 import "react-toastify/dist/ReactToastify.css";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-dropdown/style.css";
 
 export const CollectionInspector: FunctionComponent = () => {
 	const [userDeclaredPlantName, setUserDeclaredPlantName] = useState<string>(
-		"no name provided"
+		noNameProvided
 	);
 	const [underGrowLight, setGrowLight] = useState<boolean>(false);
 	const [isInWindow, setInWindow] = useState<boolean>(false);

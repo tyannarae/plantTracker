@@ -4,7 +4,12 @@ import DatePicker from "react-datepicker";
 import { ToastContainer, toast } from "react-toastify";
 import { useSearchContext } from "../context/pages/searchPage";
 import { DirectionFacing } from "../models/directionFacing";
-import { UserPlant, Plant, collectionName } from "../database/plants";
+import {
+	UserPlant,
+	Plant,
+	collectionName,
+	noNameProvided,
+} from "../database/plants";
 import { capitalizeFirstLetter } from "../utils/upperCaseFirstLetter";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-dropdown/style.css";
@@ -13,7 +18,7 @@ import "../styles/components/plantInspector.scss";
 
 const PlantInspector: FunctionComponent = () => {
 	const [userDeclaredPlantName, setUserDeclaredPlantName] = useState<string>(
-		"no name provided"
+		noNameProvided
 	);
 	const [underGrowLight, setGrowLight] = useState<boolean>(false);
 	const [isInWindow, setInWindow] = useState<boolean>(false);
