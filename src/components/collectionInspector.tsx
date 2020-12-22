@@ -151,41 +151,23 @@ export const CollectionInspector: FunctionComponent = () => {
 													</div>
 												</div>
 												<label className="tile is-child checkbox">
-													{selectedPlant.inWindowSeal === true ? (
-														<input
-															checked
-															type="checkbox"
-															onChange={() => {
-																setInWindow(!isInWindow);
-															}}
-														/>
-													) : (
-														<input
-															type="checkbox"
-															onChange={() => {
-																setInWindow(!isInWindow);
-															}}
-														/>
-													)}
+													<input
+														checked={isInWindow}
+														type="checkbox"
+														onChange={() => {
+															setInWindow(!isInWindow);
+														}}
+													/>
 													Located in a window seal?
 												</label>
 												<label className="tile is-child checkbox">
-													{selectedPlant.growLight === true ? (
-														<input
-															checked
-															type="checkbox"
-															onChange={() => {
-																setGrowLight(!underGrowLight);
-															}}
-														/>
-													) : (
-														<input
-															type="checkbox"
-															onChange={() => {
-																setGrowLight(!underGrowLight);
-															}}
-														/>
-													)}
+													<input
+														checked={underGrowLight}
+														type="checkbox"
+														onChange={() => {
+															setGrowLight(!underGrowLight);
+														}}
+													/>
 													Located under a grow light?
 												</label>
 											</div>
