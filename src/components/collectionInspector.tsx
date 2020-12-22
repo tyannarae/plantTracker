@@ -60,7 +60,6 @@ export const CollectionInspector: FunctionComponent = () => {
 		}
 
 		db[index as number] = newPlant;
-		console.log(newPlant);
 		window.sessionStorage.setItem(collectionName, JSON.stringify(db));
 
 		//display toast that plant has been updated
