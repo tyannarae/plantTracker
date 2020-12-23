@@ -1,7 +1,12 @@
 import React, { FunctionComponent } from "react";
 import { toast } from "react-toastify";
 import { useCollectionContext } from "../context/pages/userCollections";
-import { UserPlant, Plants, collectionName } from "../database/plants";
+import {
+	UserPlant,
+	Plants,
+	collectionName,
+	getDbFromSession,
+} from "../database/plants";
 import { capitalizeFirstLetter } from "../utils/upperCaseFirstLetter";
 import "../styles/components/collectionsBox.scss";
 
@@ -31,11 +36,7 @@ export const CollectionBox: FunctionComponent<userPlantProps> = (
 
 	const deletePlant = () => {
 		//access session storage
-		const dbString = window.sessionStorage.getItem(collectionName);
-		let db = [];
-		if (dbString !== null) {
-			db = JSON.parse(dbString);
-		}
+		let db = getDbFromSession();
 		//delete the item
 		db.splice(userPlantProps.index, 1);
 		//save session storage again

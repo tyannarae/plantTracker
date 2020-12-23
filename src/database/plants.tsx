@@ -6,6 +6,7 @@ import { DirectionFacing } from "../models/directionFacing";
 
 //this is for our session storage
 export const collectionName = "collection";
+
 //this const is for anytime a UserPlant is not given a name by the user
 export const noNameProvided = "no name provided";
 //this interface defines each plant in our plants array below
@@ -31,6 +32,16 @@ export interface UserPlant {
 	inWindowSeal?: boolean;
 	growLight?: boolean;
 	lastWaterDate?: Date;
+}
+
+// how the user can retreive the database
+export function getDbFromSession(): Array<UserPlant> {
+	let db = [];
+	const dbString = window.sessionStorage.getItem(collectionName);
+	if (dbString !== null) {
+		db = JSON.parse(dbString);
+	}
+	return db;
 }
 
 //object containing data regarding the users plant collection

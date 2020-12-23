@@ -3,12 +3,13 @@ import Dropdown from "react-dropdown";
 import DatePicker from "react-datepicker";
 import { ToastContainer, toast } from "react-toastify";
 import { useCollectionContext } from "../context/pages/userCollections";
-import { DirectionFacing } from "../models/directionFacing";
+import { DirectionFacing, directionOptions } from "../models/directionFacing";
 import {
 	collectionName,
 	Plants,
 	UserPlant,
 	noNameProvided,
+	getDbFromSession,
 } from "../database/plants";
 import "react-toastify/dist/ReactToastify.css";
 import "react-datepicker/dist/react-datepicker.css";
@@ -58,12 +59,7 @@ export const CollectionInspector: FunctionComponent = () => {
 		};
 
 		//access session storage
-		const dbString = window.sessionStorage.getItem(collectionName);
-		let db = [];
-		if (dbString !== null) {
-			db = JSON.parse(dbString);
-		}
-
+		let db = getDbFromSession();
 		db[index as number] = newPlant;
 		window.sessionStorage.setItem(collectionName, JSON.stringify(db));
 
@@ -76,10 +72,6 @@ export const CollectionInspector: FunctionComponent = () => {
 		const value = e.target.value.toLowerCase();
 		setUserDeclaredPlantName(value);
 	};
-	const directionOptions: Array<string> = [];
-	Object.keys(DirectionFacing).map((direction) =>
-		directionOptions.push(direction)
-	);
 
 	return (
 		<div className="modal is-active ">
