@@ -4,7 +4,7 @@ import NavBar from "../components/navBar";
 import { Loading } from "../components/loading";
 import CollectionInspector from "../components/collectionInspector";
 import { CollectionBox } from "../components/collectionBox";
-import { UserPlant, Plant } from "../database/plants";
+import { UserPlant, Plant, getDbFromSession } from "../database/plants";
 import { CollectionPageContext } from "../context/pages/userCollections";
 
 export interface userCollectionsProps {
@@ -13,6 +13,7 @@ export interface userCollectionsProps {
 }
 
 const UserCollections: FunctionComponent<userCollectionsProps> = () => {
+	const [index, setIndex] = useState<number | undefined>(undefined);
 	const [isLoading, setLoading] = useState(true);
 	const [isModalOpen, setModalOpen] = useState(false);
 	const [selectedPlant, setSelectedPlant] = useState<UserPlant | undefined>(
@@ -21,7 +22,7 @@ const UserCollections: FunctionComponent<userCollectionsProps> = () => {
 	const [deletedPlant, setDeletedPlant] = useState<UserPlant | undefined>(
 		undefined
 	);
-	const UserCollection = JSON.parse(sessionStorage.collection);
+	const UserCollection = getDbFromSession();
 
 	window.onload = () => {
 		setLoading(!isLoading);
@@ -33,6 +34,8 @@ const UserCollections: FunctionComponent<userCollectionsProps> = () => {
 		return (
 			<CollectionPageContext.Provider
 				value={{
+					index,
+					setIndex,
 					deletedPlant,
 					setDeletedPlant,
 					isModalOpen,

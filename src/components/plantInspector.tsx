@@ -3,12 +3,13 @@ import Dropdown from "react-dropdown";
 import DatePicker from "react-datepicker";
 import { ToastContainer, toast } from "react-toastify";
 import { useSearchContext } from "../context/pages/searchPage";
-import { DirectionFacing } from "../models/directionFacing";
+import { DirectionFacing, directionOptions } from "../models/directionFacing";
 import {
 	UserPlant,
 	Plant,
 	collectionName,
 	noNameProvided,
+	getDbFromSession,
 } from "../database/plants";
 import { capitalizeFirstLetter } from "../utils/upperCaseFirstLetter";
 import "react-datepicker/dist/react-datepicker.css";
@@ -32,10 +33,6 @@ const PlantInspector: FunctionComponent = () => {
 		setModalOpen(!isModalOpen);
 	};
 
-	const directionOptions: Array<string> = [];
-	Object.keys(DirectionFacing).map((direction) =>
-		directionOptions.push(direction)
-	);
 	const plantName = selectedPlant?.commonName[0];
 
 	const getLightRequirements = () => {
@@ -65,11 +62,8 @@ const PlantInspector: FunctionComponent = () => {
 			growLight: underGrowLight,
 			lastWaterDate: dateWateredLast,
 		};
-		const dbString = window.sessionStorage.getItem(collectionName);
-		let db = [];
-		if (dbString !== null) {
-			db = JSON.parse(dbString);
-		}
+		let db = getDbFromSession();
+
 		db.push(newPlant);
 
 		window.sessionStorage.setItem(collectionName, JSON.stringify(db));
@@ -80,9 +74,9 @@ const PlantInspector: FunctionComponent = () => {
 
 	const setPlantName = (e: React.ChangeEvent<HTMLInputElement>) => {
 		if (!e.target.value) {
-			setUserDeclaredPlantName("no name provided");
+			setUserDeclaredPlantName(noNameProvided);
 		} else {
-			const value = e.target.value.toLowerCase();
+			const value = e.target.value;
 			setUserDeclaredPlantName(value);
 		}
 	};
