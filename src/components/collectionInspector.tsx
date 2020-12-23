@@ -4,7 +4,11 @@ import DatePicker from "react-datepicker";
 import { ToastContainer, toast } from "react-toastify";
 import { useCollectionContext } from "../context/pages/userCollections";
 import { DirectionFacing } from "../models/directionFacing";
+<<<<<<< HEAD
 import { collectionName, Plants, UserPlant } from "../database/plants";
+=======
+import { Plants, noNameProvided } from "../database/plants";
+>>>>>>> 75ecc6d50503365e3c62ff76946d55f3f2a4b745
 import "react-toastify/dist/ReactToastify.css";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-dropdown/style.css";
@@ -20,6 +24,7 @@ export const CollectionInspector: FunctionComponent = () => {
 	} = useCollectionContext();
 
 	const [userDeclaredPlantName, setUserDeclaredPlantName] = useState<string>(
+<<<<<<< HEAD
 		selectedPlant?.name as string
 	);
 	const [underGrowLight, setGrowLight] = useState<boolean>(
@@ -27,6 +32,9 @@ export const CollectionInspector: FunctionComponent = () => {
 	);
 	const [isInWindow, setInWindow] = useState<boolean>(
 		selectedPlant?.inWindowSeal as boolean
+=======
+		noNameProvided
+>>>>>>> 75ecc6d50503365e3c62ff76946d55f3f2a4b745
 	);
 	const [directionFacing, setDirectionFacing] = useState<string | undefined>(
 		selectedPlant?.directionFacing

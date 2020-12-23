@@ -5,24 +5,26 @@ import { UserPlant, Plants, collectionName } from "../database/plants";
 import { capitalizeFirstLetter } from "../utils/upperCaseFirstLetter";
 import "../styles/components/collectionsBox.scss";
 
-export interface props {
+export interface userPlantProps {
 	userPlant: UserPlant;
 	index: number;
 }
 
-export const CollectionBox: FunctionComponent<props> = (props) => {
+export const CollectionBox: FunctionComponent<userPlantProps> = (
+	userPlantProps
+) => {
 	const {
 		setModalOpen,
 		setSelectedPlant,
 		setDeletedPlant,
 		setIndex,
 	} = useCollectionContext();
-	const plant = props.userPlant;
+	const plant = userPlantProps.userPlant;
 	const id = plant.id;
 	const selectedPlant = Plants[id];
 
 	const openEditModal = () => {
-		setIndex(props.index);
+		setIndex(userPlantProps.index);
 		setSelectedPlant(plant);
 		setModalOpen(true);
 	};
@@ -35,11 +37,11 @@ export const CollectionBox: FunctionComponent<props> = (props) => {
 			db = JSON.parse(dbString);
 		}
 		//delete the item
-		db.splice(props.index, 1);
+		db.splice(userPlantProps.index, 1);
 		//save session storage again
 		window.sessionStorage.setItem(collectionName, JSON.stringify(db));
 		//set the deleted plant to cause a rerender of application
-		setDeletedPlant(props.userPlant);
+		setDeletedPlant(userPlantProps.userPlant);
 		toast.success("Plant has been deleted!", {
 			position: "top-center",
 		});
@@ -123,7 +125,7 @@ export const CollectionBox: FunctionComponent<props> = (props) => {
 							</div>
 							<img
 								className="tile image "
-								alt={props.userPlant.name}
+								alt={userPlantProps.userPlant.name}
 								src={Plants[id].img}
 							></img>
 						</div>

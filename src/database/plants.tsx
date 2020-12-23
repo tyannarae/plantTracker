@@ -4,8 +4,10 @@ import { Misting } from "../models/misting";
 import { DifficultyLevel } from "../models/difficultyLevel";
 import { DirectionFacing } from "../models/directionFacing";
 
+//this is for our session storage
 export const collectionName = "collection";
-
+//this const is for anytime a UserPlant is not given a name by the user
+export const noNameProvided = "no name provided";
 //this interface defines each plant in our plants array below
 export interface Plant {
 	id: number;
