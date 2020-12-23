@@ -69,7 +69,7 @@ export const CollectionInspector: FunctionComponent = () => {
 		});
 	};
 	const updatePlantName = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const value = e.target.value.toLowerCase();
+		const value = e.target.value;
 		setUserDeclaredPlantName(value);
 	};
 

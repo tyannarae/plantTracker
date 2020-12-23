@@ -62,22 +62,22 @@ export const CollectionBox: FunctionComponent<userPlantProps> = (
 	const getUnderGrowlight = () => {
 		if (plant.growLight) {
 			return (
-				<div className="buttons has-addons">
-					<button className="button is-small is-success is-selected">
+				<div className="buttons has-addons ">
+					<div className="button is-small is-success is-selected noHover">
 						Yes
-					</button>
+					</div>
 
-					<button className="button is-small">No</button>
+					<div className="button is-small noHover ">No</div>
 				</div>
 			);
 		} else {
 			return (
-				<div className="buttons has-addons">
-					<button className="button is-small ">Yes</button>
+				<div className="buttons has-addons ">
+					<div className="button is-small noHover">Yes</div>
 
-					<button className="button  is-success is-selected is-small">
+					<div className="button  is-success is-selected is-small noHover">
 						No
-					</button>
+					</div>
 				</div>
 			);
 		}
@@ -96,19 +96,21 @@ export const CollectionBox: FunctionComponent<userPlantProps> = (
 		if (plant.inWindowSeal) {
 			return (
 				<div className="buttons has-addons">
-					<button className="button is-small is-success is-selected">
+					<button className="button is-small is-success is-selected noHover">
 						Yes
 					</button>
 
-					<button className="button is-small">No</button>
+					<button className="button is-small noHover">No</button>
 				</div>
 			);
 		} else {
 			return (
 				<div className="buttons has-addons ">
-					<button className="button is-small">Yes</button>
+					<button className="button is-small noHover">Yes</button>
 
-					<button className="button is-success is-selected is-small">No</button>
+					<button className="button is-success is-selected is-small noHover">
+						No
+					</button>
 				</div>
 			);
 		}

@@ -76,7 +76,7 @@ const PlantInspector: FunctionComponent = () => {
 		if (!e.target.value) {
 			setUserDeclaredPlantName(noNameProvided);
 		} else {
-			const value = e.target.value.toLowerCase();
+			const value = e.target.value;
 			setUserDeclaredPlantName(value);
 		}
 	};
