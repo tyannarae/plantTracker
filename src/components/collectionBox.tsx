@@ -50,7 +50,9 @@ export const CollectionBox: FunctionComponent<userPlantProps> = (
 			return undefined;
 		} else {
 			return plantLightRecs.map((lightReq) => (
-				<div className="tag is-success is-small is-rounded ">{lightReq}</div>
+				<div key={lightReq} className="tag is-success is-small is-rounded ">
+					{lightReq}
+				</div>
 			));
 		}
 	};
@@ -110,7 +112,7 @@ export const CollectionBox: FunctionComponent<userPlantProps> = (
 		}
 	};
 	return (
-		<div className="container">
+		<div data-testid="CollectionBox" className="container">
 			<div className="box content">
 				<div className="level">
 					<div className=" tile is-vertical level-left">
@@ -184,25 +186,29 @@ export const CollectionBox: FunctionComponent<userPlantProps> = (
 						<div className="tile is-child">
 							<strong>Last watered on: </strong>
 
-							{plant.lastWaterDate}
+							{new Date(
+								plant.lastWaterDate?.valueOf() as number
+							).toLocaleString()}
 						</div>
 						<div className="tile is-child"></div>
 					</div>
 
 					<div className="tile level">
 						<div className=" tile level-right">
-							<div
+							<button
+								data-testid="edit"
 								className="button level-item  is-success is-outlined is-small "
 								onClick={edit}
 							>
 								edit
-							</div>
-							<div
+							</button>
+							<button
+								data-testid="delete"
 								className="button level-item  is-danger is-small"
 								onClick={deletePlant}
 							>
 								delete
-							</div>
+							</button>
 						</div>
 					</div>
 				</div>

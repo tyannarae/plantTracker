@@ -12,7 +12,7 @@ export interface userCollectionsProps {
 	plant?: Plant[]; // global plant interface
 }
 
-const UserCollections: FunctionComponent<userCollectionsProps> = () => {
+export const UserCollections: FunctionComponent<userCollectionsProps> = () => {
 	const [isLoading, setLoading] = useState(true);
 	const [isModalOpen, setModalOpen] = useState(false);
 	const [selectedPlant, setSelectedPlant] = useState<UserPlant | undefined>(
