@@ -192,7 +192,7 @@ export const CollectionBox: FunctionComponent<userPlantProps> = (
 
 							{new Date(
 								plant.lastWaterDate?.valueOf() as number
-							).toLocaleString()}
+							).toLocaleDateString()}
 						</div>
 						<div className="tile is-child"></div>
 					</div>
