@@ -3,38 +3,78 @@ import Dropdown from "react-dropdown";
 import DatePicker from "react-datepicker";
 import { ToastContainer, toast } from "react-toastify";
 import { useCollectionContext } from "../context/pages/userCollections";
-import { DirectionFacing } from "../models/directionFacing";
-import { Plants, noNameProvided } from "../database/plants";
+import {
+	DirectionFacing,
+	getDirectionOptions,
+} from "../models/directionFacing";
+import {
+	collectionName,
+	Plants,
+	UserPlant,
+	noNameProvided,
+	getDbFromSession,
+} from "../database/plants";
 import "react-toastify/dist/ReactToastify.css";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-dropdown/style.css";
 
 export const CollectionInspector: FunctionComponent = () => {
+	const {
+		index,
+		setIndex,
+		isModalOpen,
+		setModalOpen,
+		selectedPlant,
+		setSelectedPlant,
+	} = useCollectionContext();
+
 	const [userDeclaredPlantName, setUserDeclaredPlantName] = useState<string>(
 		noNameProvided
 	);
-	const [underGrowLight, setGrowLight] = useState<boolean>(false);
-	const [isInWindow, setInWindow] = useState<boolean>(false);
-	const [directionFacing, setDirectionFacing] = useState<string | undefined>(
-		undefined
+	const [underGrowLight, setGrowLight] = useState<boolean>(
+		selectedPlant?.growLight as boolean
 	);
-	const [dateWateredLast, setWaterDate] = useState<Date>(new Date());
-	const { selectedPlant } = useCollectionContext();
-	const { isModalOpen, setModalOpen } = useCollectionContext();
+	const [isInWindow, setInWindow] = useState<boolean>(
+		selectedPlant?.inWindowSeal as boolean
+	);
+	const [directionFacing, setDirectionFacing] = useState<string | undefined>(
+		selectedPlant?.directionFacing
+	);
+
+	const [dateWateredLast, setWaterDate] = useState<Date>(
+		new Date(selectedPlant?.lastWaterDate?.valueOf() as number)
+	);
+
 	const closeModal = () => {
+		setIndex(undefined);
 		setModalOpen(!isModalOpen);
 	};
 
-	const updateCollection = () => {
+	const updatePlant = () => {
+		const updatedPlant = Object.assign({}, selectedPlant);
+		const newPlant: UserPlant = {
+			name: userDeclaredPlantName,
+			id: selectedPlant?.id as number,
+			directionFacing: directionFacing as DirectionFacing,
+			inWindowSeal: isInWindow,
+			growLight: underGrowLight,
+			lastWaterDate: dateWateredLast,
+		};
+
+		//access session storage
+		let db = getDbFromSession();
+		db[index as number] = newPlant;
+		window.sessionStorage.setItem(collectionName, JSON.stringify(db));
+
+		//display toast that plant has been updated
 		toast.success("Plant has been updated!", {
 			position: "top-center",
 		});
 	};
-	const updatePlantName = (e: React.ChangeEvent<HTMLInputElement>) => {};
-	const directionOptions: Array<string> = [];
-	Object.keys(DirectionFacing).map((direction) =>
-		directionOptions.push(direction)
-	);
+	const updatePlantName = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const value = e.target.value;
+		setUserDeclaredPlantName(value);
+	};
 
 	return (
 		<div className="modal is-active ">
@@ -89,8 +129,8 @@ export const CollectionInspector: FunctionComponent = () => {
 															setDirectionFacing(e.value);
 														}}
 														className="directionFacingDropdown"
-														options={directionOptions}
-														placeholder="Direction Facing"
+														options={getDirectionOptions()}
+														placeholder={directionFacing}
 													></Dropdown>
 												</div>
 											</div>
@@ -111,6 +151,7 @@ export const CollectionInspector: FunctionComponent = () => {
 												</div>
 												<label className="tile is-child checkbox">
 													<input
+														checked={isInWindow}
 														type="checkbox"
 														onChange={() => {
 															setInWindow(!isInWindow);
@@ -120,6 +161,7 @@ export const CollectionInspector: FunctionComponent = () => {
 												</label>
 												<label className="tile is-child checkbox">
 													<input
+														checked={underGrowLight}
 														type="checkbox"
 														onChange={() => {
 															setGrowLight(!underGrowLight);
@@ -132,12 +174,9 @@ export const CollectionInspector: FunctionComponent = () => {
 											<div className="tile level is-parent">
 												<button
 													className="content is-child button  is-primary "
-													onClick={updateCollection}
+													onClick={updatePlant}
 												>
 													Update
-												</button>
-												<button className="content is-child button is-danger ">
-													Delete
 												</button>
 											</div>
 										</article>

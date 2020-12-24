@@ -1,44 +1,48 @@
 import React, { FunctionComponent } from "react";
 import { toast } from "react-toastify";
 import { useCollectionContext } from "../context/pages/userCollections";
-import { UserPlant, Plants, collectionName } from "../database/plants";
+import {
+	UserPlant,
+	Plants,
+	collectionName,
+	getDbFromSession,
+} from "../database/plants";
 import { capitalizeFirstLetter } from "../utils/upperCaseFirstLetter";
 import "../styles/components/collectionsBox.scss";
 
-export interface userPlantProps {
+export interface UserPlantProps {
 	userPlant: UserPlant;
 	index: number;
 }
 
-export const CollectionBox: FunctionComponent<userPlantProps> = (
-	userPlantProps
+export const CollectionBox: FunctionComponent<UserPlantProps> = (
+	UserPlantProps
 ) => {
 	const {
 		setModalOpen,
 		setSelectedPlant,
 		setDeletedPlant,
+		setIndex,
 	} = useCollectionContext();
-	const plant = userPlantProps.userPlant;
+	const plant = UserPlantProps.userPlant;
 	const id = plant.id;
 	const selectedPlant = Plants[id];
-	const edit = () => {
+
+	const openEditModal = () => {
+		setIndex(UserPlantProps.index);
 		setSelectedPlant(plant);
 		setModalOpen(true);
 	};
 
 	const deletePlant = () => {
 		//access session storage
-		const dbString = window.sessionStorage.getItem(collectionName);
-		let db = [];
-		if (dbString !== null) {
-			db = JSON.parse(dbString);
-		}
+		let db = getDbFromSession();
 		//delete the item
-		db.splice(userPlantProps.index, 1);
+		db.splice(UserPlantProps.index, 1);
 		//save session storage again
 		window.sessionStorage.setItem(collectionName, JSON.stringify(db));
 		//set the deleted plant to cause a rerender of application
-		setDeletedPlant(userPlantProps.userPlant);
+		setDeletedPlant(UserPlantProps.userPlant);
 		toast.success("Plant has been deleted!", {
 			position: "top-center",
 		});
@@ -60,22 +64,22 @@ export const CollectionBox: FunctionComponent<userPlantProps> = (
 	const getUnderGrowlight = () => {
 		if (plant.growLight) {
 			return (
-				<div className="buttons has-addons">
-					<button className="button is-small is-success is-selected">
+				<div className="buttons has-addons ">
+					<div className="button is-small is-success is-selected noHover">
 						Yes
-					</button>
+					</div>
 
-					<button className="button is-small">No</button>
+					<div className="button is-small noHover ">No</div>
 				</div>
 			);
 		} else {
 			return (
-				<div className="buttons has-addons">
-					<button className="button is-small ">Yes</button>
+				<div className="buttons has-addons ">
+					<div className="button is-small noHover">Yes</div>
 
-					<button className="button  is-success is-selected is-small">
+					<div className="button  is-success is-selected is-small noHover">
 						No
-					</button>
+					</div>
 				</div>
 			);
 		}
@@ -94,19 +98,21 @@ export const CollectionBox: FunctionComponent<userPlantProps> = (
 		if (plant.inWindowSeal) {
 			return (
 				<div className="buttons has-addons">
-					<button className="button is-small is-success is-selected">
+					<button className="button is-small is-success is-selected noHover">
 						Yes
 					</button>
 
-					<button className="button is-small">No</button>
+					<button className="button is-small noHover">No</button>
 				</div>
 			);
 		} else {
 			return (
 				<div className="buttons has-addons ">
-					<button className="button is-small">Yes</button>
+					<button className="button is-small noHover">Yes</button>
 
-					<button className="button is-success is-selected is-small">No</button>
+					<button className="button is-success is-selected is-small noHover">
+						No
+					</button>
 				</div>
 			);
 		}
@@ -124,7 +130,7 @@ export const CollectionBox: FunctionComponent<userPlantProps> = (
 							</div>
 							<img
 								className="tile image "
-								alt={userPlantProps.userPlant.name}
+								alt={UserPlantProps.userPlant.name}
 								src={Plants[id].img}
 							></img>
 						</div>
@@ -188,7 +194,7 @@ export const CollectionBox: FunctionComponent<userPlantProps> = (
 
 							{new Date(
 								plant.lastWaterDate?.valueOf() as number
-							).toLocaleString()}
+							).toLocaleDateString()}
 						</div>
 						<div className="tile is-child"></div>
 					</div>
@@ -198,7 +204,7 @@ export const CollectionBox: FunctionComponent<userPlantProps> = (
 							<button
 								data-testid="edit"
 								className="button level-item  is-success is-outlined is-small "
-								onClick={edit}
+								onClick={openEditModal}
 							>
 								edit
 							</button>
