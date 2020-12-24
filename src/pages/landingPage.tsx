@@ -2,7 +2,7 @@ import React from "react";
 import backgroundImg from "../media/landingPage/landingPage.jpg";
 import "../styles/pages/landingPage.scss";
 
-const LandingPage = () => {
+export const LandingPage = () => {
 	return (
 		<div>
 			<div className="landingPageContainer">
@@ -14,6 +14,7 @@ const LandingPage = () => {
 				</a>
 
 				<img
+					data-testid="backgroundImg"
 					className="backgroundImg"
 					alt="backgroundImg"
 					src={backgroundImg}
