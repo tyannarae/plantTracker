@@ -1,11 +1,9 @@
-import React from "react";
+import { capitalizeFirstLetter } from "./upperCaseFirstLetter";
 
-describe("Passes directionFacing value", () => {
-	it("directionFacing value equals north", () => {});
-	it("directionFacing value equals northEast", () => {});
-	it("directionFacing value equals northWest", () => {});
-	it("directionFacing value equals west", () => {});
-	it("directionFacing value equals east", () => {});
-	it("directionFacing value equals south", () => {});
-	it("directionFacing value equals southEast", () => {});
+describe("capitalizeFirstLetter function", () => {
+	it("First letter of a string is now capitalized", () => {
+		const string = "test";
+		const capatalizedString = capitalizeFirstLetter(string);
+		expect(capatalizedString).toEqual("Test");
+	});
 });
