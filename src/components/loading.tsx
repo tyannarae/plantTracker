@@ -3,7 +3,7 @@ import "../styles/components/loading.scss";
 
 export const Loading = () => {
 	return (
-		<div className="loader-wrapper">
+		<div data-testid="loadingComponent" className="loader-wrapper">
 			<div className="loader is-loading">loading...</div>
 		</div>
 	);

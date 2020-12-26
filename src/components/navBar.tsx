@@ -4,7 +4,7 @@ import Logo from "../media/navBar/logo.png";
 import { useHistory } from "react-router-dom";
 import { Search } from "./search";
 
-const NavBar = () => {
+export const NavBar = () => {
 	const [isActive, setActive] = useState(false);
 	const history = useHistory();
 
@@ -20,7 +20,7 @@ const NavBar = () => {
 	}
 
 	return (
-		<nav className="navbar">
+		<nav className="navbar" data-testid="navBar">
 			<div className="navbar-brand">
 				<a className="navbar-item" href="/search">
 					<img className="logoImg" alt="Logo" src={Logo} />
