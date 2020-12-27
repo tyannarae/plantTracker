@@ -8,8 +8,8 @@ import { SearchPageContext } from "../context/pages/searchPage";
 import { Plants, Plant } from "../database/plants";
 import "../styles/pages/searchPage.scss";
 
-const SearchPage: FunctionComponent = () => {
-	const [isLoading, setLoading] = useState(true);
+export const SearchPage: FunctionComponent = () => {
+	const [isLoading, setLoading] = React.useState(true);
 	const [isModalOpen, setModalOpen] = useState(false);
 	const [searchResults, setSearchResults] = useState<Array<Plant>>(Plants);
 	const [selectedPlant, setSelectedPlant] = useState<Plant | undefined>(
