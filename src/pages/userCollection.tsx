@@ -54,7 +54,11 @@ export const UserCollections: FunctionComponent<userCollectionsProps> = () => {
 					<div data-testid="userCollectionItemsTernary">
 						{UserCollection.length > 0 ? (
 							UserCollection.map((userPlant: UserPlant, index: number) => (
-								<CollectionBox userPlant={userPlant} index={index} />
+								<CollectionBox
+									key={index}
+									userPlant={userPlant}
+									index={index}
+								/>
 							))
 						) : (
 							<div
