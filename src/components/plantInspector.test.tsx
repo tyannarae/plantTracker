@@ -44,50 +44,5 @@ describe("PlantInspector", () => {
 		expect(contextValue.setModalOpen).toHaveBeenCalledWith(false);
 	});
 
-	it("adds Plant to user Collection onClick", () => {
-		// MockDate.set("2000-11-22");
-		// const userDeclaredPlantName = "test";
-		// const underGrowLight = true;
-		// const isInWindow = false;
-		// const directionFacing = DirectionFacing.west;
-		// const dateWateredLast = new Date().toString();
-		// React.useState = jest
-		// 	.fn()
-		// 	.mockReturnValueOnce([userDeclaredPlantName, {}])
-		// 	.mockReturnValueOnce([underGrowLight, {}])
-		// 	.mockReturnValueOnce([isInWindow, {}])
-		// 	.mockReturnValueOnce([directionFacing, {}]);
-		// // .mockReturnValueOnce([dateWateredLast, {}]);
-		// const UserCollection = [
-		// 	{
-		// 		id: 2,
-		// 		directionFacing: DirectionFacing.north,
-		// 		inWindowSeal: true,
-		// 		growLight: true,
-		// 		lastWaterDate: new Date().toString(),
-		// 	},
-		// ];
-		// const contextValue = {
-		// 	isModalOpen: true,
-		// 	setModalOpen: jest.fn(),
-		// 	searchResults: Plants,
-		// 	setSearchResults: jest.fn(),
-		// 	selectedPlant: Plants[0],
-		// 	setSelectedPlant: jest.fn(),
-		// };
-		// Object.defineProperty(window, "sessionStorage", {
-		// 	value: {
-		// 		getItem: jest.fn(() => JSON.stringify(UserCollection)),
-		// 	},
-		// 	writable: true,
-		// });
-		// render(
-		// 	<SearchPageContext.Provider value={contextValue}>
-		// 		<PlantInspector />
-		// 	</SearchPageContext.Provider>
-		// );
-		// const addPlantButton = screen.getByTestId("addPlant");
-		// fireEvent.click(addPlantButton);
-		// expect(UserCollection).toHaveLength(1);
-	});
+	it("adds Plant to user Collection onClick", () => {});
 });

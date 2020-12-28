@@ -21,15 +21,15 @@ import "react-toastify/dist/ReactToastify.css";
 import "../styles/components/plantInspector.scss";
 
 export const PlantInspector: FunctionComponent = () => {
+	const [userDeclaredPlantName, setUserDeclaredPlantName] = useState<string>(
+		noNameProvided
+	);
 	const [underGrowLight, setGrowLight] = useState<boolean>(false);
 	const [isInWindow, setInWindow] = useState<boolean>(false);
 	const [directionFacing, setDirectionFacing] = useState<string | undefined>(
 		undefined
 	);
 	const [dateWateredLast, setWaterDate] = useState<Date>(new Date());
-	const [userDeclaredPlantName, setUserDeclaredPlantName] = useState<string>(
-		noNameProvided
-	);
 	const { selectedPlant } = useSearchContext();
 	const { isModalOpen, setModalOpen } = useSearchContext();
 	const closeModal = () => {
@@ -75,7 +75,7 @@ export const PlantInspector: FunctionComponent = () => {
 		});
 	};
 
-	const setPlantName = (e: ChangeEvent<HTMLInputElement>) => {
+	const setPlantName = (e: React.ChangeEvent<HTMLInputElement>) => {
 		if (!e.target.value) {
 			setUserDeclaredPlantName(noNameProvided);
 		} else {
@@ -174,7 +174,6 @@ export const PlantInspector: FunctionComponent = () => {
 
 										<div className="tile is-parent">
 											<button
-												data-testid="addPlant"
 												className="tile is-child button is-primary"
 												onClick={addToCollection}
 											>
