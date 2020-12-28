@@ -20,16 +20,16 @@ import "react-dropdown/style.css";
 import "react-toastify/dist/ReactToastify.css";
 import "../styles/components/plantInspector.scss";
 
-const PlantInspector: FunctionComponent = () => {
-	const [userDeclaredPlantName, setUserDeclaredPlantName] = useState<string>(
-		noNameProvided
-	);
+export const PlantInspector: FunctionComponent = () => {
 	const [underGrowLight, setGrowLight] = useState<boolean>(false);
 	const [isInWindow, setInWindow] = useState<boolean>(false);
 	const [directionFacing, setDirectionFacing] = useState<string | undefined>(
 		undefined
 	);
 	const [dateWateredLast, setWaterDate] = useState<Date>(new Date());
+	const [userDeclaredPlantName, setUserDeclaredPlantName] = useState<string>(
+		noNameProvided
+	);
 	const { selectedPlant } = useSearchContext();
 	const { isModalOpen, setModalOpen } = useSearchContext();
 	const closeModal = () => {
@@ -46,7 +46,7 @@ const PlantInspector: FunctionComponent = () => {
 				<div className="tags">
 					<strong> Light Requirements:</strong>
 					{selectedPlant?.lightRequirements.map((lightReq) => (
-						<div className="tag is-success is-small is-rounded ">
+						<div key={lightReq} className="tag is-success is-small is-rounded ">
 							{lightReq}
 						</div>
 					))}
@@ -75,7 +75,7 @@ const PlantInspector: FunctionComponent = () => {
 		});
 	};
 
-	const setPlantName = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const setPlantName = (e: ChangeEvent<HTMLInputElement>) => {
 		if (!e.target.value) {
 			setUserDeclaredPlantName(noNameProvided);
 		} else {
@@ -85,7 +85,7 @@ const PlantInspector: FunctionComponent = () => {
 	};
 
 	return (
-		<div className="modal is-active ">
+		<div data-testid="plantInspector" className="modal is-active ">
 			<div className="modal-background" onClick={closeModal}></div>
 			<div className="modal-card">
 				<section className="modal-card-body">
@@ -94,6 +94,7 @@ const PlantInspector: FunctionComponent = () => {
 							{capitalizeFirstLetter(plantName)}
 						</p>
 						<button
+							data-testid="closeBtn"
 							className="delete"
 							aria-label="close"
 							onClick={closeModal}
@@ -173,6 +174,7 @@ const PlantInspector: FunctionComponent = () => {
 
 										<div className="tile is-parent">
 											<button
+												data-testid="addPlant"
 												className="tile is-child button is-primary"
 												onClick={addToCollection}
 											>

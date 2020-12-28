@@ -10,7 +10,7 @@ import "../styles/pages/searchPage.scss";
 
 export const SearchPage: FunctionComponent = () => {
 	const [isLoading, setLoading] = React.useState(true);
-	const [isModalOpen, setModalOpen] = useState(false);
+	const [isModalOpen, setModalOpen] = React.useState(false);
 	const [searchResults, setSearchResults] = useState<Array<Plant>>(Plants);
 	const [selectedPlant, setSelectedPlant] = useState<Plant | undefined>(
 		undefined
