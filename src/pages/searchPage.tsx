@@ -36,7 +36,7 @@ export const SearchPage: FunctionComponent = () => {
 				<div className="">
 					{isModalOpen ? <PlantInspector /> : undefined}
 
-					<NavBar />
+					<NavBar search={true} />
 					<div className="resultsContainer">
 						<div className="featuredPlantsHeader">Featured Plants</div>
 					</div>

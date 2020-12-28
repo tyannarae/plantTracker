@@ -3,7 +3,6 @@ import { render, screen } from "@testing-library/react";
 import { CollectionPageContext } from "../context/pages/userCollections";
 import { UserCollections } from "./userCollection";
 import { DirectionFacing } from "../models/directionFacing";
-import { Plants } from "../database/plants";
 
 describe("User Collections", () => {
 	it("User Collection page renders with loadingState is set to true", () => {

@@ -47,7 +47,7 @@ export const UserCollections: FunctionComponent<userCollectionsProps> = () => {
 				<div data-testid="userCollectionsOutterContainer">
 					<ToastContainer />
 					{isModalOpen ? <CollectionInspector /> : undefined}
-					<NavBar />
+					<NavBar search={false} />
 					<div className="resultsContainer">
 						<div className="featuredPlantsHeader">Your Collection</div>
 					</div>

@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import { toast } from "react-toastify";
-import { useCollectionContext } from "../context/pages/userCollections";
+import { UserCollectionContext } from "../context/pages/userCollections";
 import {
 	UserPlant,
 	Plants,
@@ -23,7 +23,7 @@ export const CollectionBox: FunctionComponent<UserPlantProps> = (
 		setSelectedPlant,
 		setDeletedPlant,
 		setIndex,
-	} = useCollectionContext();
+	} = UserCollectionContext();
 	const plant = UserPlantProps.userPlant;
 	const id = plant.id;
 	const selectedPlant = Plants[id];

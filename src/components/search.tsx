@@ -26,7 +26,7 @@ export const Search = () => {
 	}, 300);
 
 	return (
-		<div className="field">
+		<div data-testid="searchComp" className="field">
 			<div className="control">
 				<input
 					className="input is-primary is-rounded"

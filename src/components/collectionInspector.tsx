@@ -2,7 +2,7 @@ import React, { FunctionComponent, useState } from "react";
 import Dropdown from "react-dropdown";
 import DatePicker from "react-datepicker";
 import { ToastContainer, toast } from "react-toastify";
-import { useCollectionContext } from "../context/pages/userCollections";
+import { UserCollectionContext } from "../context/pages/userCollections";
 import {
 	DirectionFacing,
 	getDirectionOptions,
@@ -26,7 +26,7 @@ export const CollectionInspector: FunctionComponent = () => {
 		setModalOpen,
 		selectedPlant,
 		setSelectedPlant,
-	} = useCollectionContext();
+	} = UserCollectionContext();
 
 	const [userDeclaredPlantName, setUserDeclaredPlantName] = useState<string>(
 		noNameProvided
@@ -77,7 +77,7 @@ export const CollectionInspector: FunctionComponent = () => {
 	};
 
 	return (
-		<div className="modal is-active ">
+		<div className="modal is-active" data-testid="collectionInspector">
 			<div className="modal-background" onClick={closeModal}></div>
 			{selectedPlant !== undefined ? (
 				<div className="modal-card">
