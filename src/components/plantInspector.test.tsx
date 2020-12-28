@@ -1,5 +1,4 @@
 import React from "react";
-import MockDate from "mockdate";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { SearchPageContext } from "../context/pages/searchPage";
 import { PlantInspector } from "./plantInspector";

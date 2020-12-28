@@ -29,6 +29,8 @@ export const Search = () => {
 		<div data-testid="searchComp" className="field">
 			<div className="control">
 				<input
+					aria-label="searchInput"
+					data-testid="searchInput"
 					className="input is-primary is-rounded"
 					type="text"
 					name="search"
