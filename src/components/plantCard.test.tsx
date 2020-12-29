@@ -1,15 +1,16 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import { render, fireEvent, screen } from "@testing-library/react";
 import { SearchPageContext } from "../context/pages/searchPage";
 import { PlantCard } from "./plantCard";
 import { Plants } from "../database/plants";
 
 describe("PlantCard", () => {
-	it("renders PlantCard component", () => {
-		const { getByTestId } = render(
-			<PlantCard {...Plants[0].id} {...Plants[0]} />
-		);
-		expect(getByTestId("plantCardComponent")).toBeDefined();
+	it("renders PlantCard component with plant details", () => {
+		render(<PlantCard {...Plants[0].id} {...Plants[0]} />);
+
+		expect(screen.getByTestId("plantCardComponent")).toBeDefined();
+		expect(screen.getByText(Plants[0].lightRequirements[0])).toBeDefined();
+		expect(screen.getByText(Plants[0].humidityLevel)).toBeDefined();
 	});
 	it("onclick, calls function handlePlantCardClick & sets modal to open", () => {
 		const contextValue = {

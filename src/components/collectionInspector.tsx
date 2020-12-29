@@ -25,23 +25,23 @@ export const CollectionInspector: FunctionComponent = () => {
 		isModalOpen,
 		setModalOpen,
 		selectedPlant,
-		setSelectedPlant,
 	} = UserCollectionContext();
 
-	const [userDeclaredPlantName, setUserDeclaredPlantName] = useState<string>(
-		noNameProvided
-	);
-	const [underGrowLight, setGrowLight] = useState<boolean>(
+	const [
+		userDeclaredPlantName,
+		setUserDeclaredPlantName,
+	] = React.useState<string>(noNameProvided);
+	const [underGrowLight, setGrowLight] = React.useState<boolean>(
 		selectedPlant?.growLight as boolean
 	);
-	const [isInWindow, setInWindow] = useState<boolean>(
+	const [isInWindow, setInWindow] = React.useState<boolean>(
 		selectedPlant?.inWindowSeal as boolean
 	);
-	const [directionFacing, setDirectionFacing] = useState<string | undefined>(
-		selectedPlant?.directionFacing
-	);
+	const [directionFacing, setDirectionFacing] = React.useState<
+		string | undefined
+	>(selectedPlant?.directionFacing);
 
-	const [dateWateredLast, setWaterDate] = useState<Date>(
+	const [dateWateredLast, setWaterDate] = React.useState<Date>(
 		new Date(selectedPlant?.lastWaterDate?.valueOf() as number)
 	);
 
@@ -51,7 +51,6 @@ export const CollectionInspector: FunctionComponent = () => {
 	};
 
 	const updatePlant = () => {
-		const updatedPlant = Object.assign({}, selectedPlant);
 		const newPlant: UserPlant = {
 			name: userDeclaredPlantName,
 			id: selectedPlant?.id as number,
@@ -65,7 +64,6 @@ export const CollectionInspector: FunctionComponent = () => {
 		let db = getDbFromSession();
 		db[index as number] = newPlant;
 		window.sessionStorage.setItem(collectionName, JSON.stringify(db));
-
 		//display toast that plant has been updated
 		toast.success("Plant has been updated!", {
 			position: "top-center",
@@ -173,6 +171,7 @@ export const CollectionInspector: FunctionComponent = () => {
 
 											<div className="tile level is-parent">
 												<button
+													data-testid="UpdatePlantButton"
 													className="content is-child button  is-primary "
 													onClick={updatePlant}
 												>

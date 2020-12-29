@@ -5,7 +5,6 @@ import SearchPage from "./pages/searchPage";
 import reportWebVitals from "./reportWebVitals";
 import UserCollections from "./pages/userCollection";
 import "./styles/global/app.scss";
-
 function App() {
 	return (
 		<Router>

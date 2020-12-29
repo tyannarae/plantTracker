@@ -60,7 +60,7 @@ describe("CollectionsBox", () => {
 		fireEvent.click(editButton);
 		expect(contextValue.setModalOpen).toHaveBeenCalledWith(true);
 	});
-	it("onclick, calls function deletePlant succesfully removed plant from UserCollection", () => {
+	it("on clicking edit button, this calls the deletePlant function and removed plant from UserCollection", () => {
 		const contextValue = {
 			index: 1,
 			setIndex: jest.fn(),
