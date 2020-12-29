@@ -90,7 +90,7 @@ export const PlantInspector: FunctionComponent = () => {
 			<div className="modal-card">
 				<section className="modal-card-body">
 					<header className="modal-card-head">
-						<p className="modal-card-title">
+						<p data-testid="header" className="modal-card-title">
 							{capitalizeFirstLetter(plantName)}
 						</p>
 						<button
@@ -104,7 +104,12 @@ export const PlantInspector: FunctionComponent = () => {
 					<div className="tile is-ancestor">
 						<ToastContainer />
 						<div className="tile is-parent">
-							<img className="plantImg" src={selectedPlant?.img} alt=""></img>
+							<img
+								className="plantImg"
+								data-testid="plantInspectImg"
+								src={selectedPlant?.img}
+								alt=""
+							></img>
 						</div>
 						<div className="tile is-vertical is-8">
 							<div className="tile">
@@ -112,7 +117,10 @@ export const PlantInspector: FunctionComponent = () => {
 									<article className="tile is-child ">
 										<div className="tile">
 											<div className=" tile is-parent">
-												<strong className="tile content">
+												<strong
+													data-testid="plantName"
+													className="tile content"
+												>
 													Add {capitalizeFirstLetter(plantName)} to your
 													collection
 												</strong>

@@ -5,6 +5,7 @@ import { SearchPage } from "./searchPage";
 import { SearchPageContext } from "../context/pages/searchPage";
 import { Plants } from "../database/plants";
 import { DirectionFacing } from "../models/directionFacing";
+
 describe("Search Page", () => {
 	it("SearchPage renders with text and isLoading is set to false", () => {
 		const loadingIsFalse = false;

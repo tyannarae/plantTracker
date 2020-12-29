@@ -1,18 +1,31 @@
 import React from "react";
+import "@testing-library/jest-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { SearchPageContext } from "../context/pages/searchPage";
 import { PlantInspector } from "./plantInspector";
 import { Plants } from "../database/plants";
 import { DirectionFacing } from "../models/directionFacing";
+import { capitalizeFirstLetter } from "../utils/upperCaseFirstLetter";
 
 describe("PlantInspector", () => {
-	it("renders plantInspector component", () => {
+	it("renders plantInspector component with plant data", () => {
+		const newPlantToAdd = [
+			{
+				name: "test name",
+				id: 2,
+				directionFacing: DirectionFacing.west,
+				inWindowSeal: true,
+				growLight: true,
+				lastWaterDate: new Date(),
+			},
+		];
+		const plant = Plants[2];
 		const contextValue = {
 			isModalOpen: true,
 			setModalOpen: jest.fn(),
 			searchResults: Plants,
 			setSearchResults: jest.fn(),
-			selectedPlant: Plants[0],
+			selectedPlant: plant,
 			setSelectedPlant: jest.fn(),
 		};
 
@@ -21,7 +34,14 @@ describe("PlantInspector", () => {
 				<PlantInspector />
 			</SearchPageContext.Provider>
 		);
-		expect(screen.getByTestId("plantInspector")).toBeDefined();
+
+		const upperCasedPlantName = capitalizeFirstLetter(
+			plant.commonName[0]
+		).toString();
+
+		expect(screen.getAllByText(upperCasedPlantName)).toBeDefined();
+		const plantImg = screen.getByTestId("plantInspectImg");
+		expect(plantImg).toHaveAttribute("src", plant.img);
 	});
 	it("closes PlantInspector when closeModal function is clicked", () => {
 		const contextValue = {
