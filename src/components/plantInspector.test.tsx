@@ -35,9 +35,7 @@ describe("PlantInspector", () => {
 			</SearchPageContext.Provider>
 		);
 
-		const upperCasedPlantName = capitalizeFirstLetter(
-			plant.commonName[0]
-		).toString();
+		const upperCasedPlantName = capitalizeFirstLetter(plant.commonName[0]);
 
 		expect(screen.getAllByText(upperCasedPlantName)).toBeDefined();
 		const plantImg = screen.getByTestId("plantInspectImg");
