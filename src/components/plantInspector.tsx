@@ -24,12 +24,12 @@ export const PlantInspector: FunctionComponent = () => {
 	const [userDeclaredPlantName, setUserDeclaredPlantName] = useState<string>(
 		noNameProvided
 	);
-	const [underGrowLight, setGrowLight] = useState<boolean>(false);
-	const [isInWindow, setInWindow] = useState<boolean>(false);
-	const [directionFacing, setDirectionFacing] = useState<string | undefined>(
-		undefined
-	);
-	const [dateWateredLast, setWaterDate] = useState<Date>(new Date());
+	const [underGrowLight, setGrowLight] = React.useState<boolean>(false);
+	const [isInWindow, setInWindow] = React.useState<boolean>(false);
+	const [directionFacing, setDirectionFacing] = React.useState<
+		string | undefined
+	>(undefined);
+	const [dateWateredLast, setWaterDate] = React.useState<Date>(new Date());
 	const { selectedPlant } = useSearchContext();
 	const { isModalOpen, setModalOpen } = useSearchContext();
 	const closeModal = () => {
@@ -174,6 +174,7 @@ export const PlantInspector: FunctionComponent = () => {
 
 										<div className="tile is-parent">
 											<button
+												data-testid="addPlantButton"
 												className="tile is-child button is-primary"
 												onClick={addToCollection}
 											>
