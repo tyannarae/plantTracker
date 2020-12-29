@@ -29,13 +29,14 @@ export const Search = () => {
 		<div data-testid="searchComp" className="field">
 			<div className="control">
 				<input
-					aria-label="searchInput"
 					data-testid="searchInput"
 					className="input is-primary is-rounded"
 					type="text"
 					name="search"
 					placeholder="Search.."
-					onChange={(e) => handleSearch(e)}
+					onChange={(e) => {
+						handleSearch(e);
+					}}
 				></input>
 			</div>
 		</div>
