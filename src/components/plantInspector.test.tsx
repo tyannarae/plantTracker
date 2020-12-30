@@ -94,9 +94,9 @@ describe("PlantInspector", () => {
 				<PlantInspector />
 			</SearchPageContext.Provider>
 		);
+
 		fireEvent.click(screen.getByTestId("addPlantButton"));
 		const setPlant = window.sessionStorage.getItem("sessionStorage");
-
 		expect(setPlant).toContain("west");
 		expect(setPlant).toContain("test name");
 	});

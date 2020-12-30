@@ -39,6 +39,7 @@ export const CollectionBox: FunctionComponent<UserPlantProps> = (
 		let db = getDbFromSession();
 		//delete the item
 		db.splice(UserPlantProps.index, 1);
+
 		//save session storage again
 		window.sessionStorage.setItem(collectionName, JSON.stringify(db));
 		//set the deleted plant to cause a rerender of application

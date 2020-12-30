@@ -6,25 +6,34 @@ import { CollectionBox } from "./collectionBox";
 import { DirectionFacing } from "../models/directionFacing";
 import { capitalizeFirstLetter } from "../utils/upperCaseFirstLetter";
 describe("CollectionsBox", () => {
-	const UserCollection = [
-		{
-			name: "someName",
-			id: 2,
-			directionFacing: DirectionFacing.west,
-			inWindowSeal: true,
-			growLight: true,
-			lastWaterDate: new Date(),
-		},
-	];
 	it("renders CollectionBox component", () => {
+		const UserCollection = [
+			{
+				name: "someName",
+				id: 0,
+				directionFacing: DirectionFacing.west,
+				inWindowSeal: true,
+				growLight: true,
+				lastWaterDate: new Date(),
+			},
+			{
+				name: "some Other Name",
+				id: 0,
+				directionFacing: DirectionFacing.west,
+				inWindowSeal: true,
+				growLight: true,
+				lastWaterDate: new Date(),
+			},
+		];
+		const openedPlant = UserCollection[0];
 		const contextValue = {
-			index: 1,
+			index: 0,
 			setIndex: jest.fn(),
 			deletedPlant: undefined,
 			setDeletedPlant: jest.fn(),
 			isModalOpen: false,
 			setModalOpen: jest.fn(),
-			selectedPlant: UserCollection[0],
+			selectedPlant: openedPlant,
 			setSelectedPlant: jest.fn(),
 		};
 		render(
@@ -46,14 +55,33 @@ describe("CollectionsBox", () => {
 		expect(screen.getByTestId("CollectionBox")).toBeDefined();
 	});
 	it("onclick, calls function openEditModal & sets modal to open", () => {
+		const UserCollection = [
+			{
+				name: "someName",
+				id: 0,
+				directionFacing: DirectionFacing.west,
+				inWindowSeal: true,
+				growLight: true,
+				lastWaterDate: new Date(),
+			},
+			{
+				name: "some Other Name",
+				id: 0,
+				directionFacing: DirectionFacing.west,
+				inWindowSeal: true,
+				growLight: true,
+				lastWaterDate: new Date(),
+			},
+		];
+		const openedPlant = UserCollection[0];
 		const contextValue = {
-			index: 1,
+			index: 0,
 			setIndex: jest.fn(),
 			deletedPlant: undefined,
 			setDeletedPlant: jest.fn(),
 			isModalOpen: false,
 			setModalOpen: jest.fn(),
-			selectedPlant: UserCollection[0],
+			selectedPlant: openedPlant,
 			setSelectedPlant: jest.fn(),
 		};
 
@@ -70,16 +98,44 @@ describe("CollectionsBox", () => {
 		expect(contextValue.setModalOpen).toHaveBeenCalledWith(true);
 	});
 	it("on clicking edit button, this calls the deletePlant function and removed plant from UserCollection", () => {
+		const UserCollection = [
+			{
+				name: "someName",
+				id: 0,
+				directionFacing: DirectionFacing.west,
+				inWindowSeal: true,
+				growLight: true,
+				lastWaterDate: new Date(),
+			},
+			{
+				name: "some Other Name",
+				id: 0,
+				directionFacing: DirectionFacing.west,
+				inWindowSeal: true,
+				growLight: true,
+				lastWaterDate: new Date(),
+			},
+		];
+		const openedPlant = UserCollection[0].id;
+
 		const contextValue = {
-			index: 1,
+			index: 0,
 			setIndex: jest.fn(),
 			deletedPlant: undefined,
 			setDeletedPlant: jest.fn(),
 			isModalOpen: false,
 			setModalOpen: jest.fn(),
-			selectedPlant: UserCollection[0],
+			selectedPlant: openedPlant,
 			setSelectedPlant: jest.fn(),
 		};
+		Object.defineProperty(window, "sessionStorage", {
+			value: {
+				getItem: jest.fn(() => JSON.stringify(UserCollection)),
+				setItem: jest.fn(() =>
+					JSON.stringify(UserCollection.splice(contextValue.index, 1))
+				),
+			},
+		});
 
 		render(
 			<CollectionPageContext.Provider value={contextValue}>
@@ -89,10 +145,9 @@ describe("CollectionsBox", () => {
 				/>
 			</CollectionPageContext.Provider>
 		);
+
 		const deleteButton = screen.getByTestId("delete");
 		fireEvent.click(deleteButton);
-		expect(contextValue.setDeletedPlant).toHaveBeenCalledWith(
-			contextValue.selectedPlant
-		);
+		expect(contextValue.setDeletedPlant).toBeCalledWith(openedPlant);
 	});
 });
