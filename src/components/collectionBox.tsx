@@ -136,7 +136,7 @@ export const CollectionBox: FunctionComponent<UserPlantProps> = (
 						</div>
 					</div>
 					<div className="tile is-veritcal tags plantDataContainer">
-						<div>
+						<div data-testid="scienceName">
 							<strong>Scientific Name: </strong>
 							{capitalizeFirstLetter(selectedPlant.scientificName)}
 						</div>

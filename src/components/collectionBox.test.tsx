@@ -1,9 +1,10 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
+import { Plants } from "../database/plants";
 import { CollectionPageContext } from "../context/pages/userCollections";
 import { CollectionBox } from "./collectionBox";
 import { DirectionFacing } from "../models/directionFacing";
-
+import { capitalizeFirstLetter } from "../utils/upperCaseFirstLetter";
 describe("CollectionsBox", () => {
 	const UserCollection = [
 		{
@@ -34,6 +35,14 @@ describe("CollectionsBox", () => {
 				/>
 			</CollectionPageContext.Provider>
 		);
+		const plant = contextValue.selectedPlant;
+		const upperCasedPlantName = capitalizeFirstLetter(plant.name);
+		const plantScientificName = capitalizeFirstLetter(
+			Plants[plant.id].scientificName
+		);
+
+		expect(screen.getByText(plantScientificName)).toBeDefined();
+		expect(screen.getByText(upperCasedPlantName)).toBeDefined();
 		expect(screen.getByTestId("CollectionBox")).toBeDefined();
 	});
 	it("onclick, calls function openEditModal & sets modal to open", () => {
