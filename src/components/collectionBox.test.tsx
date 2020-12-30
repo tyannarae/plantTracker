@@ -39,7 +39,7 @@ describe("CollectionsBox", () => {
 		render(
 			<CollectionPageContext.Provider value={contextValue}>
 				<CollectionBox
-					index={contextValue.index}
+					userPlantindex={contextValue.index}
 					userPlant={contextValue.selectedPlant}
 				/>
 			</CollectionPageContext.Provider>
@@ -88,7 +88,7 @@ describe("CollectionsBox", () => {
 		render(
 			<CollectionPageContext.Provider value={contextValue}>
 				<CollectionBox
-					index={contextValue.index}
+					userPlantindex={contextValue.index}
 					userPlant={contextValue.selectedPlant}
 				/>
 			</CollectionPageContext.Provider>
@@ -116,7 +116,7 @@ describe("CollectionsBox", () => {
 				lastWaterDate: new Date(),
 			},
 		];
-		const openedPlant = UserCollection[0].id;
+		const openedPlant = UserCollection[0];
 
 		const contextValue = {
 			index: 0,
@@ -128,26 +128,31 @@ describe("CollectionsBox", () => {
 			selectedPlant: openedPlant,
 			setSelectedPlant: jest.fn(),
 		};
+
+		let collection = UserCollection;
+
 		Object.defineProperty(window, "sessionStorage", {
 			value: {
-				getItem: jest.fn(() => JSON.stringify(UserCollection)),
-				setItem: jest.fn(() =>
-					JSON.stringify(UserCollection.splice(contextValue.index, 1))
-				),
+				getItem: jest.fn(() => JSON.stringify(collection)),
+				setItem: jest.fn((key, value) => {
+					collection = JSON.parse(value);
+				}),
 			},
+			writable: true,
 		});
 
 		render(
 			<CollectionPageContext.Provider value={contextValue}>
 				<CollectionBox
-					index={contextValue.index}
+					userPlantindex={contextValue.index}
 					userPlant={contextValue.selectedPlant}
 				/>
 			</CollectionPageContext.Provider>
 		);
 
-		const deleteButton = screen.getByTestId("delete");
+		const deleteButton = screen.getByTestId("deletePlant");
 		fireEvent.click(deleteButton);
 		expect(contextValue.setDeletedPlant).toBeCalledWith(openedPlant);
+		console.log(window.sessionStorage.getItem("sessionStorage"));
 	});
 });

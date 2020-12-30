@@ -57,7 +57,7 @@ export const UserCollections: FunctionComponent<userCollectionsProps> = () => {
 								<CollectionBox
 									key={index}
 									userPlant={userPlant}
-									index={index}
+									userPlantindex={index as number}
 								/>
 							))
 						) : (
