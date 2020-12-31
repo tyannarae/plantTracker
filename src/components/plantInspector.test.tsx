@@ -3,7 +3,7 @@ import "@testing-library/jest-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { SearchPageContext } from "../context/pages/searchPage";
 import { PlantInspector } from "./plantInspector";
-import { Plants } from "../database/plants";
+import { Plants, Plant } from "../database/plants";
 import { DirectionFacing } from "../models/directionFacing";
 import { capitalizeFirstLetter } from "../utils/upperCaseFirstLetter";
 
@@ -62,22 +62,13 @@ describe("PlantInspector", () => {
 	});
 
 	it("plant is added successfully to session storage", () => {
-		const newPlantToAdd = [
-			{
-				name: "test name",
-				id: 2,
-				directionFacing: DirectionFacing.west,
-				inWindowSeal: true,
-				growLight: true,
-				lastWaterDate: new Date(),
-			},
-		];
-		let newPlantWasAdded = newPlantToAdd;
+		let newPlantToAdd: Array<Plant> = [];
+
 		Object.defineProperty(window, "sessionStorage", {
 			value: {
-				getItem: jest.fn(() => JSON.stringify(newPlantWasAdded)),
+				getItem: jest.fn(() => JSON.stringify(newPlantToAdd)),
 				setItem: jest.fn((key, value) => {
-					return (newPlantWasAdded = JSON.parse(value));
+					newPlantToAdd = JSON.parse(value);
 				}),
 			},
 			writable: true,
@@ -97,9 +88,21 @@ describe("PlantInspector", () => {
 			</SearchPageContext.Provider>
 		);
 
+		const expectedPlant = {
+			growLight: false,
+			id: 0,
+			inWindowSeal: false,
+			name: "no name provided",
+		};
+
 		fireEvent.click(screen.getByTestId("addPlantButton"));
-		const setPlant = window.sessionStorage.getItem("sessionStorage");
-		expect(setPlant).toContain("west");
-		expect(setPlant).toContain("test name");
+		const setPlant = JSON.parse(window.sessionStorage.getItem("") as string);
+		const plant = setPlant[0];
+		expect(setPlant.length).toEqual(1);
+		expect(plant.growLight).toEqual(expectedPlant.growLight);
+		expect(plant.id).toEqual(expectedPlant.id);
+		expect(plant.inWindowSeal).toEqual(expectedPlant.inWindowSeal);
+		expect(plant.name).toEqual(expectedPlant.name);
+		expect(plant.lastWaterDate).toBeDefined();
 	});
 });
