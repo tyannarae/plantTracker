@@ -72,11 +72,13 @@ describe("PlantInspector", () => {
 				lastWaterDate: new Date(),
 			},
 		];
-
+		let newPlantWasAdded = newPlantToAdd;
 		Object.defineProperty(window, "sessionStorage", {
 			value: {
-				getItem: jest.fn(() => JSON.stringify(newPlantToAdd)),
-				setItem: jest.fn(() => JSON.stringify(newPlantToAdd)),
+				getItem: jest.fn(() => JSON.stringify(newPlantWasAdded)),
+				setItem: jest.fn((key, value) => {
+					return (newPlantWasAdded = JSON.parse(value));
+				}),
 			},
 			writable: true,
 		});

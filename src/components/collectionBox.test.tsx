@@ -50,6 +50,9 @@ describe("CollectionsBox", () => {
 			Plants[plant.id].scientificName
 		);
 
+		expect(
+			screen.getByText(openedPlant.lastWaterDate.toLocaleDateString())
+		).toBeDefined();
 		expect(screen.getByText(plantScientificName)).toBeDefined();
 		expect(screen.getByText(upperCasedPlantName)).toBeDefined();
 		expect(screen.getByTestId("CollectionBox")).toBeDefined();

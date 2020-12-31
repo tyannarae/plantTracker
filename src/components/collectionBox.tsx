@@ -198,9 +198,8 @@ export const CollectionBox: FunctionComponent<UserPlantProps> = (
 
 							{getInWindowSeal()}
 						</div>
-						<div className="tile is-child">
+						<div data-testid="lastWaterDate" className="tile is-child">
 							<strong>Last watered on: </strong>
-
 							{new Date(
 								plant.lastWaterDate?.valueOf() as number
 							).toLocaleDateString()}
