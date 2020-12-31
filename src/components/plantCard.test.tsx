@@ -12,7 +12,7 @@ describe("PlantCard", () => {
 		expect(screen.getByText(Plants[0].lightRequirements[0])).toBeDefined();
 		expect(screen.getByText(Plants[0].humidityLevel)).toBeDefined();
 	});
-	it("onclick, calls function handlePlantCardClick & sets modal to open", () => {
+	it("on clicking PlantCard,this calls the function handlePlantCardClick & sets modal to open", () => {
 		const contextValue = {
 			isModalOpen: false,
 			setModalOpen: jest.fn(),

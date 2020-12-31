@@ -49,11 +49,13 @@ describe("CollectionsInspector", () => {
 			.mockReturnValueOnce([directionFacing, {}])
 			.mockReturnValueOnce([growLight, {}])
 			.mockReturnValueOnce([lastWaterDate, {}]);
-
+		let updatedCollection = UserCollection;
 		Object.defineProperty(window, "sessionStorage", {
 			value: {
-				getItem: jest.fn(() => JSON.stringify(UserCollection)),
-				setItem: jest.fn(() => JSON.stringify(UserCollection)),
+				getItem: jest.fn(() => JSON.stringify(updatedCollection)),
+				setItem: jest.fn((key, value) => {
+					return (updatedCollection = JSON.parse(value));
+				}),
 			},
 			writable: true,
 		});

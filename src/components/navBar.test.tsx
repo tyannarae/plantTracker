@@ -9,12 +9,14 @@ import {
 import "@testing-library/jest-dom";
 import { NavBar } from "./navBar";
 
-describe("Loading", () => {
-	it("loading component renders with text", () => {
+describe("NavBar", () => {
+	it("Navbar component renders", () => {
 		const value = {
 			search: true,
 		};
 		render(<NavBar search={value.search} />);
+		expect(screen.getAllByText("Sign Out")).toBeDefined();
+		expect(screen.getAllByText("Collections")).toBeDefined();
 		expect(screen.getByTestId("navBar")).toBeDefined();
 	});
 	it("contains search component when search prop is set to true", () => {

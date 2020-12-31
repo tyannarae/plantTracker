@@ -8,7 +8,7 @@ describe("Landing Page", () => {
 		const { getByText } = render(<LandingPage />);
 		expect(getByText("Time to Get Planting")).toBeDefined();
 	});
-	it("renders with image", () => {
+	it("renders Landing Page with image", () => {
 		const { getByTestId } = render(<LandingPage />);
 		const img = getByTestId("backgroundImg");
 		expect(img).toHaveAttribute("src", "landingPage.jpg");

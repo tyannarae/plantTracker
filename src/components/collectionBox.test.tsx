@@ -57,7 +57,7 @@ describe("CollectionsBox", () => {
 		expect(screen.getByText(upperCasedPlantName)).toBeDefined();
 		expect(screen.getByTestId("CollectionBox")).toBeDefined();
 	});
-	it("onclick, calls function openEditModal & sets modal to open", () => {
+	it("on clicking edit button, openEditModal is set to true which sets modal to open", () => {
 		const UserCollection = [
 			{
 				name: "someName",
