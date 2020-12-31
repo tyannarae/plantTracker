@@ -39,7 +39,7 @@ export const CollectionBox: FunctionComponent<UserPlantProps> = (
 
 	function deletePlant() {
 		//call and set our plant index
-		console.log(selectedPlant);
+
 		setIndex(selectedPlant?.id);
 
 		//access session storage

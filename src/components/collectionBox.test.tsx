@@ -135,7 +135,7 @@ describe("CollectionsBox", () => {
 			value: {
 				getItem: jest.fn(() => JSON.stringify(collection)),
 				setItem: jest.fn((key, value) => {
-					collection = JSON.parse(value);
+					return (collection = JSON.parse(value));
 				}),
 			},
 			writable: true,
@@ -154,5 +154,7 @@ describe("CollectionsBox", () => {
 		fireEvent.click(deleteButton);
 		expect(contextValue.setDeletedPlant).toBeCalledWith(openedPlant);
 		expect(collection).toHaveLength(1);
+		expect(collection[0].name).not.toEqual(UserCollection[0].name);
+		expect(collection[0].name).toEqual(UserCollection[1].name);
 	});
 });
