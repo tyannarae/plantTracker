@@ -153,6 +153,6 @@ describe("CollectionsBox", () => {
 		const deleteButton = screen.getByTestId("deletePlant");
 		fireEvent.click(deleteButton);
 		expect(contextValue.setDeletedPlant).toBeCalledWith(openedPlant);
-		console.log(window.sessionStorage.getItem("sessionStorage"));
+		expect(collection).toHaveLength(1);
 	});
 });
