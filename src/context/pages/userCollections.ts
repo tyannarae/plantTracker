@@ -1,8 +1,8 @@
 import { createContext, useContext } from 'react'
-import {UserPlant} from '../../database/plants'
+import { UserPlant } from '../../database/plants'
 
 export type CollectionPageContextType = {
-    index?: number | undefined,
+    index: number | undefined,
     setIndex: (plantIndex: number | undefined) => void,
     deletedPlant?: UserPlant,
     setDeletedPlant: (plantDeleted: UserPlant) => void,
@@ -24,4 +24,4 @@ export const CollectionPageContext = createContext<CollectionPageContextType>({
     setModalOpen: isOpen => console.warn('modal no context provider'),
 })
 
-export const useCollectionContext = () => useContext(CollectionPageContext);
+export const UserCollectionContext = () => useContext(CollectionPageContext);

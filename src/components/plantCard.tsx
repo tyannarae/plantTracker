@@ -11,7 +11,7 @@ import "../styles/components/plantCard.scss";
  * This component will take in a single plant object and display it's results to the user.
  */
 
-const PlantCard: FunctionComponent<Plant> = (plant) => {
+export const PlantCard: FunctionComponent<Plant> = (plant) => {
 	const {
 		id = 0,
 		scientificName = "",
@@ -28,12 +28,13 @@ const PlantCard: FunctionComponent<Plant> = (plant) => {
 
 	const { setModalOpen, setSelectedPlant } = useSearchContext();
 
-	const handlePlantCardClick = () => {
+	function handlePlantCardClick() {
 		setModalOpen(true);
 		setSelectedPlant(plant);
-	};
+	}
 	return (
 		<div
+			data-testid="plantCardComponent"
 			className="plantCardContainer box "
 			key={id}
 			onClick={handlePlantCardClick}

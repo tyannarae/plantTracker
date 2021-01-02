@@ -3,7 +3,10 @@ import Dropdown from "react-dropdown";
 import DatePicker from "react-datepicker";
 import { ToastContainer, toast } from "react-toastify";
 import { useSearchContext } from "../context/pages/searchPage";
-import { DirectionFacing, directionOptions } from "../models/directionFacing";
+import {
+	DirectionFacing,
+	getDirectionOptions,
+} from "../models/directionFacing";
 import {
 	UserPlant,
 	Plant,
@@ -17,16 +20,16 @@ import "react-dropdown/style.css";
 import "react-toastify/dist/ReactToastify.css";
 import "../styles/components/plantInspector.scss";
 
-const PlantInspector: FunctionComponent = () => {
+export const PlantInspector: FunctionComponent = () => {
 	const [userDeclaredPlantName, setUserDeclaredPlantName] = useState<string>(
 		noNameProvided
 	);
-	const [underGrowLight, setGrowLight] = useState<boolean>(false);
-	const [isInWindow, setInWindow] = useState<boolean>(false);
-	const [directionFacing, setDirectionFacing] = useState<string | undefined>(
-		undefined
-	);
-	const [dateWateredLast, setWaterDate] = useState<Date>(new Date());
+	const [underGrowLight, setGrowLight] = React.useState<boolean>(false);
+	const [isInWindow, setInWindow] = React.useState<boolean>(false);
+	const [directionFacing, setDirectionFacing] = React.useState<
+		string | undefined
+	>(undefined);
+	const [dateWateredLast, setWaterDate] = React.useState<Date>(new Date());
 	const { selectedPlant } = useSearchContext();
 	const { isModalOpen, setModalOpen } = useSearchContext();
 	const closeModal = () => {
@@ -43,7 +46,7 @@ const PlantInspector: FunctionComponent = () => {
 				<div className="tags">
 					<strong> Light Requirements:</strong>
 					{selectedPlant?.lightRequirements.map((lightReq) => (
-						<div className="tag is-success is-small is-rounded ">
+						<div key={lightReq} className="tag is-success is-small is-rounded ">
 							{lightReq}
 						</div>
 					))}
@@ -82,15 +85,16 @@ const PlantInspector: FunctionComponent = () => {
 	};
 
 	return (
-		<div className="modal is-active ">
+		<div data-testid="plantInspector" className="modal is-active ">
 			<div className="modal-background" onClick={closeModal}></div>
 			<div className="modal-card">
 				<section className="modal-card-body">
 					<header className="modal-card-head">
-						<p className="modal-card-title">
+						<p data-testid="header" className="modal-card-title">
 							{capitalizeFirstLetter(plantName)}
 						</p>
 						<button
+							data-testid="closeBtn"
 							className="delete"
 							aria-label="close"
 							onClick={closeModal}
@@ -100,7 +104,12 @@ const PlantInspector: FunctionComponent = () => {
 					<div className="tile is-ancestor">
 						<ToastContainer />
 						<div className="tile is-parent">
-							<img className="plantImg" src={selectedPlant?.img} alt=""></img>
+							<img
+								className="plantImg"
+								data-testid="plantInspectImg"
+								src={selectedPlant?.img}
+								alt=""
+							></img>
 						</div>
 						<div className="tile is-vertical is-8">
 							<div className="tile">
@@ -108,7 +117,10 @@ const PlantInspector: FunctionComponent = () => {
 									<article className="tile is-child ">
 										<div className="tile">
 											<div className=" tile is-parent">
-												<strong className="tile content">
+												<strong
+													data-testid="plantName"
+													className="tile content"
+												>
 													Add {capitalizeFirstLetter(plantName)} to your
 													collection
 												</strong>
@@ -132,7 +144,7 @@ const PlantInspector: FunctionComponent = () => {
 														setDirectionFacing(e.value);
 													}}
 													className="directionFacingDropdown"
-													options={directionOptions}
+													options={getDirectionOptions()}
 													placeholder="Direction Facing"
 												></Dropdown>
 											</div>
@@ -170,6 +182,7 @@ const PlantInspector: FunctionComponent = () => {
 
 										<div className="tile is-parent">
 											<button
+												data-testid="addPlantButton"
 												className="tile is-child button is-primary"
 												onClick={addToCollection}
 											>

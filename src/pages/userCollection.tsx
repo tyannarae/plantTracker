@@ -12,9 +12,9 @@ export interface userCollectionsProps {
 	plant?: Plant[]; // global plant interface
 }
 
-const UserCollections: FunctionComponent<userCollectionsProps> = () => {
+export const UserCollections: FunctionComponent<userCollectionsProps> = () => {
 	const [index, setIndex] = useState<number | undefined>(undefined);
-	const [isLoading, setLoading] = useState(true);
+	const [isLoading, setLoading] = React.useState(true);
 	const [isModalOpen, setModalOpen] = useState(false);
 	const [selectedPlant, setSelectedPlant] = useState<UserPlant | undefined>(
 		undefined
@@ -44,20 +44,27 @@ const UserCollections: FunctionComponent<userCollectionsProps> = () => {
 					setSelectedPlant,
 				}}
 			>
-				<div>
+				<div data-testid="userCollectionsOutterContainer">
 					<ToastContainer />
 					{isModalOpen ? <CollectionInspector /> : undefined}
-					<NavBar />
+					<NavBar search={false} />
 					<div className="resultsContainer">
 						<div className="featuredPlantsHeader">Your Collection</div>
 					</div>
-					<div className="">
+					<div data-testid="userCollectionItemsTernary">
 						{UserCollection.length > 0 ? (
 							UserCollection.map((userPlant: UserPlant, index: number) => (
-								<CollectionBox userPlant={userPlant} index={index} />
+								<CollectionBox
+									key={index}
+									userPlant={userPlant}
+									userPlantindex={index as number}
+								/>
 							))
 						) : (
-							<div className="noCollectionAvaiable">
+							<div
+								data-testid="noPlantsAvailable"
+								className="noCollectionAvaiable"
+							>
 								Looks like you have not added any plants to your collection yet.
 							</div>
 						)}

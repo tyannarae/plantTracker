@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import { toast } from "react-toastify";
-import { useCollectionContext } from "../context/pages/userCollections";
+import { UserCollectionContext } from "../context/pages/userCollections";
 import {
 	UserPlant,
 	Plants,
@@ -12,41 +12,50 @@ import "../styles/components/collectionsBox.scss";
 
 export interface UserPlantProps {
 	userPlant: UserPlant;
-	index: number;
+	userPlantindex: number;
 }
 
 export const CollectionBox: FunctionComponent<UserPlantProps> = (
 	UserPlantProps
 ) => {
 	const {
+		index,
 		setModalOpen,
 		setSelectedPlant,
 		setDeletedPlant,
+		selectedPlant,
 		setIndex,
-	} = useCollectionContext();
+	} = UserCollectionContext();
 	const plant = UserPlantProps.userPlant;
 	const id = plant.id;
-	const selectedPlant = Plants[id];
+	const userSelectedPlant = Plants[plant.id];
 
 	const openEditModal = () => {
-		setIndex(UserPlantProps.index);
+		setIndex(selectedPlant?.id);
+		setIndex(UserPlantProps.userPlantindex);
 		setSelectedPlant(plant);
 		setModalOpen(true);
 	};
 
-	const deletePlant = () => {
+	function deletePlant() {
+		//call and set our plant index
+
+		setIndex(selectedPlant?.id);
+
 		//access session storage
 		let db = getDbFromSession();
+
 		//delete the item
-		db.splice(UserPlantProps.index, 1);
+		db.splice(index as number, 1);
+
 		//save session storage again
 		window.sessionStorage.setItem(collectionName, JSON.stringify(db));
 		//set the deleted plant to cause a rerender of application
-		setDeletedPlant(UserPlantProps.userPlant);
+		setDeletedPlant(plant);
 		toast.success("Plant has been deleted!", {
 			position: "top-center",
 		});
-	};
+	}
 
 	const getLightRequirments = () => {
 		const plantLightRecs = Plants[id]?.lightRequirements;
@@ -54,7 +63,9 @@ export const CollectionBox: FunctionComponent<UserPlantProps> = (
 			return undefined;
 		} else {
 			return plantLightRecs.map((lightReq) => (
-				<div className="tag is-success is-small is-rounded ">{lightReq}</div>
+				<div key={lightReq} className="tag is-success is-small is-rounded ">
+					{lightReq}
+				</div>
 			));
 		}
 	};
@@ -116,7 +127,7 @@ export const CollectionBox: FunctionComponent<UserPlantProps> = (
 		}
 	};
 	return (
-		<div className="container">
+		<div data-testid="CollectionBox" className="container">
 			<div className="box content">
 				<div className="level">
 					<div className=" tile is-vertical level-left">
@@ -134,18 +145,18 @@ export const CollectionBox: FunctionComponent<UserPlantProps> = (
 						</div>
 					</div>
 					<div className="tile is-veritcal tags plantDataContainer">
-						<div>
+						<div data-testid="scienceName">
 							<strong>Scientific Name: </strong>
-							{capitalizeFirstLetter(selectedPlant.scientificName)}
+							{capitalizeFirstLetter(userSelectedPlant.scientificName)}
 						</div>
 						<div>
 							<strong>Ideal Temperature Range: </strong>
-							{selectedPlant.minTemp} - {selectedPlant.maxTemp}
+							{userSelectedPlant.minTemp} - {userSelectedPlant.maxTemp}
 						</div>
 
 						<div>
 							<strong>Misting Requirement: </strong>
-							{selectedPlant.misting}
+							{userSelectedPlant.misting}
 						</div>
 						<div className="">
 							<strong>Light Requirements:</strong>
@@ -156,14 +167,14 @@ export const CollectionBox: FunctionComponent<UserPlantProps> = (
 							<strong>Difficult to Grow:</strong>
 
 							<div className="tag is-success is-small is-rounded ">
-								{selectedPlant.difficultyLevel}
+								{userSelectedPlant.difficultyLevel}
 							</div>
 						</div>
 						<div className="">
 							<strong>Humidity:</strong>
 
 							<div className="tag is-success is-small is-rounded ">
-								{selectedPlant.humidityLevel}
+								{userSelectedPlant.humidityLevel}
 							</div>
 						</div>
 					</div>
@@ -187,9 +198,8 @@ export const CollectionBox: FunctionComponent<UserPlantProps> = (
 
 							{getInWindowSeal()}
 						</div>
-						<div className="tile is-child">
+						<div data-testid="lastWaterDate" className="tile is-child">
 							<strong>Last watered on: </strong>
-
 							{new Date(
 								plant.lastWaterDate?.valueOf() as number
 							).toLocaleDateString()}
@@ -199,18 +209,20 @@ export const CollectionBox: FunctionComponent<UserPlantProps> = (
 
 					<div className="tile level">
 						<div className=" tile level-right">
-							<div
+							<button
+								data-testid="edit"
 								className="button level-item  is-success is-outlined is-small "
 								onClick={openEditModal}
 							>
 								edit
-							</div>
-							<div
+							</button>
+							<button
+								data-testid="deletePlant"
 								className="button level-item  is-danger is-small"
 								onClick={deletePlant}
 							>
 								delete
-							</div>
+							</button>
 						</div>
 					</div>
 				</div>

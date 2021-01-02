@@ -26,14 +26,17 @@ export const Search = () => {
 	}, 300);
 
 	return (
-		<div className="field">
+		<div data-testid="searchComp" className="field">
 			<div className="control">
 				<input
+					data-testid="searchInput"
 					className="input is-primary is-rounded"
 					type="text"
 					name="search"
 					placeholder="Search.."
-					onChange={(e) => handleSearch(e)}
+					onChange={(e) => {
+						handleSearch(e);
+					}}
 				></input>
 			</div>
 		</div>

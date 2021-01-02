@@ -8,7 +8,6 @@ export enum DirectionFacing {
 	southEast = "south east",
 }
 
-export const directionOptions: Array<string> = [];
-Object.keys(DirectionFacing).map((direction) =>
-	directionOptions.push(direction)
-);
+export function getDirectionOptions() {
+	return Object.values(DirectionFacing);
+}

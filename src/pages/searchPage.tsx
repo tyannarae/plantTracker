@@ -8,9 +8,9 @@ import { SearchPageContext } from "../context/pages/searchPage";
 import { Plants, Plant } from "../database/plants";
 import "../styles/pages/searchPage.scss";
 
-const SearchPage: FunctionComponent = () => {
-	const [isLoading, setLoading] = useState(true);
-	const [isModalOpen, setModalOpen] = useState(false);
+export const SearchPage: FunctionComponent = () => {
+	const [isLoading, setLoading] = React.useState(true);
+	const [isModalOpen, setModalOpen] = React.useState(false);
 	const [searchResults, setSearchResults] = useState<Array<Plant>>(Plants);
 	const [selectedPlant, setSelectedPlant] = useState<Plant | undefined>(
 		undefined
@@ -36,7 +36,7 @@ const SearchPage: FunctionComponent = () => {
 				<div className="">
 					{isModalOpen ? <PlantInspector /> : undefined}
 
-					<NavBar />
+					<NavBar search={true} />
 					<div className="resultsContainer">
 						<div className="featuredPlantsHeader">Featured Plants</div>
 					</div>
