@@ -3,6 +3,7 @@ import Dropdown from "react-dropdown";
 import DatePicker from "react-datepicker";
 import { ToastContainer, toast } from "react-toastify";
 import { useSearchContext } from "../context/pages/searchPage";
+import fallbackImg from "../media/plant-placeholder.png";
 import {
 	DirectionFacing,
 	getDirectionOptions,
@@ -32,6 +33,12 @@ export const PlantInspector: FunctionComponent = () => {
 	const [dateWateredLast, setWaterDate] = React.useState<Date>(new Date());
 	const { selectedPlant } = useSearchContext();
 	const { isModalOpen, setModalOpen } = useSearchContext();
+	const [imgUrl, setImgUrl] = useState<string>(selectedPlant?.img as string);
+
+	function addDefaultSrc() {
+		setImgUrl(fallbackImg);
+	}
+
 	const closeModal = () => {
 		setModalOpen(!isModalOpen);
 	};
@@ -107,8 +114,9 @@ export const PlantInspector: FunctionComponent = () => {
 							<img
 								className="plantImg"
 								data-testid="plantInspectImg"
-								src={selectedPlant?.img}
-								alt=""
+								src={imgUrl}
+								alt={selectedPlant?.commonName[0]}
+								onError={addDefaultSrc}
 							></img>
 						</div>
 						<div className="tile is-vertical is-8">
