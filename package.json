@@ -2,7 +2,7 @@
   "name": "plant-tracking-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "https://tyannarae.github.io/plantTracker/",
   "dependencies": {
     "bulma": "^0.9.1",
     "lodash": "^4.17.20",
