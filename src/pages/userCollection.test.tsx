@@ -1,17 +1,11 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
 import { CollectionPageContext } from "../context/pages/userCollections";
 import { UserCollections } from "./userCollection";
 import { DirectionFacing } from "../models/directionFacing";
 
 describe("User Collections", () => {
-	it("User Collection page renders with loadingState is set to true", () => {
-		//mocking context - set isLoading to true.
-		const loadingIsTrue = true;
-		React.useState = jest.fn().mockReturnValueOnce([loadingIsTrue, {}]);
-		const { getByTestId } = render(<UserCollections />);
-		expect(getByTestId("loadingComponent")).toBeDefined();
-	});
 	it("User Collection page renders with loadingState is set to false and no plants avaiable", () => {
 		const UserCollection = [
 			{
@@ -46,7 +40,9 @@ describe("User Collections", () => {
 			.mockReturnValueOnce([UserCollection, {}]);
 		const { getByTestId } = render(
 			<CollectionPageContext.Provider value={contextValue}>
-				<UserCollections />
+				<BrowserRouter>
+					<UserCollections />
+				</BrowserRouter>
 			</CollectionPageContext.Provider>
 		);
 		expect(getByTestId("userCollectionsOutterContainer")).toBeDefined();
@@ -95,7 +91,9 @@ describe("User Collections", () => {
 			.mockReturnValueOnce([UserCollection, {}]);
 		render(
 			<CollectionPageContext.Provider value={contextValue}>
-				<UserCollections />
+				<BrowserRouter>
+					<UserCollections />
+				</BrowserRouter>
 			</CollectionPageContext.Provider>
 		);
 		expect(screen.getByTestId("userCollectionsOutterContainer")).toBeDefined();

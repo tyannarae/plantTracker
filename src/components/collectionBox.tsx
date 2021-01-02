@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useState } from "react";
 import { toast } from "react-toastify";
 import { UserCollectionContext } from "../context/pages/userCollections";
 import {
