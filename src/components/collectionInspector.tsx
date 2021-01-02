@@ -95,7 +95,7 @@ export const CollectionInspector: FunctionComponent = () => {
 								<img
 									className="plantImg"
 									src={Plants[selectedPlant.id].img}
-									alt=""
+									alt="../src/media/plant-placeholder.png"
 								></img>
 							</div>
 							<div className="tile is-vertical is-8">

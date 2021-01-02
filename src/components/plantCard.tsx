@@ -1,4 +1,5 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useState } from "react";
+import fallbackImg from "../media/plant-placeholder.png";
 import { useSearchContext } from "../context/pages/searchPage";
 import { LightRequirements } from "../models/lightRequirements";
 import { HumidityLevel } from "../models/humidityLevel";
@@ -28,6 +29,12 @@ export const PlantCard: FunctionComponent<Plant> = (plant) => {
 
 	const { setModalOpen, setSelectedPlant } = useSearchContext();
 
+	const [imgUrl, setImgUrl] = useState<string>(img);
+
+	function addDefaultSrc() {
+		setImgUrl(fallbackImg);
+	}
+
 	function handlePlantCardClick() {
 		setModalOpen(true);
 		setSelectedPlant(plant);
@@ -40,7 +47,12 @@ export const PlantCard: FunctionComponent<Plant> = (plant) => {
 			onClick={handlePlantCardClick}
 		>
 			<div className="plantCardDetails">
-				<img src={img} className="plantImage media-content" alt="plant" />
+				<img
+					src={imgUrl}
+					alt={plant.commonName[0]}
+					className="plantImage media-content"
+					onError={addDefaultSrc}
+				/>
 			</div>
 			<div className="plantCommonName">
 				{capitalizeFirstLetter(commonName[0])}

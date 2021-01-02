@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent, useState, useEffect } from "react";
 import PlantInspector from "../components/plantInspector";
 import NavBar from "../components/navBar";
 import NoPlantsAvailable from "../components/noPlantsAvailable";
@@ -15,9 +15,12 @@ export const SearchPage: FunctionComponent = () => {
 	const [selectedPlant, setSelectedPlant] = useState<Plant | undefined>(
 		undefined
 	);
-	window.onload = () => {
-		setLoading(!isLoading);
-	};
+
+	useEffect(() => {
+		if (isLoading) {
+			setTimeout(() => setLoading(!isLoading), 400);
+		}
+	});
 
 	return (
 		<SearchPageContext.Provider

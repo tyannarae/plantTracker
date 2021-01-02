@@ -14,7 +14,7 @@ export interface userCollectionsProps {
 
 export const UserCollections: FunctionComponent<userCollectionsProps> = () => {
 	const [index, setIndex] = useState<number | undefined>(undefined);
-	const [isLoading, setLoading] = React.useState(true);
+
 	const [isModalOpen, setModalOpen] = useState(false);
 	const [selectedPlant, setSelectedPlant] = useState<UserPlant | undefined>(
 		undefined
@@ -24,55 +24,47 @@ export const UserCollections: FunctionComponent<userCollectionsProps> = () => {
 	);
 	const UserCollection = getDbFromSession();
 
-	window.onload = () => {
-		setLoading(!isLoading);
-	};
-
-	if (isLoading) {
-		return <Loading />;
-	} else {
-		return (
-			<CollectionPageContext.Provider
-				value={{
-					index,
-					setIndex,
-					deletedPlant,
-					setDeletedPlant,
-					isModalOpen,
-					setModalOpen,
-					selectedPlant,
-					setSelectedPlant,
-				}}
-			>
-				<div data-testid="userCollectionsOutterContainer">
-					<ToastContainer />
-					{isModalOpen ? <CollectionInspector /> : undefined}
-					<NavBar search={false} />
-					<div className="resultsContainer">
-						<div className="featuredPlantsHeader">Your Collection</div>
-					</div>
-					<div data-testid="userCollectionItemsTernary">
-						{UserCollection.length > 0 ? (
-							UserCollection.map((userPlant: UserPlant, index: number) => (
-								<CollectionBox
-									key={index}
-									userPlant={userPlant}
-									userPlantindex={index as number}
-								/>
-							))
-						) : (
-							<div
-								data-testid="noPlantsAvailable"
-								className="noCollectionAvaiable"
-							>
-								Looks like you have not added any plants to your collection yet.
-							</div>
-						)}
-					</div>
+	return (
+		<CollectionPageContext.Provider
+			value={{
+				index,
+				setIndex,
+				deletedPlant,
+				setDeletedPlant,
+				isModalOpen,
+				setModalOpen,
+				selectedPlant,
+				setSelectedPlant,
+			}}
+		>
+			<div data-testid="userCollectionsOutterContainer">
+				<ToastContainer />
+				{isModalOpen ? <CollectionInspector /> : undefined}
+				<NavBar search={false} />
+				<div className="resultsContainer">
+					<div className="featuredPlantsHeader">Your Collection</div>
 				</div>
-			</CollectionPageContext.Provider>
-		);
-	}
+				<div data-testid="userCollectionItemsTernary">
+					{UserCollection.length > 0 ? (
+						UserCollection.map((userPlant: UserPlant, index: number) => (
+							<CollectionBox
+								key={index}
+								userPlant={userPlant}
+								userPlantindex={index as number}
+							/>
+						))
+					) : (
+						<div
+							data-testid="noPlantsAvailable"
+							className="noCollectionAvaiable"
+						>
+							Looks like you have not added any plants to your collection yet.
+						</div>
+					)}
+				</div>
+			</div>
+		</CollectionPageContext.Provider>
+	);
 };
 
 export default UserCollections;

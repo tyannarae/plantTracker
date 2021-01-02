@@ -139,7 +139,7 @@ export const CollectionBox: FunctionComponent<UserPlantProps> = (
 							</div>
 							<img
 								className="tile image "
-								alt={UserPlantProps.userPlant.name}
+								alt={"../src/media/plant-placeholder.png"}
 								src={Plants[id].img}
 							></img>
 						</div>

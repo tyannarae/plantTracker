@@ -16,9 +16,13 @@ function App() {
 					></link>
 				</header>
 			</div>
-			<Route path="/search" component={SearchPage}></Route>
+			<Route path="/plantTracker/search" component={SearchPage}></Route>
 			<Route exact path="/plantTracker" component={LandingPage}></Route>
-			<Route exact path="/collections" component={UserCollections}></Route>
+			<Route
+				exact
+				path="/plantTracker/collections"
+				component={UserCollections}
+			></Route>
 		</Router>
 	);
 }
