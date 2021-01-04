@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent } from "react";
 import Dropdown from "react-dropdown";
 import DatePicker from "react-datepicker";
 import { ToastContainer, toast } from "react-toastify";
@@ -14,6 +14,7 @@ import {
 	noNameProvided,
 	getDbFromSession,
 } from "../database/plants";
+import { PlantImg } from "../components/plantImg";
 import "react-toastify/dist/ReactToastify.css";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-dropdown/style.css";
@@ -92,11 +93,7 @@ export const CollectionInspector: FunctionComponent = () => {
 						<div className="tile is-ancestor">
 							<ToastContainer />
 							<div className="tile is-parent">
-								<img
-									className="plantImg"
-									src={Plants[selectedPlant.id].img}
-									alt=""
-								></img>
+								<PlantImg {...Plants[selectedPlant.id]} />
 							</div>
 							<div className="tile is-vertical is-8">
 								<div className="tile">

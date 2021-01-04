@@ -10,10 +10,12 @@ import {
 import {
 	UserPlant,
 	Plant,
+	Plants,
 	collectionName,
 	noNameProvided,
 	getDbFromSession,
 } from "../database/plants";
+import { PlantImg } from "../components/plantImg";
 import { capitalizeFirstLetter } from "../utils/upperCaseFirstLetter";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-dropdown/style.css";
@@ -104,12 +106,7 @@ export const PlantInspector: FunctionComponent = () => {
 					<div className="tile is-ancestor">
 						<ToastContainer />
 						<div className="tile is-parent">
-							<img
-								className="plantImg"
-								data-testid="plantInspectImg"
-								src={selectedPlant?.img}
-								alt=""
-							></img>
+							<PlantImg {...Plants[selectedPlant?.id as number]} />
 						</div>
 						<div className="tile is-vertical is-8">
 							<div className="tile">

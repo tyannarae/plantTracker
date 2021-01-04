@@ -1,7 +1,7 @@
 import React, { useState, FunctionComponent } from "react";
+import { Link } from "react-router-dom";
 import classNames from "classnames";
 import Logo from "../media/navBar/logo.png";
-import { useHistory } from "react-router-dom";
 import { Search } from "./search";
 interface NavBarProps {
 	search: boolean;
@@ -9,14 +9,6 @@ interface NavBarProps {
 
 export const NavBar: FunctionComponent<NavBarProps> = (NavBarProps) => {
 	const [isActive, setActive] = useState(false);
-	const history = useHistory();
-
-	function handleCollectionsClick() {
-		history.push("/collections");
-	}
-	function handleSignOutClick() {
-		history.push("/");
-	}
 
 	function toggleIsActive() {
 		setActive(!isActive);
@@ -25,9 +17,9 @@ export const NavBar: FunctionComponent<NavBarProps> = (NavBarProps) => {
 	return (
 		<nav className="navbar" data-testid="navBar">
 			<div className="navbar-brand">
-				<a className="navbar-item" href="/search">
+				<Link className="navbar-item" to="/plantTracker/search">
 					<img className="logoImg" alt="Logo" src={Logo} />
-				</a>
+				</Link>
 
 				<div
 					className={classNames(
@@ -49,15 +41,15 @@ export const NavBar: FunctionComponent<NavBarProps> = (NavBarProps) => {
 						)}
 					>
 						<div className="navbar-dropdown">
-							<a href="/search" className="navbar-item">
+							<Link className="navbar-item" to="/plantTracker/search">
 								Home
-							</a>
-							<a className="navbar-item" href="/collections">
+							</Link>
+							<Link className="navbar-item" to="/plantTracker/collections">
 								Collections
-							</a>
-							<a className="navbar-item" href="/">
+							</Link>
+							<Link className="navbar-item" to="/plantTracker">
 								Sign Out
-							</a>
+							</Link>
 						</div>
 					</div>
 				</div>
@@ -68,30 +60,27 @@ export const NavBar: FunctionComponent<NavBarProps> = (NavBarProps) => {
 					<div className="">
 						<div className="buttons">
 							{NavBarProps.search === true ? (
-								<a
-									href="/collections"
+								<Link
 									className=" navbar-item button is-primary"
-									onClick={handleCollectionsClick}
+									to="/plantTracker/collections"
 								>
 									<strong>Collections</strong>
-								</a>
+								</Link>
 							) : (
-								<a
-									href="/search"
+								<Link
 									className=" navbar-item button is-primary"
-									onClick={handleCollectionsClick}
+									to="/plantTracker/search"
 								>
 									<strong>Search Page</strong>
-								</a>
+								</Link>
 							)}
 
-							<a
-								href="/"
+							<Link
 								className="navbar-item button is-primary"
-								onClick={handleSignOutClick}
+								to="/plantTracker"
 							>
 								<strong>Sign Out</strong>
-							</a>
+							</Link>
 						</div>
 					</div>
 				</div>

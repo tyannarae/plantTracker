@@ -6,6 +6,7 @@ import { Misting } from "../models/misting";
 import { DifficultyLevel } from "../models/difficultyLevel";
 import { capitalizeFirstLetter } from "../utils/upperCaseFirstLetter";
 import { Plant } from "../database/plants";
+import { PlantImg } from "../components/plantImg";
 import "../styles/components/plantCard.scss";
 /**
  * This component will take in a single plant object and display it's results to the user.
@@ -40,7 +41,7 @@ export const PlantCard: FunctionComponent<Plant> = (plant) => {
 			onClick={handlePlantCardClick}
 		>
 			<div className="plantCardDetails">
-				<img src={img} className="plantImage media-content" alt="plant" />
+				<PlantImg {...plant} />
 			</div>
 			<div className="plantCommonName">
 				{capitalizeFirstLetter(commonName[0])}

@@ -7,6 +7,7 @@ import {
 	collectionName,
 	getDbFromSession,
 } from "../database/plants";
+import { PlantImg } from "../components/plantImg";
 import { capitalizeFirstLetter } from "../utils/upperCaseFirstLetter";
 import "../styles/components/collectionsBox.scss";
 
@@ -137,11 +138,7 @@ export const CollectionBox: FunctionComponent<UserPlantProps> = (
 									{capitalizeFirstLetter(Plants[id].commonName[0])}
 								</strong>
 							</div>
-							<img
-								className="tile image "
-								alt={UserPlantProps.userPlant.name}
-								src={Plants[id].img}
-							></img>
+							<PlantImg {...Plants[id]} />
 						</div>
 					</div>
 					<div className="tile is-veritcal tags plantDataContainer">
