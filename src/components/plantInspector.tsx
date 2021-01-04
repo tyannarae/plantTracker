@@ -3,7 +3,6 @@ import Dropdown from "react-dropdown";
 import DatePicker from "react-datepicker";
 import { ToastContainer, toast } from "react-toastify";
 import { useSearchContext } from "../context/pages/searchPage";
-import fallbackImg from "../media/plant-placeholder.png";
 import {
 	DirectionFacing,
 	getDirectionOptions,
@@ -11,10 +10,12 @@ import {
 import {
 	UserPlant,
 	Plant,
+	Plants,
 	collectionName,
 	noNameProvided,
 	getDbFromSession,
 } from "../database/plants";
+import { PlantImg } from "../components/plantImg";
 import { capitalizeFirstLetter } from "../utils/upperCaseFirstLetter";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-dropdown/style.css";
@@ -33,12 +34,6 @@ export const PlantInspector: FunctionComponent = () => {
 	const [dateWateredLast, setWaterDate] = React.useState<Date>(new Date());
 	const { selectedPlant } = useSearchContext();
 	const { isModalOpen, setModalOpen } = useSearchContext();
-	const [imgUrl, setImgUrl] = useState<string>(selectedPlant?.img as string);
-
-	function addDefaultSrc() {
-		setImgUrl(fallbackImg);
-	}
-
 	const closeModal = () => {
 		setModalOpen(!isModalOpen);
 	};
@@ -111,13 +106,7 @@ export const PlantInspector: FunctionComponent = () => {
 					<div className="tile is-ancestor">
 						<ToastContainer />
 						<div className="tile is-parent">
-							<img
-								className="plantImg"
-								data-testid="plantInspectImg"
-								src={imgUrl}
-								alt={selectedPlant?.commonName[0]}
-								onError={addDefaultSrc}
-							></img>
+							<PlantImg {...Plants[selectedPlant?.id as number]} />
 						</div>
 						<div className="tile is-vertical is-8">
 							<div className="tile">

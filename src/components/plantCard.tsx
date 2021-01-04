@@ -1,5 +1,4 @@
-import React, { FunctionComponent, useState } from "react";
-import fallbackImg from "../media/plant-placeholder.png";
+import React, { FunctionComponent } from "react";
 import { useSearchContext } from "../context/pages/searchPage";
 import { LightRequirements } from "../models/lightRequirements";
 import { HumidityLevel } from "../models/humidityLevel";
@@ -7,6 +6,7 @@ import { Misting } from "../models/misting";
 import { DifficultyLevel } from "../models/difficultyLevel";
 import { capitalizeFirstLetter } from "../utils/upperCaseFirstLetter";
 import { Plant } from "../database/plants";
+import { PlantImg } from "../components/plantImg";
 import "../styles/components/plantCard.scss";
 /**
  * This component will take in a single plant object and display it's results to the user.
@@ -29,12 +29,6 @@ export const PlantCard: FunctionComponent<Plant> = (plant) => {
 
 	const { setModalOpen, setSelectedPlant } = useSearchContext();
 
-	const [imgUrl, setImgUrl] = useState<string>(img);
-
-	function addDefaultSrc() {
-		setImgUrl(fallbackImg);
-	}
-
 	function handlePlantCardClick() {
 		setModalOpen(true);
 		setSelectedPlant(plant);
@@ -47,12 +41,7 @@ export const PlantCard: FunctionComponent<Plant> = (plant) => {
 			onClick={handlePlantCardClick}
 		>
 			<div className="plantCardDetails">
-				<img
-					src={imgUrl}
-					alt={plant.commonName[0]}
-					className="plantImage media-content"
-					onError={addDefaultSrc}
-				/>
+				<PlantImg {...plant} />
 			</div>
 			<div className="plantCommonName">
 				{capitalizeFirstLetter(commonName[0])}
